@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 
 <div class="container mx-auto px-4 space-y-16">
@@ -206,7 +205,3 @@
 		}
 	}
 </style>
-=======
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
->>>>>>> c641080cdcae894032dc594ea8ee2a8e0f10db97

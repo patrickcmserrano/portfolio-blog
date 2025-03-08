@@ -1,5 +1,4 @@
 <script lang="ts">
-<<<<<<< HEAD
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 	import { LightSwitch } from '@skeletonlabs/skeleton';
@@ -49,10 +48,3 @@
 		scroll-behavior: smooth;
 	}
 </style>
-=======
-	import '../app.css';
-	let { children } = $props();
-</script>
-
-{@render children()}
->>>>>>> c641080cdcae894032dc594ea8ee2a8e0f10db97

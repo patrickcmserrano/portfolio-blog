@@ -3,10 +3,6 @@
 	"singleQuote": true,
 	"trailingComma": "none",
 	"printWidth": 100,
-<<<<<<< HEAD
-	"plugins": ["prettier-plugin-svelte"],
-	"overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }]
-=======
 	"plugins": ["prettier-plugin-svelte", "prettier-plugin-tailwindcss"],
 	"overrides": [
 		{
@@ -16,5 +12,4 @@
 			}
 		}
 	]
->>>>>>> c641080cdcae894032dc594ea8ee2a8e0f10db97
 }
