@@ -1,3 +1,7 @@
+<script lang="ts">
+	import { base } from '$app/paths';
+</script>
+
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 
 <div class="container mx-auto px-4 space-y-16">
@@ -12,13 +16,13 @@
 		</p>
 		<div class="flex justify-center gap-4">
 			<a
-				href="/about"
+				href="{base}/about"
 				class="btn variant-filled-secondary"
 			>
 				Conheça minha trajetória
 			</a>
 			<a
-				href="/blog"
+				href="{base}/blog"
 				class="btn variant-soft-secondary"
 			>
 				Artigos técnicos

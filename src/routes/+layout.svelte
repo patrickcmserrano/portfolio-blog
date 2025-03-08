@@ -2,6 +2,7 @@
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 	import { LightSwitch } from '@skeletonlabs/skeleton';
+	import { base } from '$app/paths';
 
 	// Highlight JS
 	import hljs from 'highlight.js/lib/core';
@@ -25,13 +26,13 @@
 		<!-- App Bar -->
 		<AppBar>
 			<svelte:fragment slot="lead">
-				<a href="/" class="text-xl font-bold">Portfolio</a>
+				<a href="{base}/" class="text-xl font-bold">Portfolio</a>
 			</svelte:fragment>
 			<svelte:fragment slot="default">
 				<div class="hidden sm:flex sm:space-x-8">
-					<a href="/" class="btn btn-sm variant-ghost-secondary">Home</a>
-					<a href="/about" class="btn btn-sm variant-ghost-secondary">Sobre</a>
-					<a href="/blog" class="btn btn-sm variant-ghost-secondary">Blog</a>
+					<a href="{base}/" class="btn btn-sm variant-ghost-secondary">Home</a>
+					<a href="{base}/about" class="btn btn-sm variant-ghost-secondary">Sobre</a>
+					<a href="{base}/blog" class="btn btn-sm variant-ghost-secondary">Blog</a>
 				</div>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
