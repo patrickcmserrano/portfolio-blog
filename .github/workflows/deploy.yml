@@ -1,28 +1,24 @@
-name: Deploy SvelteKit to GitHub Pages
+name: CI/CD Pipeline com Docker
 
 on:
   push:
     branches:
-      - main  # Trigger no push para a branch main
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      # Checkout do código
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Build usando Docker
-      - name: Build com Docker
+      - name: Build e executar com Docker
         run: |
           docker build -t skeleton-portifolio-blog-app-1 .
-          docker run --rm -v ${{ github.workspace }}/dist:/output sveltekit-app
+          docker run --rm -v ${{ github.workspace }}/dist:/output skeleton-portifolio-blog-app-1
 
-      # Deploy para GitHub Pages
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist  # Diretório com os arquivos gerados
+          publish_dir: ./dist
