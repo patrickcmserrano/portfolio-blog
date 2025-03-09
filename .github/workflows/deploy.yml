@@ -3,7 +3,7 @@ name: CI/CD Pipeline com Docker
 on:
   push:
     branches:
-      - main
+      - skeleton
 
 jobs:
   build-and-deploy:
