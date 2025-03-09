@@ -15,10 +15,12 @@ jobs:
       - name: Build e executar com Docker
         run: |
           docker build -t skeleton-portifolio-blog-app-1 .
-          docker run --rm -v ${{ github.workspace }}/dist:/output skeleton-portifolio-blog-app-1
+          docker create --name temp_container skeleton-portifolio-blog-app-1
+          docker cp temp_container:/app/build ./build
+          docker rm temp_container
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./build
