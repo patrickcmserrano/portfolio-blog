@@ -1,5 +1,39 @@
 # Portfolio Blog com SvelteKit
 
+## Resumo do Processo de Build e Deploy
+
+### Visão Geral do Fluxo
+1. Desenvolvimento local usando Docker ou npm
+2. Push para a branch `skeleton` dispara o GitHub Actions
+3. GitHub Actions executa o build no container Docker
+4. Arquivos de build são extraídos e publicados na branch gh-pages
+5. GitHub Pages serve a aplicação a partir da branch gh-pages
+
+### Processo Detalhado
+
+#### 1. Build Process
+- Container Docker usa multi-stage build:
+  1. `base`: Configuração inicial e dependências
+  2. `development`: Ambiente de desenvolvimento
+  3. `builder`: Gera os arquivos estáticos
+  4. `production`: Imagem final otimizada
+
+#### 2. Deploy Process
+```
+Container (/app/build) -> GitHub Actions Runner (./build) -> Branch gh-pages (/) -> GitHub Pages
+```
+
+#### 3. Configurações Essenciais
+- **SvelteKit**: Usa adapter-static e configura base path
+- **GitHub Pages**: Deploy via branch (não via Actions)
+- **GitHub Actions**: Copia arquivos do container e faz deploy
+
+#### 4. Pontos Críticos Resolvidos
+- Base path correto para GitHub Pages (`/svelte-portfolio-blog`)
+- Extração correta dos arquivos de build do container
+- Configuração do GitHub Pages via branch gh-pages
+- Página 404.html para gerenciamento de rotas
+
 Este projeto é um blog/portfolio construído com SvelteKit, Docker e GitHub Actions para CI/CD.
 
 ## Tecnologias Utilizadas
@@ -98,7 +132,7 @@ CMD ["serve", "-s", "build", "-l", "3000"]
 - Pipeline de CI/CD com GitHub Actions
 - Extração correta dos arquivos de build do container Docker
 - Configuração adequada de permissões no GitHub Actions
-- Deploy via branch gh-pages ao invés do método Actions do GitHub Pages
+- Deploy via branch gh-pages ao invés do método Actions
 
 #### Desafios Superados:
 1. Problema com o comando Vite no container Docker

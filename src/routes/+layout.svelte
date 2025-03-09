@@ -33,6 +33,7 @@
 					<a href="{base}/" class="btn btn-sm variant-ghost-secondary">Home</a>
 					<a href="{base}/about" class="btn btn-sm variant-ghost-secondary">Sobre</a>
 					<a href="{base}/blog" class="btn btn-sm variant-ghost-secondary">Blog</a>
+					<a href="{base}/about-site" class="btn btn-sm variant-ghost-secondary">Sobre este Site</a>
 				</div>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">

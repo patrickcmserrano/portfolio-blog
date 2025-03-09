@@ -1,4 +1,12 @@
+# Dependencies
 node_modules
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # Output
 .output
@@ -19,3 +27,9 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Yarn
+.yarn-integrity
+yarn-debug.log*
+yarn-error.log*
+.yarn-metadata.json
