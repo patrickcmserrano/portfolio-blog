@@ -20,12 +20,12 @@ const config = {
 			// these options are set automatically — see below
 			pages: 'build',
 			assets: 'build',
-			fallback: null,
+			fallback: '404.html',
 			precompress: false,
 			strict: true
 		}),
 		paths: {
-			base: process.env.NODE_ENV === 'production' ? '/svelte-portfolio-blog' : ''
+			base: '/svelte-portfolio-blog'
 		},
 		// Necessário para sites estáticos
 		prerender: {
