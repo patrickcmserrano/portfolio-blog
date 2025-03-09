@@ -1,30 +1,28 @@
-FROM node:20-alpine
-
+# Base stage for shared dependencies
+FROM node:20-alpine AS base
 WORKDIR /app
-
-# Copy package files
 COPY package*.json ./
 
-# Install dependencies
+# Development stage
+FROM base AS development
 RUN npm install
-
-# Copy all project files
+RUN npm install -g vite
 COPY . .
+EXPOSE 3000
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
 
-# Set production environment
-ENV NODE_ENV=production
-
-# Build the application
+# Build stage
+FROM base AS builder
+RUN npm install
+COPY . .
 RUN npm run build
 
-# Use a lightweight server to serve static files
-FROM node:20-alpine
+# Production stage
+FROM node:20-alpine AS production
 WORKDIR /app
-COPY --from=0 /app/build ./build
-
+COPY --from=builder /app/build ./build
+COPY package*.json ./
+RUN npm install --production
 RUN npm install -g serve
-
 EXPOSE 3000
-
-# Serve the static files
 CMD ["serve", "-s", "build", "-l", "3000"] 
