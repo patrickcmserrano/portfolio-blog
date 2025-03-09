@@ -6,16 +6,20 @@ COPY package*.json ./
 # Development stage
 FROM base AS development
 RUN npm install
-RUN npm install -g vite
 COPY . .
 EXPOSE 3000
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+# Ensure SvelteKit is synced before running dev
+CMD ["sh", "-c", "npx svelte-kit sync && npm run dev -- --host 0.0.0.0"]
 
 # Build stage
 FROM base AS builder
 RUN npm install
 COPY . .
-RUN npm run build
+ENV NODE_ENV=production
+# Sync SvelteKit and run build with verbose logging
+RUN set -ex && \
+    npx svelte-kit sync && \
+    npx vite build --debug
 
 # Production stage
 FROM node:20-alpine AS production
