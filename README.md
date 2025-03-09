@@ -1,4 +1,47 @@
-# Portfolio Blog com SvelteKit
+# Svelte Portfolio & Blog
+
+Bem-vindo ao **Svelte Portfolio & Blog**, um site de portfólio pessoal e blog construído com **SvelteKit**. Este projeto combina um design moderno e responsivo com funcionalidades práticas, como suporte a temas (light/dark mode) e um blog baseado em Markdown. É um exemplo de como utilizar SvelteKit para criar uma aplicação web performática e amigável.
+
+### Funcionalidades
+- **Portfólio Pessoal**: Exiba seus projetos e habilidades em um layout elegante e otimizado.
+- **Blog Integrado**: Escreva e publique posts usando Markdown, com suporte a categorias e tags para organização.
+- **Temas Dinâmicos**: Alterne entre os modos claro e escuro com um clique.
+- **Design Responsivo**: Totalmente adaptado para dispositivos móveis e desktops.
+- **Otimização de Desempenho**: Imagens com lazy loading e carregamento eficiente de conteúdo.
+
+### Tecnologias Utilizadas
+- **[SvelteKit](https://kit.svelte.dev/)**: Framework principal para construção do site.
+- **[TailwindCSS](https://tailwindcss.com/)**: Estilização rápida e responsiva.
+- **Markdown**: Para criação e renderização dos posts do blog.
+
+### Pré-requisitos
+- Node.js (versão 16 ou superior)
+- npm ou yarn
+
+### Como Executar o Projeto
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/patrickcmserrano/svelte-portfolio-blog.git
+   ```
+2. Entre no diretório:
+   ```bash
+   cd svelte-portfolio-blog
+   ```
+3. Instale as dependências:
+   ```bash
+   npm install
+   ```
+4. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+   ```
+5. Abra o navegador em `http://localhost:5173`.
+
+### Contribuições
+Sinta-se à vontade para abrir issues ou enviar pull requests com sugestões de melhorias!
+
+### Licença
+Este projeto está sob a licença MIT.
 
 ## Resumo do Processo de Build e Deploy
 
@@ -43,6 +86,7 @@ Este projeto é um blog/portfolio construído com SvelteKit, Docker e GitHub Act
 - GitHub Actions para CI/CD
 - TailwindCSS para estilização
 - GitHub Pages para hospedagem
+- ESLint e Prettier para padronização do código
 
 ## Desenvolvimento Local
 
@@ -122,6 +166,18 @@ RUN npm install --production
 RUN npm install -g serve
 EXPOSE 3000
 CMD ["serve", "-s", "build", "-l", "3000"]
+```
+
+### Configuração do ESLint e Prettier
+
+O projeto utiliza ESLint e Prettier para garantir a qualidade e consistência do código. A configuração do ESLint pode ser encontrada no arquivo `eslint.config.js`. O Prettier está integrado ao ESLint para formatação automática.
+
+### Testes
+
+O projeto utiliza Vitest para testes unitários e Playwright para testes de integração. Os testes podem ser executados com o seguinte comando:
+
+```bash
+npm run test
 ```
 
 ### Lições Aprendidas
