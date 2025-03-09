@@ -31,6 +31,30 @@ O projeto utiliza GitHub Actions para automatizar o build e deploy. O pipeline i
 2. Geração dos arquivos estáticos
 3. Deploy automático para GitHub Pages
 
+### História do Deploy e Lições Aprendidas
+
+#### Tentativa Inicial (Não Funcionou):
+Inicialmente, tentamos configurar o GitHub Pages usando o método de "Actions" nas configurações do repositório:
+1. Settings > Pages > Build and deployment > Source > GitHub Actions
+2. Isso causou conflitos com o SvelteKit e Vite, pois:
+   - O GitHub Actions tentava servir os arquivos diretamente
+   - O base path do SvelteKit não era respeitado
+   - As rotas não funcionavam corretamente
+
+#### Solução Final (Funcionou):
+Mudamos para o método tradicional de deploy via branch:
+1. Settings > Pages > Build and deployment > Source > Deploy from a branch
+2. Branch: gh-pages / folder: / (root)
+3. Configuramos o workflow para:
+   - Fazer build no container Docker
+   - Extrair os arquivos de build
+   - Fazer push para a branch gh-pages
+
+Esta abordagem funcionou porque:
+- Mantém a compatibilidade com o SvelteKit
+- Respeita o base path configurado
+- Permite o uso correto do adapter-static
+
 ### Configuração do Docker
 
 ```dockerfile
@@ -74,6 +98,7 @@ CMD ["serve", "-s", "build", "-l", "3000"]
 - Pipeline de CI/CD com GitHub Actions
 - Extração correta dos arquivos de build do container Docker
 - Configuração adequada de permissões no GitHub Actions
+- Deploy via branch gh-pages ao invés do método Actions do GitHub Pages
 
 #### Desafios Superados:
 1. Problema com o comando Vite no container Docker
@@ -82,13 +107,40 @@ CMD ["serve", "-s", "build", "-l", "3000"]
    - Solução: Uso de `docker cp` ao invés de volumes
 3. Permissões do GitHub Actions
    - Solução: Configuração explícita de permissões no workflow
+4. GitHub Pages servindo README ao invés da aplicação
+   - Solução: Configuração correta do workflow com `force_orphan` e verificação do conteúdo do build
+5. Conflito entre GitHub Actions e SvelteKit
+   - Solução: Mudança para deploy via branch gh-pages ao invés do método Actions
+   - Configuração correta do base path no SvelteKit e Vite
 
-```yaml
-permissions:
-  contents: write
-  pages: write
-  id-token: write
+### Configurações Críticas
+
+1. **SvelteKit (svelte.config.js)**:
+```javascript
+kit: {
+  adapter: adapter({
+    pages: 'build',
+    assets: 'build',
+    fallback: '404.html'
+  }),
+  paths: {
+    base: '/svelte-portfolio-blog'
+  }
+}
 ```
+
+2. **Vite (vite.config.ts)**:
+```typescript
+export default defineConfig({
+  base: '/svelte-portfolio-blog/',
+  // ... outras configurações
+});
+```
+
+3. **404.html para Redirecionamento**:
+- Implementado para garantir que rotas diretas funcionem corretamente
+- Mantém o estado da aplicação mesmo em refresh
+- Gerencia corretamente o base path do GitHub Pages
 
 ## Scripts Disponíveis
 
