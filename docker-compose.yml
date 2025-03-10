@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    ports:
+      - "3000:3000"  # App
+      - "9630:9630"  # Shadow-CLJS server
+      - "8080:8080"  # Dev server
+    command: npm start
+    environment:
+      - NODE_ENV=development
+
+volumes:
+  node_modules:

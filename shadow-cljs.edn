@@ -1,0 +1,11 @@
+;; shadow-cljs.edn
+{:source-paths ["src"]
+ :dependencies [[reagent "1.2.0"]
+                [re-frame "1.2.0"]
+                [arttuka/reagent-material-ui "5.11.12-0"]
+                [bidi "2.1.6"]]
+ :dev-http {8080 "public"}
+ :builds {:app {:target :browser
+                :output-dir "public/js"
+                :asset-path "/js"
+                :modules {:main {:init-fn meu-portfolio.core/init}}}}}

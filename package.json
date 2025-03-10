@@ -1,0 +1,22 @@
+{
+  "name": "meu-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "shadow-cljs watch app",
+    "build": "shadow-cljs release app",
+    "server": "shadow-cljs server",
+    "clean": "rm -rf target && rm -rf public/js"
+  },
+  "devDependencies": {
+    "shadow-cljs": "^2.22.9"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@mui/material": "^5.11.12",
+    "@mui/icons-material": "^5.11.11",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6"
+  }
+}
