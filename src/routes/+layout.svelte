@@ -30,10 +30,10 @@
 			</svelte:fragment>
 			<svelte:fragment slot="default">
 				<div class="hidden sm:flex sm:space-x-8">
-					<a href="{base}/" class="btn btn-sm variant-ghost-secondary">Home</a>
-					<a href="{base}/about" class="btn btn-sm variant-ghost-secondary">Sobre</a>
-					<a href="{base}/blog" class="btn btn-sm variant-ghost-secondary">Blog</a>
-					<a href="{base}/about-site" class="btn btn-sm variant-ghost-secondary">Sobre este Site</a>
+					<a href="{base}/" class="variant-ghost-secondary btn btn-sm">Home</a>
+					<a href="{base}/about" class="variant-ghost-secondary btn btn-sm">Sobre</a>
+					<a href="{base}/blog" class="variant-ghost-secondary btn btn-sm">Blog</a>
+					<a href="{base}/about-site" class="variant-ghost-secondary btn btn-sm">Sobre este Site</a>
 				</div>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">

@@ -29,7 +29,7 @@ jobs:
         run: |
           echo "Conteúdo da pasta build:"
           ls -la build/
-          
+
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v4
 
@@ -39,4 +39,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
           force_orphan: true # Força a criação de uma nova branch limpa
-          commit_message: "Deploy: ${{ github.event.head_commit.message }}"
+          commit_message: 'Deploy: ${{ github.event.head_commit.message }}'

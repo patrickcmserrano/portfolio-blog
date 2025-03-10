@@ -5,9 +5,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
 	base: '/svelte-portfolio-blog/',
 	plugins: [sveltekit(), purgeCss()],
-
-	test: {
-		include: ['src/**/*.{test,spec}.{js,ts}'],
-		environment: 'jsdom'
+	define: {
+		'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
 	}
 });

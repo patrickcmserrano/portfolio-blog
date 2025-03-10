@@ -3,6 +3,7 @@
 Bem-vindo ao **Svelte Portfolio & Blog**, um site de portfólio pessoal e blog construído com **SvelteKit**. Este projeto combina um design moderno e responsivo com funcionalidades práticas, como suporte a temas (light/dark mode) e um blog baseado em Markdown. É um exemplo de como utilizar SvelteKit para criar uma aplicação web performática e amigável.
 
 ### Funcionalidades
+
 - **Portfólio Pessoal**: Exiba seus projetos e habilidades em um layout elegante e otimizado.
 - **Blog Integrado**: Escreva e publique posts usando Markdown, com suporte a categorias e tags para organização.
 - **Temas Dinâmicos**: Alterne entre os modos claro e escuro com um clique.
@@ -10,15 +11,18 @@ Bem-vindo ao **Svelte Portfolio & Blog**, um site de portfólio pessoal e blog c
 - **Otimização de Desempenho**: Imagens com lazy loading e carregamento eficiente de conteúdo.
 
 ### Tecnologias Utilizadas
+
 - **[SvelteKit](https://kit.svelte.dev/)**: Framework principal para construção do site.
 - **[TailwindCSS](https://tailwindcss.com/)**: Estilização rápida e responsiva.
 - **Markdown**: Para criação e renderização dos posts do blog.
 
 ### Pré-requisitos
+
 - Node.js (versão 16 ou superior)
 - npm ou yarn
 
 ### Como Executar o Projeto
+
 1. Clone o repositório:
    ```bash
    git clone https://github.com/patrickcmserrano/svelte-portfolio-blog.git
@@ -38,14 +42,17 @@ Bem-vindo ao **Svelte Portfolio & Blog**, um site de portfólio pessoal e blog c
 5. Abra o navegador em `http://localhost:5173`.
 
 ### Contribuições
+
 Sinta-se à vontade para abrir issues ou enviar pull requests com sugestões de melhorias!
 
 ### Licença
+
 Este projeto está sob a licença MIT.
 
 ## Resumo do Processo de Build e Deploy
 
 ### Visão Geral do Fluxo
+
 1. Desenvolvimento local usando Docker ou npm
 2. Push para a branch `skeleton` dispara o GitHub Actions
 3. GitHub Actions executa o build no container Docker
@@ -55,6 +62,7 @@ Este projeto está sob a licença MIT.
 ### Processo Detalhado
 
 #### 1. Build Process
+
 - Container Docker usa multi-stage build:
   1. `base`: Configuração inicial e dependências
   2. `development`: Ambiente de desenvolvimento
@@ -62,16 +70,19 @@ Este projeto está sob a licença MIT.
   4. `production`: Imagem final otimizada
 
 #### 2. Deploy Process
+
 ```
 Container (/app/build) -> GitHub Actions Runner (./build) -> Branch gh-pages (/) -> GitHub Pages
 ```
 
 #### 3. Configurações Essenciais
+
 - **SvelteKit**: Usa adapter-static e configura base path
 - **GitHub Pages**: Deploy via branch (não via Actions)
 - **GitHub Actions**: Copia arquivos do container e faz deploy
 
 #### 4. Pontos Críticos Resolvidos
+
 - Base path correto para GitHub Pages (`/svelte-portfolio-blog`)
 - Extração correta dos arquivos de build do container
 - Configuração do GitHub Pages via branch gh-pages
@@ -112,7 +123,9 @@ O projeto utiliza GitHub Actions para automatizar o build e deploy. O pipeline i
 ### História do Deploy e Lições Aprendidas
 
 #### Tentativa Inicial (Não Funcionou):
+
 Inicialmente, tentamos configurar o GitHub Pages usando o método de "Actions" nas configurações do repositório:
+
 1. Settings > Pages > Build and deployment > Source > GitHub Actions
 2. Isso causou conflitos com o SvelteKit e Vite, pois:
    - O GitHub Actions tentava servir os arquivos diretamente
@@ -120,7 +133,9 @@ Inicialmente, tentamos configurar o GitHub Pages usando o método de "Actions" n
    - As rotas não funcionavam corretamente
 
 #### Solução Final (Funcionou):
+
 Mudamos para o método tradicional de deploy via branch:
+
 1. Settings > Pages > Build and deployment > Source > Deploy from a branch
 2. Branch: gh-pages / folder: / (root)
 3. Configuramos o workflow para:
@@ -129,6 +144,7 @@ Mudamos para o método tradicional de deploy via branch:
    - Fazer push para a branch gh-pages
 
 Esta abordagem funcionou porque:
+
 - Mantém a compatibilidade com o SvelteKit
 - Respeita o base path configurado
 - Permite o uso correto do adapter-static
@@ -183,6 +199,7 @@ npm run test
 ### Lições Aprendidas
 
 #### O que funcionou:
+
 - Multi-stage build do Docker para diferentes ambientes
 - Uso do adapter-static do SvelteKit para geração de páginas estáticas
 - Pipeline de CI/CD com GitHub Actions
@@ -191,6 +208,7 @@ npm run test
 - Deploy via branch gh-pages ao invés do método Actions
 
 #### Desafios Superados:
+
 1. Problema com o comando Vite no container Docker
    - Solução: Uso do `npx` para garantir execução correta
 2. Extração dos arquivos de build
@@ -206,6 +224,7 @@ npm run test
 ### Configurações Críticas
 
 1. **SvelteKit (svelte.config.js)**:
+
 ```javascript
 kit: {
   adapter: adapter({
@@ -220,14 +239,16 @@ kit: {
 ```
 
 2. **Vite (vite.config.ts)**:
+
 ```typescript
 export default defineConfig({
-  base: '/svelte-portfolio-blog/',
-  // ... outras configurações
+	base: '/svelte-portfolio-blog/'
+	// ... outras configurações
 });
 ```
 
 3. **404.html para Redirecionamento**:
+
 - Implementado para garantir que rotas diretas funcionem corretamente
 - Mantém o estado da aplicação mesmo em refresh
 - Gerencia corretamente o base path do GitHub Pages

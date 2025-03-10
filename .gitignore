@@ -33,3 +33,5 @@ vite.config.ts.timestamp-*
 yarn-debug.log*
 yarn-error.log*
 .yarn-metadata.json
+test-results/.last-run.json
+yarn.lock
