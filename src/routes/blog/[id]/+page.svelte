@@ -65,23 +65,5 @@
 </div>
 
 <style>
-	/* Ajustes personalizados para melhorar a legibilidade */
-	.prose {
-		line-height: 1.75;
-	}
-	.prose h1,
-	.prose h2,
-	.prose h3 {
-		margin-bottom: 1rem;
-	}
-	.prose p {
-		margin-bottom: 1.25rem;
-	}
-	.prose strong {
-		color: #ff5722; /* Cor de destaque para o tema claro */
-	}
-
-	.dark .prose strong {
-		color: #ff9800; /* Cor de destaque para o tema escuro */
-	}
+  /* Remover seletores não utilizados */
 </style>
