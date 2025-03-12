@@ -3,6 +3,7 @@
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 	import { LightSwitch } from '@skeletonlabs/skeleton';
 	import { base } from '$app/paths';
+	import NavLink from '../components/NavLink.svelte';
 
 	// Highlight JS
 	import hljs from 'highlight.js/lib/core';
@@ -30,10 +31,10 @@
 			</svelte:fragment>
 			<svelte:fragment slot="default">
 				<div class="hidden sm:flex sm:space-x-8">
-					<a href="{base}/" class="variant-ghost-secondary btn btn-sm">Home</a>
-					<a href="{base}/about" class="variant-ghost-secondary btn btn-sm">Sobre</a>
-					<a href="{base}/blog" class="variant-ghost-secondary btn btn-sm">Blog</a>
-					<a href="{base}/about-site" class="variant-ghost-secondary btn btn-sm">Sobre este Site</a>
+					<NavLink href="{base}/" label="Home" />
+					<NavLink href="{base}/about" label="Sobre" />
+					<NavLink href="{base}/blog" label="Blog" />
+					<NavLink href="{base}/about-site" label="Sobre este Site" />
 				</div>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">

@@ -33,7 +33,11 @@
 			const rawContent = await response.text();
 			content = sanitizeHtml(await marked(rawContent));
 		} catch (err) {
-			error = err.message;
+			if (err instanceof Error) {
+				error = err.message;
+			} else {
+				error = 'An unknown error occurred';
+			}
 		} finally {
 			loading = false;
 		}

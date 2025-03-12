@@ -1,23 +1,8 @@
 <!-- Página Sobre este Website -->
 <script lang="ts">
-	import { marked } from 'marked';
-	import { onMount } from 'svelte';
+	import ReadmeViewer from '../../components/ReadmeViewer.svelte';
 
-	let readme = '';
-	let loading = true;
-
-	onMount(async () => {
-		try {
-			const response = await fetch(
-				'https://raw.githubusercontent.com/patrickcmserrano/svelte-portfolio-blog/skeleton/README.md'
-			);
-			readme = await response.text();
-			loading = false;
-		} catch (error) {
-			console.error('Erro ao carregar README:', error);
-			loading = false;
-		}
-	});
+	const readmeUrl = 'https://raw.githubusercontent.com/patrickcmserrano/svelte-portfolio-blog/skeleton/README.md';
 </script>
 
 <div class="container mx-auto px-4 py-8">
@@ -41,17 +26,7 @@
 		</a>
 	</div>
 
-	{#if loading}
-		<div class="flex items-center justify-center py-12">
-			<div
-				class="h-12 w-12 animate-spin rounded-full border-b-2 border-t-2 border-primary-500"
-			></div>
-		</div>
-	{:else}
-		<article class="prose prose-lg max-w-none dark:prose-invert">
-			{@html marked(readme)}
-		</article>
-	{/if}
+	<ReadmeViewer url={readmeUrl} />
 </div>
 
 <style lang="postcss">
