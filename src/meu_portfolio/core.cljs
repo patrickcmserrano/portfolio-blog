@@ -2,20 +2,7 @@
   (:require [reagent.dom :as rdom]
             [re-frame.core :as rf]
             [meu-portfolio.views :as views]
-            [meu-portfolio.routes :refer [match-route]]
-            [reagent-mui.styles :as styles]
-            [reagent-mui.colors :as colors]
-            [reagent-mui.material.css-baseline :refer [css-baseline]]
-            [reagent-mui.material.theme-provider :refer [theme-provider]]
-            [reagent-mui.material.container :refer [container]]
-            [reagent-mui.material.box :refer [box]]))
-
-;; Tema customizado para o Material UI
-(def theme
-  (styles/create-theme
-   {:palette {:primary {:main (colors/blue 700)}
-              :secondary {:main (colors/teal 500)}}
-    :typography {:fontFamily "Roboto, Arial, sans-serif"}}))
+            [meu-portfolio.routes :refer [match-route]]))
 
 (defn current-page []
   (let [path (.-pathname js/location)
@@ -26,16 +13,13 @@
                          :blog views/blog-page
                          :contact views/contact-page
                          views/home-page)] ; Fallback para a página inicial
-    [:<>
+    [:div.app-container
      [views/navigation]
-     [box {:component "main" :sx {:min-height "100vh" :pb 6}}
+     [:main.main-content
       [page-component]]]))
 
 (defn app []
-  [:<>
-   [css-baseline]
-   [theme-provider {:theme theme}
-    [current-page]]])
+  [current-page])
 
 (defn ^:export init []
   (rf/dispatch-sync [:initialize])

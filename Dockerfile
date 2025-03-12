@@ -10,7 +10,7 @@ WORKDIR /app
 COPY package.json shadow-cljs.edn ./
 
 # Instalar dependências
-RUN npm install
+RUN npm install && test -d node_modules
 
 # Copiar código fonte
 COPY . .
