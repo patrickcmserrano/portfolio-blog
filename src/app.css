@@ -1,2 +1,15 @@
-@import 'tailwindcss';
-@plugin '@tailwindcss/typography';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Sobrescrevendo a regra anterior (h1 strong) */
+.prose :where(h1 strong):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    font-weight: 900;
+    color: rgb(229 231 235 ); /* Cor personalizada */
+}
+
+/* Sobrescrevendo a nova regra (strong) */
+.prose :where(strong):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    font-weight: 600; /* Mantém o peso original */
+    color: rgb(229 231 235 ); /* Substitui var(--tw-prose-bold) por uma cor fixa, ex.: cinza escuro */
+}

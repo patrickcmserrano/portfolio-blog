@@ -184,6 +184,78 @@ EXPOSE 3000
 CMD ["serve", "-s", "build", "-l", "3000"]
 ```
 
+### Configuração do PostCSS com Svelte e TailwindCSS
+
+Este projeto utiliza PostCSS para processar o CSS, integrando o TailwindCSS para estilização e o Svelte para construção da aplicação. A configuração do PostCSS está definida no arquivo `postcss.config.cjs`.
+
+### Estrutura de Arquivos CSS
+
+- `src/app.css`: Arquivo principal de estilos, onde são importadas as diretivas do TailwindCSS (`@tailwind base;`, `@tailwind components;`, `@tailwind utilities;`).
+- `src/app.postcss`: Arquivo adicional de estilos, aplicando utilitários do TailwindCSS e variantes.
+
+### Como Efetuar Edições em CSS
+
+1. **Adicionar Estilos Globais**:
+   - Edite o arquivo `src/app.css` para adicionar ou sobrescrever estilos globais utilizando as diretivas do TailwindCSS.
+
+2. **Adicionar Estilos Específicos**:
+   - Utilize classes utilitárias do TailwindCSS diretamente nos componentes Svelte para aplicar estilos específicos.
+
+3. **Configurar TailwindCSS**:
+   - Edite o arquivo `tailwind.config.ts` para adicionar configurações personalizadas, como temas, plugins e extensões de estilos.
+
+### Exemplo de Configuração do PostCSS
+
+```javascript
+// filepath: c:\dev\portifolio-blog\skeleton-portifolio-blog\postcss.config.cjs
+module.exports = {
+	plugins: {
+		tailwindcss: {},
+		autoprefixer: {}
+	}
+};
+```
+
+### Exemplo de Uso no Arquivo CSS Principal
+
+```css
+/* filepath: c:\dev\portifolio-blog\skeleton-portifolio-blog\src\app.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Sobrescrevendo a regra anterior (h1 strong) */
+.prose :where(h1 strong):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    font-weight: 900;
+    color: rgb(229 231 235 ); /* Cor personalizada */
+}
+
+/* Sobrescrevendo a nova regra (strong) */
+.prose :where(strong):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    font-weight: 600; /* Mantém o peso original */
+    color: rgb(229 231 235 ); /* Substitui var(--tw-prose-bold) por uma cor fixa, ex.: cinza escuro */
+}
+```
+
+### Exemplo de Uso no Arquivo PostCSS
+
+```postcss
+// filepath: c:\dev\portifolio-blog\skeleton-portifolio-blog\src\app.postcss
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+html,
+body {
+	@apply h-full overflow-hidden;
+}
+```
+
+### Futuras Edições
+
+Para futuras edições em CSS, siga os passos acima para adicionar ou modificar estilos globais e específicos. Utilize as classes utilitárias do TailwindCSS para manter a consistência e a eficiência dos estilos aplicados.
+
 ### Configuração do ESLint e Prettier
 
 O projeto utiliza ESLint e Prettier para garantir a qualidade e consistência do código. A configuração do ESLint pode ser encontrada no arquivo `eslint.config.js`. O Prettier está integrado ao ESLint para formatação automática.
