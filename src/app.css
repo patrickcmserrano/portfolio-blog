@@ -13,3 +13,16 @@
     font-weight: 600; /* Mantém o peso original */
     color: rgb(229 231 235 ); /* Substitui var(--tw-prose-bold) por uma cor fixa, ex.: cinza escuro */
 }
+
+/* Sobrescrevendo a nova regra (code) */
+.prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    color: rgb(229 231 235); /* Cor personalizada */
+    font-weight: 600;
+    font-size: .875em;
+}
+
+/* Sobrescrevendo a cor para ser igual a dos outros */
+:is(.dark .anchor) {
+    --tw-text-opacity: 1;
+    color: rgb(229 231 235 / var(--tw-text-opacity)); /* Cor personalizada */
+}

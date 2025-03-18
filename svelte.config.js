@@ -25,7 +25,7 @@ const config = {
 			strict: true
 		}),
 		paths: {
-			base: '/svelte-portfolio-blog'
+			base: '/portfolio-blog' // Atualize o caminho base aqui
 		},
 		// Necessário para sites estáticos
 		prerender: {

@@ -1,9 +1,9 @@
 <section class="py-20 text-center">
 	<h1 class="h1 mb-6">Sobre Mim</h1>
 	<div class="mb-8 flex justify-center">
-		<div class="h-32 w-32 overflow-hidden rounded-full">
+		<div class="h-96 w-96 overflow-hidden rounded-full">
 			<img
-				src="https://via.placeholder.com/300x300"
+				src="/portfolio-blog/profile.jpg"
 				alt="Profile"
 				class="h-full w-full object-cover"
 			/>
