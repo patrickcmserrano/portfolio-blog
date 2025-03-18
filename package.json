@@ -16,7 +16,6 @@
 		"clean": "powershell -Command \"Start-Process powershell -ArgumentList '-NoProfile -Command Remove-Item -Recurse -Force ./node_modules, ./dist, ./build' -Verb RunAs\""
 	},
 	"devDependencies": {
-		"@playwright/test": "^1.28.1",
 		"@skeletonlabs/skeleton": "2.11.0",
 		"@skeletonlabs/tw-plugin": "0.4.1",
 		"@sveltejs/adapter-static": "^3.0.8",
