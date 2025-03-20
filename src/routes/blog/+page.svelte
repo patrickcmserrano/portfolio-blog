@@ -3,7 +3,14 @@
 	import BlogPost from './BlogPost.svelte';
 
 	const posts = [
-		
+		{
+			id: 'comparacao-clojure-golang',
+			title: 'Comparação entre Clojure e Golang',
+			excerpt: 'Uma análise detalhada das diferenças e semelhanças entre Clojure e Golang.',
+			date: '2024-03-13',
+			readTime: '14 min',
+			tags: ['Clojure', 'Golang', 'Comparação']
+		},
 		{
 			id: 'pilhas',
 			title: 'Pilhas: Uma Estrutura de Dados Fundamental na Programação',
@@ -44,6 +51,7 @@
 			readTime: '10 min',
 			tags: ['Requisitos', 'Engenharia', 'Software']
 		},
+		
 	];
 </script>
 
