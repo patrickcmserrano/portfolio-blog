@@ -21,6 +21,7 @@
 				<li>Fulcro / Fulcro-RAD</li>
 				<li>React / React Native</li>
 				<li>Reagent / Re-frame</li>
+				<li>Svelte</li>
 				<li>Malli / Datomic</li>
 			</ul>
 		</div>

@@ -45,15 +45,37 @@
 				tags: ["Clojure", "Superset", "APIs"]
 			},
 			{
-				title: "Motor de Pagamentos",
+				title: "Motor de Pagamentos - Arquitetura Polylith",
 				year: "2023",
-				description: "Refatoração completa do sistema de processamento de pagamentos utilizando arquitetura Polylith, melhorando a modularidade, testabilidade e manutenibilidade do código.",
+				description: "Refatorei o Motor de Pagamentos utilizando a arquitetura Polylith, criando um sistema modular, escalável e testável, dividido em componentes independentes.",
 				impact: [
 					"Redução de 40% no tempo de desenvolvimento",
-					"Cobertura de testes aumentada para 85%",
-					"Melhor isolamento de componentes"
+					"Melhor modularidade e reutilização de componentes",
+					"Base para futuros projetos de pagamento e e-commerce"
 				],
-				tags: ["Clojure", "Polylith", "TDD"]
+				tags: ["Clojure", "Polylith", "TDD", "Arquitetura"]
+			},
+			{
+				title: "Motor de Pagamentos - Processamento Distribuído com Onyx",
+				year: "2023",
+				description: "Aprimorei o Motor de Pagamentos utilizando Onyx, uma plataforma de computação distribuída, para processar tarefas assíncronas, como a geração de relatórios. Comandos disparados por usuários (ex.: 'gerar relatório') eram processados por Onyx em uma tarefa agendada diária, que gerava e enviava relatórios por e-mail.",
+				impact: [
+					"Reduziu a carga no sistema, permitindo a geração eficiente de relatórios diários",
+					"Processamento confiável e escalável",
+					"Otimização do desempenho do sistema com jobs agendados"
+				],
+				tags: ["Onyx", "Clojure", "Datomic", "AWS"]
+			},
+			{
+				title: "Motor de Pagamentos - Integrações e Pipelines",
+				year: "2022",
+				description: "Implementei integrações com APIs de serviços como Pix, Adyen, Cielo, Getnet, Pagar.me, Rede, MercadoPago e VTEX, utilizando pipelines automatizados para processamento de dados transacionais.",
+				impact: [
+					"Integração seamless com múltiplos provedores de pagamento",
+					"Redução de 30% no tempo de implementação de novos serviços",
+					"Coleta e processamento eficiente de dados em tempo real"
+				],
+				tags: ["Clojure", "Datomic", "AWS", "API REST", "Pipelines"]
 			},
 			{
 				title: "Sistema de Autenticação",
@@ -65,7 +87,52 @@
 					"Controle granular de permissões"
 				],
 				tags: ["Clojure", "AWS Cognito", "Segurança"]
-			}
+			},
+			{
+				title: "Zougue MPMS - Fullstack",
+				year: "2021",
+				description: "Assumi responsabilidades fullstack, integrando backend e frontend com Clojure, Pathom e Datomic, otimizando a infraestrutura na AWS com auto-scaling e garantindo escalabilidade para múltiplos canais e contas VTEX.",
+				impact: [
+					"Consolidação da expertise em sistemas distribuídos e escaláveis",
+					"Entrega de solução agnóstica a Seller Centers para grandes operações de e-commerce",
+					"Implementação de pipelines para absorção de itens e deduplicação avançada"
+				],
+				tags: ["Clojure", "Datomic", "AWS", "API REST", "React"]
+			},
+			{
+				title: "Zougue MPMS - Frontend",
+				year: "2020",
+				description: "Contribuí para o desenvolvimento de interfaces reativas e intuitivas, focando na gestão de estrutura e conteúdo de catálogos, como árvores de categorias, atributos e fichas de produtos.",
+				impact: [
+					"Aprimoramento das habilidades em programação funcional e UX",
+					"Melhoria na usabilidade para operadores de marketplace",
+					"Deduplicação de itens e operações massivas"
+				],
+				tags: ["Clojure", "ClojureScript", "React"]
+			},
+			{
+				title: "Plataforma Imobiliária (fexô)",
+				year: "2018-2019",
+				description: "Desenvolvimento de uma aplicação mobile e web para anúncio, negociação, compra e venda de imóveis, utilizando ClojureScript, Fulcro e React Native.",
+				impact: [
+					"Conexão eficiente entre clientes e corretores",
+					"Experiência de usuário aprimorada",
+					"Ferramenta poderosa para o mercado imobiliário"
+				],
+				tags: ["ClojureScript", "Fulcro", "React Native"]
+			},
+			{
+				title: "Gateway de Pagamentos",
+				year: "2018",
+				description: "Colaborei no desenvolvimento de uma aplicação web para um gateway de pagamentos, focada em transações seguras e eficientes, utilizando ClojureScript e Fulcro.",
+				impact: [
+					"Contribuí para a entrega de uma solução funcional",
+					"Primeiro contato com desenvolvimento de software comercial",
+					"Experiência inicial em integração de sistemas"
+				],
+				tags: ["ClojureScript", "Fulcro", "API REST"]
+			},
+			
 		]}
 	/>
 </div>

@@ -16,25 +16,27 @@
 			<p>Nenhum projeto encontrado</p>
 		{:else}
 			{#each projects as project}
-				<div class="card variant-filled-surface h-full">
+				<div class="card variant-filled-surface h-full flex flex-col">
 					<header class="card-header flex items-center justify-between p-6">
 						<h3 class="h3">{project.title}</h3>
 						<span class="text-sm opacity-70">{project.year}</span>
 					</header>
-					<section class="flex h-[calc(100%-5rem)] flex-col p-6">
-						<p class="mb-4 flex-grow">
-							{project.description}
-						</p>
+					<section class="flex flex-col p-6 flex-grow">
+						<div class="mb-4 max-h-32 overflow-y-auto">
+							<p class="text-sm">
+								{project.description}
+							</p>
+						</div>
 						<div class="space-y-4">
 							<h4 class="font-semibold">Impacto:</h4>
-							<ul class="mb-4 list-disc pl-5">
+							<ul class="mb-4 list-disc pl-5 text-sm">
 								{#each project.impact as impactItem}
 									<li>{impactItem}</li>
 								{/each}
 							</ul>
 							<div class="flex flex-wrap gap-2">
 								{#each project.tags as tag}
-									<span class="variant-filled chip">{tag}</span>
+									<span class="variant-filled chip text-xs">{tag}</span>
 								{/each}
 							</div>
 						</div>
