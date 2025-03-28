@@ -4,6 +4,7 @@
 	import NavLink from './NavLink.svelte';
 	import { getDrawerStore } from '@skeletonlabs/skeleton';
 	import { LightSwitch } from '@skeletonlabs/skeleton';
+	import FontSizeControls from './FontSizeControls.svelte';
 
 	const drawerStore = getDrawerStore();
 </script>
@@ -28,6 +29,7 @@
 		</svelte:fragment>
 		<svelte:fragment slot="trail">
 			<div class="flex items-center space-x-4">
+				<FontSizeControls />
 				<LightSwitch />
 			</div>
 		</svelte:fragment>

@@ -50,3 +50,38 @@
     --tw-text-opacity: 1;
     color: rgb(17 24 39 / var(--tw-text-opacity)); /* Cor preta para tema claro */
 }
+
+.dynamic-font {
+    font-size: var(--dynamic-font-size, 16px);
+}
+
+/* src/app.css */
+:root {
+    --font-scale: 1; /* Valor inicial do fator de escala */
+}
+
+html {
+    font-size: 16px; /* Tamanho base */
+    font-size: calc(16px * var(--font-scale)); /* Ajusta com base no fator de escala */
+}
+
+/* Estilize os elementos usando rem */
+h1, .h1 {
+    font-size: 2rem; /* 32px no tamanho base */
+}
+
+h2, .h2 {
+    font-size: 1.5rem; /* 24px no tamanho base */
+}
+
+p, .text-base {
+    font-size: 1rem; /* 16px no tamanho base */
+}
+
+.text-sm {
+    font-size: 0.875rem; /* 14px no tamanho base */
+}
+
+.text-xs {
+    font-size: 0.75rem; /* 12px no tamanho base */
+}

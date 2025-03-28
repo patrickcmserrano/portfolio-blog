@@ -4,6 +4,7 @@
     import NavLink from './NavLink.svelte';
     import { getDrawerStore } from '@skeletonlabs/skeleton';
     import { LightSwitch } from '@skeletonlabs/skeleton';
+    import FontSizeControls from './FontSizeControls.svelte';
   
     const drawerStore = getDrawerStore();
   
@@ -20,6 +21,9 @@
       regionDrawer="bg-surface-100-900"
       regionBackdrop="bg-surface-900/50"
     >
+      <nav class="p-4 flex flex-row justify-end space-x-4"> 
+        <FontSizeControls />
+      </nav>
       <nav class="p-4 flex flex-row justify-end space-x-4">
         <NavLink href="{base}/" label="Home" on:click={() => drawerStore.close()} />
         <NavLink href="{base}/about" label="Sobre" on:click={() => drawerStore.close()} />
