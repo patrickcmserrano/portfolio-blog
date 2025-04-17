@@ -61,6 +61,30 @@
 		date: '2024-03-08',
 		readTime: '10 min',
 		tags: ['Requisitos', 'Engenharia', 'Software'],
+	  },
+	  {
+		id: 'java-intro',
+		title: 'Começando com Java: Sintaxe, Fluxo e POO para Construir uma Base Sólida',
+		excerpt: 'Aprenda os fundamentos de Java, incluindo sintaxe, controle de fluxo e programação orientada a objetos.',
+		date: '2024-03-15',
+		readTime: '10 min',
+		tags: ['Java', 'Programação', 'POO']
+	  },
+	  {
+		id: 'java-pt2',
+		title: 'Gerenciando Dados em Java: Strings, Collections e JDBC',
+		excerpt: 'Explore como manipular dados em Java com Strings, Collections e conectividade com bancos de dados.',
+		date: '2024-03-16',
+		readTime: '12 min',
+		tags: ['Java', 'Dados', 'Collections']
+	  },
+	  {
+		id: 'java-pt3',
+		title: 'Construindo Aplicações Java Robustas: Exceções, Arquivos e Threads',
+		excerpt: 'Descubra como lidar com exceções, manipular arquivos e implementar threads em Java.',
+		date: '2024-03-17',
+		readTime: '15 min',
+		tags: ['Java', 'Exceções', 'Threads']
 	  }
 	];
   </script>
