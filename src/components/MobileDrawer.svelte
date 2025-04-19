@@ -39,7 +39,7 @@
 	<AppBar>
 		<svelte:fragment slot="lead">
 			<div class="flex-1">
-				<a href="{base}/" class="text-xl font-bold">Portfolio</a>
+				<a href="{base}/" class="text-xl font-bold">Patrickms</a>
 			</div>
 		</svelte:fragment>
 		<svelte:fragment slot="trail">

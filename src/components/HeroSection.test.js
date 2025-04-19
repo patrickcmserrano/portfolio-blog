@@ -6,7 +6,7 @@ describe('HeroSection', () => {
 		const { getByText } = render(HeroSection, {
 			props: {
 				base: '/base',
-				title: 'Olá, eu sou Patrick',
+				title: 'Olá, eu sou o Patrick',
 				description:
 					'Engenheiro de Software com foco em arquiteturas distribuídas e sistemas de pagamento.',
 				aboutLinkText: 'Conheça minha trajetória',
