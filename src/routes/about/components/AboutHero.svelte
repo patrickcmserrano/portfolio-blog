@@ -2,11 +2,7 @@
 	<h1 class="h1 mb-6">Sobre Mim</h1>
 	<div class="mb-8 flex justify-center">
 		<div class="h-96 w-96 overflow-hidden rounded-full">
-			<img
-				src="/portfolio-blog/profile.jpg"
-				alt="Profile"
-				class="h-full w-full object-cover"
-			/>
+			<img src="/portfolio-blog/profile.jpg" alt="Profile" class="h-full w-full object-cover" />
 		</div>
 	</div>
 	<div class="mx-auto max-w-3xl space-y-6">
@@ -19,8 +15,8 @@
 		<p class="text-xl">
 			Na Moleque de Ideias, transformei desafios em oportunidades de inovação: desde a refatoração
 			do Motor de Pagamentos com arquitetura Polylith, até o desenvolvimento de sistemas de
-			autenticação robustos e pipelines de integração que conectam múltiplos serviços. Cada
-			projeto foi uma chance de combinar criatividade técnica com resultados práticos.
+			autenticação robustos e pipelines de integração que conectam múltiplos serviços. Cada projeto
+			foi uma chance de combinar criatividade técnica com resultados práticos.
 		</p>
 	</div>
 </section>

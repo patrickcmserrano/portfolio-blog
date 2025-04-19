@@ -21,14 +21,14 @@ Uma pilha é uma estrutura de dados **linear**, onde os elementos são organizad
 
 Para manipular uma pilha, usamos um conjunto padrão de operações:
 
-| Operação                | Descrição                                                                              | Exemplo de Uso                        | Complexidade |
-|-------------------------|----------------------------------------------------------------------------------------|---------------------------------------|--------------|
-| **Empilhar (Push)**     | Adiciona um novo elemento ao topo da pilha, se houver espaço.                          | Inserir uma nova tarefa urgente       | O(1)         |
-| **Desempilhar (Pop)**   | Remove e retorna o elemento do topo da pilha, se esta não estiver vazia.                | Executar a última tarefa adicionada     | O(1)         |
-| **Verificar se Vazia**  | Checa se a pilha não contém elementos.                                                  | Validar se a lista de tarefas está vazia      | O(1)         |
-| **Verificar se Cheia**  | Confirma se a pilha atingiu sua capacidade máxima (útil em implementações com tamanho fixo). | Verificar se há espaço para novas tarefas | O(1)         |
-| **Elemento do Topo (Peek)** | Retorna o elemento do topo sem removê-lo.                                            | Consultar qual será a próxima tarefa executada | O(1)         |
-| **Mostrar Todos os Elementos** | Exibe todos os elementos armazenados na pilha do topo à base.                   | Listar todas as tarefas pendentes         | O(n)         |
+| Operação                       | Descrição                                                                                    | Exemplo de Uso                                 | Complexidade |
+| ------------------------------ | -------------------------------------------------------------------------------------------- | ---------------------------------------------- | ------------ |
+| **Empilhar (Push)**            | Adiciona um novo elemento ao topo da pilha, se houver espaço.                                | Inserir uma nova tarefa urgente                | O(1)         |
+| **Desempilhar (Pop)**          | Remove e retorna o elemento do topo da pilha, se esta não estiver vazia.                     | Executar a última tarefa adicionada            | O(1)         |
+| **Verificar se Vazia**         | Checa se a pilha não contém elementos.                                                       | Validar se a lista de tarefas está vazia       | O(1)         |
+| **Verificar se Cheia**         | Confirma se a pilha atingiu sua capacidade máxima (útil em implementações com tamanho fixo). | Verificar se há espaço para novas tarefas      | O(1)         |
+| **Elemento do Topo (Peek)**    | Retorna o elemento do topo sem removê-lo.                                                    | Consultar qual será a próxima tarefa executada | O(1)         |
+| **Mostrar Todos os Elementos** | Exibe todos os elementos armazenados na pilha do topo à base.                                | Listar todas as tarefas pendentes              | O(n)         |
 
 Cada uma dessas operações é fundamental para manipulação eficiente dos dados armazenados na pilha.
 
@@ -134,6 +134,7 @@ Este exemplo ilustra como as operações de empilhar, desempilhar, verificar se 
 As pilhas são extremamente versáteis e são empregadas em diversas áreas:
 
 - **Na Programação**:
+
   - **Histórico de Navegação:** Navegadores armazenam as páginas visitadas usando pilhas, facilitando o recurso de "voltar".
   - **Função Undone:** Editores de texto e softwares gráficos utilizam pilhas para reverter ações recentes.
   - **Compiladores e Avaliação de Expressões:** Pilhas são usadas para gerenciar chamadas de função e converter expressões de infixa para pós-fixa.

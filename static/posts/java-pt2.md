@@ -49,6 +49,7 @@ O **Java Collections Framework** é uma biblioteca poderosa para gerenciar grupo
 ### Principais Interfaces e Implementações
 
 - **List**: Coleção ordenada que permite duplicatas.
+
   - `ArrayList`: Usa um array dinâmico, ideal para acesso rápido.
   - `LinkedList`: Lista duplamente encadeada, eficiente para inserções/remoções.
   - `Vector`: Thread-safe, mas menos usado hoje.
@@ -63,6 +64,7 @@ O **Java Collections Framework** é uma biblioteca poderosa para gerenciar grupo
   ```
 
 - **Set**: Coleção sem duplicatas.
+
   - `HashSet`: Não ordenado, usa hash para unicidade.
   - `LinkedHashSet`: Preserva ordem de inserção.
   - `TreeSet`: Ordena elementos (naturalmente ou via `Comparator`).
@@ -77,6 +79,7 @@ O **Java Collections Framework** é uma biblioteca poderosa para gerenciar grupo
   ```
 
 - **Map**: Armazena pares chave-valor, sem chaves duplicadas.
+
   - `HashMap`: Não ordenado, permite `null`.
   - `LinkedHashMap`: Mantém ordem de inserção.
   - `TreeMap`: Ordena chaves.

@@ -41,10 +41,11 @@ Uma **árvore binária** é um tipo especial onde cada nó tem, no máximo, dois
 
 ```markdown
     A
-   / \
-  B   C
- / \
-D   E
+
+/ \
+ B C
+/ \
+D E
 ```
 
 Aqui, A é a raiz, B e C são filhos de A, e D e E são filhos de B. Os nós podem ter:
@@ -54,6 +55,7 @@ Aqui, A é a raiz, B e C são filhos de A, e D e E são filhos de B. Os nós pod
 - **Grau 2**: dois filhos (como A e B).
 
 Dois termos importantes:
+
 - **Profundidade**: quantas arestas da raiz até o nó (A tem profundidade 0, B tem 1).
 - **Altura**: o maior caminho da raiz até uma folha (aqui, 2).
 
@@ -71,33 +73,36 @@ Considere a seguinte BST:
       10
      /  \
     5    15
-   / \     \
-  3   7     20
 
-- **Busca por 7:** 
+/ \ \
+ 3 7 20
+
+- **Busca por 7:**
   1. Comece em 10 (7 < 10, vá à esquerda).
   2. Chegue em 5 (7 > 5, vá à direita).
   3. Encontre 7.
-- **Inserção de 12:** 
+- **Inserção de 12:**
   1. Comece em 10 (12 > 10, vá à direita).
   2. Chegue em 15 (12 < 15, vá à esquerda).
   3. Insira 12 como filho esquerdo de 15.
 
 Resultado após inserção:
-      10
-     /  \
-    5    15
-   / \   / \
-  3   7 12  20
+10
+/ \
+ 5 15
+/ \ / \
+ 3 7 12 20
 ```
 
 ### Possíveis Perguntas de Entrevista
+
 - Implemente busca, inserção e remoção em uma BST.
 - Verifique se uma árvore binária é uma BST válida.
 - Encontre o k-ésimo menor elemento.
 
 ### Dicas para Entrevistas
-- Operações são **O(h)**, onde *h* é a altura. No pior caso (desbalanceada), vira **O(n)**.
+
+- Operações são **O(h)**, onde _h_ é a altura. No pior caso (desbalanceada), vira **O(n)**.
 - Para validar uma BST, percorra em ordem e cheque se os valores estão crescentes.
 - Pratique remoção, especialmente com nós de dois filhos.
 
@@ -109,14 +114,14 @@ Se inserirmos valores em ordem (como 1, 2, 3, 4, 5), a BST pode **degenerar**, v
 
 ```markdown
 1
- \
-  2
-   \
-    3
-     \
-      4
-       \
-        5
+\
+ 2
+\
+ 3
+\
+ 4
+\
+ 5
 ```
 
 Aqui, a altura vira **O(n)**, e as operações perdem eficiência. Como resolver isso? Árvores balanceadas entram em cena.
@@ -126,6 +131,7 @@ Aqui, a altura vira **O(n)**, e as operações perdem eficiência. Como resolver
 ## 5. Árvores Balanceadas: AVL e Rubro-Negras
 
 Para manter a altura logarítmica, usamos:
+
 - **AVL**: limita a diferença de altura entre subárvores (máximo 1) com rotações.
 - **Rubro-Negras**: usa cores (vermelho e preto) e regras para um equilíbrio aproximado.
 
@@ -136,6 +142,7 @@ Ambas garantem operações em **O(log n)**, mesmo com inserções sequenciais. V
 ## 6. Percursos em Árvores
 
 Existem três formas principais de visitar os nós:
+
 1. **Pré-Ordem**: raiz, esquerda, direita (ex.: 5, 3, 1, 4, 7).
 2. **Em Ordem**: esquerda, raiz, direita (ex.: 1, 3, 4, 5, 7) – ótimo para BSTs.
 3. **Pós-Ordem**: esquerda, direita, raiz (ex.: 1, 4, 3, 7, 5).
@@ -158,30 +165,32 @@ Insira 3, 2, 1:
 
 2. Insira 2:
    3
-  /
- 2
+   /
+   2
    Fator de 3 = 1 (ok).
 
 3. Insira 1:
    3
-  /
- 2
-/
-1
+   /
+   2
+   /
+   1
    Fator de 3 = 2 (desbalanceado). Rotação à direita em 3:
 
    2
-  / \
- 1   3
+   / \
+    1 3
    Balanceada (fatores: 2=0, 1=0, 3=0).
 ```
 
 ### Possíveis Perguntas de Entrevista
+
 - Explique o balanceamento em AVL.
 - Implemente inserção com rotações.
 - Compare AVL com Red-Black.
 
 ### Dicas para Entrevistas
+
 - Conheça as rotações: **LL**, **RR**, **LR**, **RL**.
 - Operações são **O(log n)**, mas inserções podem exigir várias rotações.
 - Pratique identificar desbalanceamentos.
@@ -191,6 +200,7 @@ Insira 3, 2, 1:
 ## 8. Árvores Red-Black (Vermelho-Preto)
 
 **Árvores Red-Black** são BSTs balanceadas com nós coloridos (vermelho ou preto) e regras específicas:
+
 1. Todo nó é vermelho ou preto.
 2. Raiz é preta.
 3. Folhas (NIL) são pretas.
@@ -201,22 +211,24 @@ Insira 3, 2, 1:
 
 ```markdown
 Insira 12 em:
-    10(B)
-   /  \
-  5(B) 15(B)
-       /
-      12(R)
-   Ajuste cores/rotações se necessário.
+10(B)
+/ \
+ 5(B) 15(B)
+/
+12(R)
+Ajuste cores/rotações se necessário.
 ```
 
 ### Possíveis Perguntas de Entrevista
+
 - Liste as propriedades Red-Black.
 - Implemente inserção com recoloração e rotações.
 - Diferenças entre AVL e Red-Black?
 
 ### Dicas para Entrevistas
+
 - Menos rígidas que AVL, favorecem inserções rápidas.
-- Altura máxima é **2*log(n+1)**, garantindo **O(log n)**.
+- Altura máxima é **2\*log(n+1)**, garantindo **O(log n)**.
 - Entenda recoloração e rotações.
 
 ---
@@ -230,21 +242,24 @@ Insira 12 em:
 ```markdown
 Árvore B (ordem 3):
 Inserção de 1, 2, 3:
+
 1. [1]
 2. [1, 2]
 3. [1, 2, 3] -> Divide:
    [2]
-  /   \
-[1]  [3]
+   / \
+   [1] [3]
 ```
 
 ### Possíveis Perguntas de Entrevista
+
 - Por que usar árvores B em bancos de dados?
 - Implemente inserção com divisão.
 - Diferença entre B e B+?
 
 ### Dicas para Entrevistas
-- Altura baixa (**O(log n)** com base em *m*).
+
+- Altura baixa (**O(log n)** com base em _m_).
 - B+ facilita consultas de intervalo.
 - Entenda divisão de nós.
 
@@ -263,21 +278,24 @@ Insira "cat", "car", "bat":
       /   |   \
      c     b    a
     / \     \    \
-   a   a     t    t
-  /     \
- t       r
+
+a a t t
+/ \
+ t r
 
 - Busca "car": root -> c -> a -> r.
 - Prefixo "ca": "cat", "car".
 ```
 
 ### Possíveis Perguntas de Entrevista
+
 - Implemente inserção e busca.
 - Função de autocompletar com Trie.
 - Encontre palavras por prefixo.
 
 ### Dicas para Entrevistas
-- Busca é **O(m)**, onde *m* é o tamanho da string.
+
+- Busca é **O(m)**, onde _m_ é o tamanho da string.
 - Use marcador de fim de palavra.
 - Ideal para dicionários.
 
@@ -291,33 +309,36 @@ Insira "cat", "car", "bat":
 
 ```markdown
 Max-Heap:
-       10
-      /  \
-     8    9
-    / \
-   3   5
+10
+/ \
+ 8 9
+/ \
+ 3 5
 
 Insira 12:
+
 1. Adicione:
-       10
-      /  \
-     8    9
-    / \   \
-   3   5   12
+   10
+   / \
+    8 9
+   / \ \
+   3 5 12
 2. Suba:
-       12
-      /  \
-     8    10
-    / \  /
-   3   5 9
+   12
+   / \
+    8 10
+   / \ /
+   3 5 9
 ```
 
 ### Possíveis Perguntas de Entrevista
+
 - Implemente inserção e extração.
 - Construa heap de um array.
 - K-ésimo maior elemento.
 
 ### Dicas para Entrevistas
+
 - Use array: filho esquerdo em 2i+1, direito em 2i+2.
 - Operações em **O(log n)**; construção em **O(n)**.
 - Pratique "heapify".
@@ -333,23 +354,25 @@ Insira 12:
 ```markdown
 Array: [1, 3, 5, 7, 9]
 Árvore (soma):
-       [0,4]:25
-      /       \
-  [0,2]:9    [3,4]:16
-  /   \      /    \
+[0,4]:25
+/ \
+ [0,2]:9 [3,4]:16
+/ \ / \
 [0,1]:4 [2]:5 [3]:7 [4]:9
- / \
+/ \
 [0]:1 [1]:3
 
 Consulta [1,3]: 3 + 5 + 7 = 15.
 ```
 
 ### Possíveis Perguntas de Entrevista
+
 - Construa uma Segment Tree.
 - Atualização e consulta de intervalo.
 - Explique lazy propagation.
 
 ### Dicas para Entrevistas
+
 - Operações em **O(log n)**.
 - Ótima para intervalos (soma, mínimo).
 - Lazy otimiza atualizações.
@@ -374,11 +397,13 @@ Soma até 3: [2] + [3] = 6.
 ```
 
 ### Possíveis Perguntas de Entrevista
+
 - Implemente soma e atualização.
 - Compare com Segment Tree.
 - Contagem de inversões.
 
 ### Dicas para Entrevistas
+
 - Menos memória que Segment Tree.
 - Operações em **O(log n)**.
 - Entenda manipulação de bits.
@@ -394,18 +419,20 @@ Soma até 3: [2] + [3] = 6.
 ```markdown
 root
 ├── dir1
-│   ├── file1
-│   └── file2
+│ ├── file1
+│ └── file2
 └── dir2
-    └── file3
+└── file3
 ```
 
 ### Possíveis Perguntas de Entrevista
+
 - Implemente DFS ou BFS.
 - Calcule altura.
 - Serialize a árvore.
 
 ### Dicas para Entrevistas
+
 - Use lista de filhos.
 - Complexidade varia com número de nós.
 - Pratique travessias.

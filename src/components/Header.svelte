@@ -18,12 +18,16 @@
 			</div>
 		</svelte:fragment>
 		<svelte:fragment slot="default">
-			<div class="flex justify-around w-full">
+			<div class="flex w-full justify-around">
 				<div class="flex space-x-8">
 					<NavLink href="{base}/" label="Home" on:click={() => drawerStore.close()} />
 					<NavLink href="{base}/about" label="Sobre" on:click={() => drawerStore.close()} />
 					<NavLink href="{base}/blog" label="Blog" on:click={() => drawerStore.close()} />
-					<NavLink href="{base}/about-site" label="Sobre este Site" on:click={() => drawerStore.close()} />
+					<NavLink
+						href="{base}/about-site"
+						label="Sobre este Site"
+						on:click={() => drawerStore.close()}
+					/>
 				</div>
 			</div>
 		</svelte:fragment>

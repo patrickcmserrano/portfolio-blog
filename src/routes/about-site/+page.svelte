@@ -2,7 +2,8 @@
 <script lang="ts">
 	import ReadmeViewer from '../../components/ReadmeViewer.svelte';
 
-	const readmeUrl = 'https://raw.githubusercontent.com/patrickcmserrano/svelte-portfolio-blog/skeleton/README.md';
+	const readmeUrl =
+		'https://raw.githubusercontent.com/patrickcmserrano/svelte-portfolio-blog/skeleton/README.md';
 </script>
 
 <div class="container mx-auto px-4 py-8">

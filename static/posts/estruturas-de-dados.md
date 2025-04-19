@@ -13,6 +13,7 @@ Escolher a estrutura certa é como pegar a ferramenta perfeita para um trabalho:
 ## **Tipos de Estruturas de Dados Essenciais**
 
 ### **1. Vetores (Arrays)**
+
 - **O que é**: Lista de elementos armazenados sequencialmente na memória, com tamanho fixo ou dinâmico (em algumas linguagens).
 - **Operações**:
   - **Acesso**: Obter um elemento por índice (ex.: `array[2]`) – O(1).
@@ -28,6 +29,7 @@ Escolher a estrutura certa é como pegar a ferramenta perfeita para um trabalho:
   - Pergunta comum: "Como inverter um array no lugar?" (Use dois ponteiros!)
 
 ### **2. Listas Ligadas (Linked Lists)**
+
 - **O que é**: Conjunto de nós, cada um com um valor e um ponteiro para o próximo (simples) ou anterior (dupla).
 - **Operações**:
   - **Acesso**: Acessar um elemento por posição – O(n).
@@ -43,6 +45,7 @@ Escolher a estrutura certa é como pegar a ferramenta perfeita para um trabalho:
   - Diferencie listas simples e duplas claramente.
 
 ### **3. Pilhas (Stacks)**
+
 - **O que é**: Estrutura LIFO (Last In, First Out) – imagine uma pilha de livros.
 - **Operações**:
   - **Acesso**: Ver o topo (peek/top) – O(1).
@@ -57,6 +60,7 @@ Escolher a estrutura certa é como pegar a ferramenta perfeita para um trabalho:
   - Discuta sobre a pilha de chamadas (call stack) do sistema e como ela se relaciona com a recursão.
 
 ### **4. Filas (Queues)**
+
 - **O que é**: Estrutura FIFO (First In, First Out) – como uma fila de supermercado.
 - **Operações**:
   - **Acesso**: Ver o início (front) ou fim (rear) – O(1).
@@ -72,6 +76,7 @@ Escolher a estrutura certa é como pegar a ferramenta perfeita para um trabalho:
   - Aplique o conceito em simulações de eventos em sistemas.
 
 ### **5. Árvores (Trees)**
+
 - **O que é**: Estrutura hierárquica com uma raiz e nós filhos – comumente, árvores binárias.
 - **Operações**:
   - **Acesso**: Acessar um nó específico (depende da travessia) – O(n) ou O(log n) em árvores balanceadas.
@@ -103,6 +108,7 @@ Implemente o Quick Sort e discuta as vantagens e desvantagens, além de estraté
 ## **Recursão: O Toque de Mestre**
 
 A recursão é uma técnica poderosa que resolve problemas dividindo-os em subproblemas menores. Um algoritmo recursivo deve sempre ter:
+
 - **Caso Base**: A condição que termina as chamadas recursivas (ex.: para o fatorial, se `n == 0`, retorne 1).
 - **Caso Recursivo**: A regra que reduz o problema e chama o próprio método com um valor menor.
 
@@ -112,8 +118,8 @@ A seguir, aprofundamos o conceito conforme as definições do nosso material e a
 
 - **Conceito (segundo o material da disciplina)**:  
   A recursão sem cauda acontece quando, durante sua execução, **não é deixado um rastro na memória** (ou seja, não há “cauda”) e é geralmente implementada como um **procedimento** (método que não retorna valor).
-  
 - **Características**:
+
   - Não precisa armazenar resultados intermediários para compor o resultado final.
   - Muito utilizada para modularizar o código sem a preocupação de combinar resultados das chamadas recursivas.
 
@@ -121,7 +127,7 @@ A seguir, aprofundamos o conceito conforme as definições do nosso material e a
 
   ```java
   public class FatorialSemCauda {
-      
+
       // Procedimento que ilustra o cálculo do fatorial sem retornar seu valor,
       // apenas exibindo o processo na saída.
       public void calcularFatorial(int n) {
@@ -134,7 +140,7 @@ A seguir, aprofundamos o conceito conforme as definições do nosso material e a
               calcularFatorial(n - 1);
           }
       }
-      
+
       public static void main(String[] args) {
           FatorialSemCauda fs = new FatorialSemCauda();
           System.out.print("Fatorial de 5: ");
@@ -147,16 +153,14 @@ A seguir, aprofundamos o conceito conforme as definições do nosso material e a
 
 - **Conceito (segundo o material da disciplina)**:  
   A recursão com cauda ocorre quando, durante sua execução, **é deixado um rastro (cauda) na memória** que armazena o contexto ou os valores da computação, geralmente implementado como uma **função** que retorna um valor.
-  
 - **Características**:
   - O resultado final é composto pelo retorno das chamadas recursivas.
   - Utilizada para casos em que o resultado precisa ser propagado de volta à chamada original, como no cálculo do fatorial.
-  
 - **Exemplo em Java – Fatorial com Recursão Com Cauda**:
 
   ```java
   public class FatorialComCauda {
-      
+
       // Função que retorna o fatorial de n utilizando recursão com cauda
       public long fatorial(int n) {
           if (n == 0) {
@@ -167,7 +171,7 @@ A seguir, aprofundamos o conceito conforme as definições do nosso material e a
               return n * fatorial(n - 1);
           }
       }
-      
+
       public static void main(String[] args) {
           FatorialComCauda fc = new FatorialComCauda();
           int numero = 5;
@@ -181,6 +185,7 @@ A seguir, aprofundamos o conceito conforme as definições do nosso material e a
 > Essas definições estão alinhadas com o material da disciplina, que distingue as duas abordagens não tanto pela possibilidade de otimização (como a otimização de chamadas de cauda em linguagens funcionais), mas pelo fato de que a recursão sem cauda é vista como um procedimento (sem retorno de valor e sem acúmulo de “cauda”) e a recursão com cauda é implementada como uma função que deixa armazenado um contexto na memória para compor o resultado.
 
 **Dicas para entrevistas sobre recursão**:
+
 - Sempre destaque a importância do **caso base** para evitar recursões infinitas.
 - Explique como a **redução do problema** (caso recursivo) leva à solução final.
 - Compare as abordagens: discuta as implicações de se usar um procedimento versus uma função recursiva.

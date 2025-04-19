@@ -26,71 +26,79 @@ O primeiro nó é conhecido como **cabeça** da lista. O último nó, ao não te
 ## **Operações Básicas e Avançadas**
 
 ### **1. Verificar se a Lista Está Vazia**
+
 - **Descrição:**  
   Uma função que retorna `verdadeiro` se a lista não contiver elementos (ou seja, se o ponteiro da cabeça for `null`) e `falso` caso contrário.
 - **Aplicação:**  
   Previne operações inválidas (como remoções ou buscas) em uma lista sem elementos.
 
 ### **2. Inserção**
-- **Inserir no Início:**  
-  - **Funcionalidade:** Adiciona um novo nó na posição inicial, tornando-o a nova cabeça da lista.  
-  - **Exemplo:** Adicionar uma tarefa de alta prioridade no topo de uma lista de afazeres.  
+
+- **Inserir no Início:**
+  - **Funcionalidade:** Adiciona um novo nó na posição inicial, tornando-o a nova cabeça da lista.
+  - **Exemplo:** Adicionar uma tarefa de alta prioridade no topo de uma lista de afazeres.
   - **Complexidade:** O(1).
-- **Inserir no Final:**  
-  - **Funcionalidade:** Adiciona um novo nó após o último elemento.  
-  - **Exemplo:** Incluir um novo produto em um inventário.  
-  - **Complexidade:**  
-    - O(n) se for necessário percorrer a lista até encontrar o fim.  
+- **Inserir no Final:**
+  - **Funcionalidade:** Adiciona um novo nó após o último elemento.
+  - **Exemplo:** Incluir um novo produto em um inventário.
+  - **Complexidade:**
+    - O(n) se for necessário percorrer a lista até encontrar o fim.
     - Pode ser otimizada para O(1) caso um ponteiro para o último nó seja mantido.
-- **Inserir em uma Posição Específica (Inserir no Meio):**  
-  - **Funcionalidade:** Recebe um elemento e uma posição para inserir o nó na posição desejada.  
-  - **Exemplo:** Inserir um capítulo em um ponto específico de um livro digital.  
+- **Inserir em uma Posição Específica (Inserir no Meio):**
+  - **Funcionalidade:** Recebe um elemento e uma posição para inserir o nó na posição desejada.
+  - **Exemplo:** Inserir um capítulo em um ponto específico de um livro digital.
   - **Complexidade:** O(n), visto que é preciso percorrer a lista até a posição determinada.
 
 ### **3. Remoção**
-- **Remover um Elemento Específico:**  
-  - **Funcionalidade:** Localiza e remove o nó contendo o elemento desejado, ajustando os ponteiros dos nós adjacentes para manter a integridade da lista.  
-  - **Exemplo:** Remover um item obsoleto de um inventário de produtos.  
+
+- **Remover um Elemento Específico:**
+  - **Funcionalidade:** Localiza e remove o nó contendo o elemento desejado, ajustando os ponteiros dos nós adjacentes para manter a integridade da lista.
+  - **Exemplo:** Remover um item obsoleto de um inventário de produtos.
   - **Complexidade:** O(n) na média, devido à possível necessidade de percorrer toda a lista.
-- **Remover do Início:**  
-  - **Funcionalidade:** Remove o primeiro nó (cabeça) e atualiza o ponteiro da cabeça para o segundo nó.  
-  - **Exemplo:** Atender o próximo cliente de uma fila.  
+- **Remover do Início:**
+  - **Funcionalidade:** Remove o primeiro nó (cabeça) e atualiza o ponteiro da cabeça para o segundo nó.
+  - **Exemplo:** Atender o próximo cliente de uma fila.
   - **Complexidade:** O(1).
 
 ### **4. Busca**
+
 - **Descrição:**  
-  Uma função que percorre a lista em busca de um elemento específico. Se encontrado, pode retornar o nó correspondente (ou uma cópia dele).  
-- **Exemplo:** Verificar se um produto está disponível em um estoque.  
+  Uma função que percorre a lista em busca de um elemento específico. Se encontrado, pode retornar o nó correspondente (ou uma cópia dele).
+- **Exemplo:** Verificar se um produto está disponível em um estoque.
 - **Complexidade:** O(n).
 
 ### **5. Contar Nós**
+
 - **Descrição:**  
-  Percorre a lista e conta o número total de nós presentes.  
-- **Exemplo:** Determinar quantos clientes estão aguardando atendimento em uma fila.  
+  Percorre a lista e conta o número total de nós presentes.
+- **Exemplo:** Determinar quantos clientes estão aguardando atendimento em uma fila.
 - **Complexidade:** O(n).
 
 ### **6. Acesso aos Elementos: Início e Final**
-- **Elemento Início:**  
-  - **Funcionalidade:** Acessa o valor do primeiro nó sem removê-lo.  
-  - **Exemplo:** Consultar a próxima tarefa a ser executada.  
+
+- **Elemento Início:**
+  - **Funcionalidade:** Acessa o valor do primeiro nó sem removê-lo.
+  - **Exemplo:** Consultar a próxima tarefa a ser executada.
   - **Complexidade:** O(1).
-- **Elemento Final:**  
-  - **Funcionalidade:** Acessa o valor do último nó da lista sem removê-lo.  
-  - **Exemplo:** Ver o último item adicionado em um registro.  
-  - **Complexidade:**  
-    - O(n) se a lista for percorrida do início.  
+- **Elemento Final:**
+  - **Funcionalidade:** Acessa o valor do último nó da lista sem removê-lo.
+  - **Exemplo:** Ver o último item adicionado em um registro.
+  - **Complexidade:**
+    - O(n) se a lista for percorrida do início.
     - O(1) se houver um ponteiro dedicado para o último nó.
 
 ### **7. Mostrar a Lista**
+
 - **Descrição:**  
-  Uma operação que percorre toda a lista e exibe os elementos sequencialmente.  
+  Uma operação que percorre toda a lista e exibe os elementos sequencialmente.
 - **Exemplo:** Listar os itens de um inventário ou as etapas de um processo.
 - **Complexidade:** O(n).
 
 ### **8. Destruir a Lista**
+
 - **Descrição:**  
-  Um procedimento que remove todos os elementos da lista, liberando a memória ocupada e deixando os ponteiros (cabeça e cauda) apontando para `null`.  
-- **Exemplo:** Limpar uma lista de tarefas concluídas ou redefinir uma estrutura de dados.  
+  Um procedimento que remove todos os elementos da lista, liberando a memória ocupada e deixando os ponteiros (cabeça e cauda) apontando para `null`.
+- **Exemplo:** Limpar uma lista de tarefas concluídas ou redefinir uma estrutura de dados.
 - **Complexidade:** O(n).
 
 ---
@@ -199,13 +207,13 @@ Considere uma lista ligada com três elementos:
 
 ## **Aplicações das Listas Ligadas**
 
-- **Na Computação:**  
-  - Gerenciamento de memória e processos em sistemas operacionais.  
+- **Na Computação:**
+  - Gerenciamento de memória e processos em sistemas operacionais.
   - Estruturas derivadas, como pilhas, filas e listas ordenadas.
-- **No Desenvolvimento de Jogos:**  
+- **No Desenvolvimento de Jogos:**
   - Manipulação de inventários, trajetórias de personagens e gerenciamento de eventos.
-- **Em Sistemas do Dia a Dia:**  
-  - Gerenciamento de filas (por exemplo, atendimento em bancos ou lojas).  
+- **Em Sistemas do Dia a Dia:**
+  - Gerenciamento de filas (por exemplo, atendimento em bancos ou lojas).
   - Atualização dinâmica de registros, como listas de tarefas ou históricos de transações.
 
 ---

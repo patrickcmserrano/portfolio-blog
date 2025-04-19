@@ -196,9 +196,11 @@ Este projeto utiliza PostCSS para processar o CSS, integrando o TailwindCSS para
 ### Como Efetuar Edições em CSS
 
 1. **Adicionar Estilos Globais**:
+
    - Edite o arquivo `src/app.css` para adicionar ou sobrescrever estilos globais utilizando as diretivas do TailwindCSS.
 
 2. **Adicionar Estilos Específicos**:
+
    - Utilize classes utilitárias do TailwindCSS diretamente nos componentes Svelte para aplicar estilos específicos.
 
 3. **Configurar TailwindCSS**:
@@ -225,15 +227,15 @@ module.exports = {
 @tailwind utilities;
 
 /* Sobrescrevendo a regra anterior (h1 strong) */
-.prose :where(h1 strong):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
-    font-weight: 900;
-    color: rgb(229 231 235 ); /* Cor personalizada */
+.prose :where(h1 strong):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+	font-weight: 900;
+	color: rgb(229 231 235); /* Cor personalizada */
 }
 
 /* Sobrescrevendo a nova regra (strong) */
-.prose :where(strong):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
-    font-weight: 600; /* Mantém o peso original */
-    color: rgb(229 231 235 ); /* Substitui var(--tw-prose-bold) por uma cor fixa, ex.: cinza escuro */
+.prose :where(strong):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+	font-weight: 600; /* Mantém o peso original */
+	color: rgb(229 231 235); /* Substitui var(--tw-prose-bold) por uma cor fixa, ex.: cinza escuro */
 }
 ```
 

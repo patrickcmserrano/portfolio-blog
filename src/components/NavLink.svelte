@@ -3,4 +3,4 @@
 	export let label: string;
 </script>
 
-<a href={href} class="variant-ghost-secondary btn btn-sm">{label}</a>
+<a {href} class="variant-ghost-secondary btn btn-sm">{label}</a>

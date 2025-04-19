@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let title: string;
-	export let competencies: { title: string, description: string }[];
+	export let competencies: { title: string; description: string }[];
 </script>
 
 <section class="card variant-glass-surface p-4 py-12">

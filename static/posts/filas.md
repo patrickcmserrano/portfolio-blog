@@ -7,6 +7,7 @@ A **fila** é uma estrutura de dados linear fundamental na programação. Seu fu
 ## **O que é uma Fila?**
 
 Uma fila organiza os dados de forma sequencial, onde:
+
 - **Inserção** ocorre no **final** da fila.
 - **Remoção** ocorre no **início** da fila.
 
