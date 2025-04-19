@@ -13,12 +13,10 @@
     }
 
     const posts: Post[] = [
-
         {
             id: 'trading-elder-ch5',
             title: 'Dominando Vendas no Trading: Estratégias de Saída e Short Selling',
-            excerpt:
-                'Aprenda a realizar lucros e operar vendido com o Sistema Impulse e técnicas de saída de Alexander Elder.',
+            excerpt: 'Aprenda a realizar lucros e operar vendido com o Sistema Impulse e técnicas de saída de Alexander Elder.',
             date: '2025-04-15',
             readTime: '18 min',
             tags: ['Trading', 'Short Selling', 'Sistema Impulse', 'Estratégias de Saída']
@@ -26,8 +24,7 @@
         {
             id: 'trading-elder-ch4',
             title: 'Análise Técnica Consciente: Ferramentas e o Sistema Triple Screen',
-            excerpt:
-                'Explore as ferramentas técnicas de Elder, como médias móveis e MACD, e o poder do sistema Triple Screen.',
+            excerpt: 'Explore as ferramentas técnicas de Elder, como médias móveis e MACD, e o poder do sistema Triple Screen.',
             date: '2025-04-01',
             readTime: '20 min',
             tags: ['Trading', 'Análise Técnica', 'Triple Screen', 'MACD', 'Médias Móveis']
@@ -35,8 +32,7 @@
         {
             id: 'trading-elder-ch3',
             title: 'Psicologia do Trading: Controlando Emoções para o Sucesso',
-            excerpt:
-                'Descubra como dominar medo, ganância e impulsos para tomar decisões racionais no trading.',
+            excerpt: 'Descubra como dominar medo, ganância e impulsos para tomar decisões racionais no trading.',
             date: '2025-03-15',
             readTime: '16 min',
             tags: ['Trading', 'Psicologia', 'Disciplina', 'Emoções']
@@ -44,8 +40,7 @@
         {
             id: 'trading-elder-ch2',
             title: 'Gestão de Risco: Protegendo seu Capital com as Regras de Elder',
-            excerpt:
-                'Conheça as Regras dos 2% e 6% e o Triângulo de Ferro para um trading seguro e sustentável.',
+            excerpt: 'Conheça as Regras dos 2% e 6% e o Triângulo de Ferro para um trading seguro e sustentável.',
             date: '2025-03-01',
             readTime: '18 min',
             tags: ['Trading', 'Gestão de Risco', 'Stops', 'Triângulo de Ferro']
@@ -53,8 +48,7 @@
         {
             id: 'trading-elder-ch1',
             title: 'Planejamento e Disciplina: A Base do Trading Profissional',
-            excerpt:
-                'Saiba como criar planos de trading robustos e manter a disciplina para lucros consistentes.',
+            excerpt: 'Saiba como criar planos de trading robustos e manter a disciplina para lucros consistentes.',
             date: '2025-02-15',
             readTime: '17 min',
             tags: ['Trading', 'Planejamento', 'Disciplina', 'Diário de Operações']
@@ -62,8 +56,7 @@
         {
             id: 'java-pt3',
             title: 'Construindo Aplicações Java Robustas: Exceções, Arquivos e Threads',
-            excerpt:
-                'Descubra como lidar com exceções, manipular arquivos e implementar threads em Java.',
+            excerpt: 'Descubra como lidar com exceções, manipular arquivos e implementar threads em Java.',
             date: '2024-03-17',
             readTime: '15 min',
             tags: ['Java', 'Exceções', 'Threads']
@@ -71,8 +64,7 @@
         {
             id: 'java-pt2',
             title: 'Gerenciando Dados em Java: Strings, Collections e JDBC',
-            excerpt:
-                'Explore como manipular dados em Java com Strings, Collections e conectividade com bancos de dados.',
+            excerpt: 'Explore como manipular dados em Java com Strings, Collections e conectividade com bancos de dados.',
             date: '2024-03-16',
             readTime: '12 min',
             tags: ['Java', 'Dados', 'Collections']
@@ -80,8 +72,7 @@
         {
             id: 'java-intro',
             title: 'Começando com Java: Sintaxe, Fluxo e POO para Construir uma Base Sólida',
-            excerpt:
-                'Aprenda os fundamentos de Java, incluindo sintaxe, controle de fluxo e programação orientada a objetos.',
+            excerpt: 'Aprenda os fundamentos de Java, incluindo sintaxe, controle de fluxo e programação orientada a objetos.',
             date: '2024-03-15',
             readTime: '10 min',
             tags: ['Java', 'Programação', 'POO']
@@ -89,8 +80,7 @@
         {
             id: 'arvores',
             title: 'Entendendo Árvores e Árvores Binárias: Um Guia para Engenheiros de Software',
-            excerpt:
-                'Explorando o mundo das árvores e árvores binárias, estruturas de dados essenciais para qualquer engenheiro de software.',
+            excerpt: 'Explorando o mundo das árvores e árvores binárias, estruturas de dados essenciais para qualquer engenheiro de software.',
             date: '2024-03-14',
             readTime: '15 min',
             tags: ['Estruturas de Dados', 'Programação', 'Árvores']
@@ -136,7 +126,6 @@
             readTime: '10 min',
             tags: ['Software', 'Requisitos', 'Engenharia']
         }
-    
     ];
 
     // Agrupar posts pelo primeiro tag
@@ -158,21 +147,20 @@
     const sortedTags = Object.keys(postsByTag).sort();
 </script>
 
-<div class="container mx-auto space-y-16 px-4">
+<div class="container mx-auto space-y-16 px-4 min-h-screen text-gray-100">
     <!-- Blog Hero Section -->
     <section class="py-20 text-center">
-        <h1 class="h1 mb-6">Blog</h1>
-        <p class="mx-auto max-w-2xl text-xl">
-            Compartilhando conhecimentos e experiências sobre desenvolvimento Clojure, arquitetura de
-            software e boas práticas.
+        <h1 class="h1 mb-6 text-white">Blog</h1>
+        <p class="mx-auto max-w-2xl text-xl text-gray-300">
+            Um espaço para aprender e trocar ideias sobre tecnologia, mercados financeiros e práticas de desenvolvimento.
         </p>
     </section>
 
     <!-- Blog Posts -->
-    <section class="mx-auto max-w-4xl">
+    <section class="mx-auto max-w-5xl">
         {#each sortedTags as tag}
-            <h2 class="h2 mt-12 mb-6">{tag}</h2>
-            <div class="space-y-4">
+            <h2 class="h2 mt-12 mb-6 text-white">{tag}</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8">
                 {#each postsByTag[tag] as post}
                     <BlogPost {post} />
                 {/each}
@@ -180,3 +168,48 @@
         {/each}
     </section>
 </div>
+
+<style>
+    :global(.card) {
+        background-color: #1e3a8a; /* Aproximando do tom azul escuro do original */
+        border-radius: 0.5rem;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    :global(.card > section) {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    :global(.card h2) {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #ffffff;
+    }
+    :global(.card p) {
+        color: #d1d5db;
+    }
+    :global(.chip) {
+        display: inline-block;
+        padding: 0.2rem 0.6rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        background-color: #4b5563;
+        color: #f3f4f6;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+    }
+    :global(.anchor) {
+        color: #a78bfa;
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+    }
+    :global(.anchor:hover) {
+        color: #c4b5fd;
+    }
+</style>
