@@ -1,37 +1,39 @@
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import fs from 'fs';
+import path from 'path';
+
+// Read the posts.json file to get the list of post IDs
+const postsFile = path.resolve('./static/posts.json');
+const posts = JSON.parse(fs.readFileSync(postsFile, 'utf-8'));
+const postIds = posts.map(post => `/blog/${post.id}`);
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	extensions: ['.svelte'],
-	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
-	// for more information about preprocessors
-	preprocess: [vitePreprocess()],
-
-	vitePlugin: {
-		inspector: true
-	},
-	kit: {
-		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
-		// If your environment is not supported or you settled on a specific environment, switch out the adapter.
-		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
-		adapter: adapter({
-			// default options are shown. On some platforms
-			// these options are set automatically — see below
-			pages: 'build',
-			assets: 'build',
-			fallback: '404.html',
-			precompress: false,
-			strict: true
-		}),
-		paths: {
-			base: '/portfolio-blog' // Atualize o caminho base aqui
-		},
-		// Necessário para sites estáticos
-		prerender: {
-			handleHttpError: 'warn'
-		}
-	}
+    extensions: ['.svelte'],
+    preprocess: [vitePreprocess()],
+    vitePlugin: {
+        inspector: true
+    },
+    kit: {
+        adapter: adapter({
+            pages: 'build',
+            assets: 'build',
+            fallback: '404.html',
+            precompress: false,
+            strict: true
+        }),
+        paths: {
+            base: '/portfolio-blog'
+        },
+        prerender: {
+            handleHttpError: 'warn',
+            entries: [
+                '*', // Prerender all static routes
+                ...postIds // Add dynamic /blog/[id] routes
+            ]
+        }
+    }
 };
 
 export default config;
