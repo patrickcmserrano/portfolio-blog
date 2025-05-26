@@ -23,7 +23,7 @@
 
 <div>
 	{#if loading}
-		<div class="flex items-center justify-center py-12">
+		<div class="flex items-center justify-center min-h-[200px]">
 			<div
 				class="h-12 w-12 animate-spin rounded-full border-b-2 border-t-2 border-primary-500"
 			></div>

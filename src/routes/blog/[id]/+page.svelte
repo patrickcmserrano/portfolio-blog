@@ -69,7 +69,7 @@
 	<!-- Conteúdo do Post -->
 	<main class="docs-content">
 		{#if loading}
-			<div class="flex items-center justify-center py-12">
+			<div class="fixed inset-0 flex items-center justify-center bg-surface-50 dark:bg-surface-900 z-10">
 				<div
 					class="h-12 w-12 animate-spin rounded-full border-b-2 border-t-2 border-primary-500"
 				></div>
