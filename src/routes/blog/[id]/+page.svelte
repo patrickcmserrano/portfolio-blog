@@ -145,7 +145,7 @@
 		border-radius: 3px;
 	}
 
-	.dark .docs-sidebar::-webkit-scrollbar-thumb {
+	:global(.dark) .docs-sidebar::-webkit-scrollbar-thumb {
 		background-color: rgba(75, 85, 99, 0.5);
 	}
 
@@ -165,7 +165,7 @@
 			padding-bottom: 1.5rem;
 		}
 
-		.dark .docs-sidebar {
+		:global(.dark) .docs-sidebar {
 			border-bottom-color: rgba(75, 85, 99, 0.5);
 		}
 

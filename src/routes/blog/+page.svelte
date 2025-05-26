@@ -57,7 +57,7 @@
 
 <div class="container mx-auto space-y-16 px-4 min-h-screen text-gray-100">
     <!-- Blog Hero Section -->
-    <section class="py-20 text-center">
+    <section class="pt-20 text-center">
         <h1 class="h1 mb-6 text-white">Blog</h1>
         <p class="mx-auto max-w-2xl text-xl text-gray-300">
             Um espaço para aprender e trocar ideias sobre tecnologia, mercados financeiros e práticas de desenvolvimento.
