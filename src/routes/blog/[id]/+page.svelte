@@ -116,7 +116,6 @@
 		display: grid;
 		grid-template-columns: 320px 1fr;
 		gap: 0;
-		min-height: calc(100vh - 80px); /* Altura da viewport menos altura aproximada do header */
 		margin: 0;
 		padding: 0;
 	}
@@ -174,8 +173,8 @@
 	}
 
 	.article-spacer {
-		height: 80vh;
-		min-height: 400px;
+		height: 20vh;
+		min-height: 100px;
 		background: transparent;
 	}
 
