@@ -1,11 +1,62 @@
-Let’s dive into the **Functional Programming Paradigm** in Clojure, the second core concept in our study of Clojure’s core language features. I’ll keep it concise, clear, and comprehensive, covering the key principles, examples, and practical insights. If you want to explore specific aspects deeper or move to another concept, just let me know!
-
----
 
 ### **2. Functional Programming Paradigm in Clojure**
 
 #### **What is Functional Programming?**
-Functional programming (FP) is a paradigm that treats computation as the evaluation of mathematical functions, emphasizing:
+Functional programming (FP) is a paradigm that t#### **Review Questions**
+1. What makes a function "pure" in Clojure?
+2. How does `comp` differ from `partial` in function composition?
+3. Write a function that takes a collection, doubles each number, filters out numbers greater than 10, and sums the result.
+4. Why is lazy evaluation useful in functional programming?
+
+#### **Answer Examples**
+1. **Pure function characteristics**: A function is "pure" in Clojure if it meets two criteria: (1) it always returns the same output for the same input (deterministic), and (2) it has no side effects (doesn't modify external state, perform I/O, or cause observable changes outside the function).
+   ```clojure
+   ;; Pure function
+   (defn add [x y]
+     (+ x y))
+   
+   ;; Impure function (has side effect)
+   (defn print-and-add [x y]
+     (println "Adding numbers")  ; side effect
+     (+ x y))
+   ```
+
+2. **`comp` vs `partial` differences**: `comp` creates a new function by composing multiple functions (right-to-left execution), while `partial` creates a new function by fixing some arguments of an existing function.
+   ```clojure
+   ;; comp - function composition
+   (def square-and-inc (comp inc square))
+   (square-and-inc 3) ; => 10 (square 3 = 9, then inc 9 = 10)
+   
+   ;; partial - partial application
+   (def add-five (partial + 5))
+   (add-five 3) ; => 8 (equivalent to (+ 5 3))
+   ```
+
+3. **Collection processing function**:
+   ```clojure
+   (defn process-collection [coll]
+     (->> coll
+          (map #(* % 2))          ; Double each number
+          (filter #(<= % 10))     ; Keep numbers <= 10
+          (reduce +)))            ; Sum the results
+   
+   ;; Example usage
+   (process-collection [1 2 3 4 5 6]) ; => 20
+   ;; Steps: [1 2 3 4 5 6] -> [2 4 6 8 10 12] -> [2 4 6 8 10] -> 30
+   ```
+
+4. **Lazy evaluation benefits**: Lazy evaluation allows you to work with potentially infinite sequences without computing all values upfront. It improves memory efficiency by only computing values when needed, enables composition of operations without intermediate collections, and allows for elegant solutions to complex problems.
+   ```clojure
+   ;; Infinite sequence that's only computed as needed
+   (def fibonacci (map first (iterate (fn [[a b]] [b (+ a b)]) [0 1])))
+   (take 10 fibonacci) ; => (0 1 1 2 3 5 8 13 21 34)
+   
+   ;; Lazy operations don't create intermediate collections
+   (->> (range 1000000)
+        (map inc)
+        (filter even?)
+        (take 5)) ; Only processes enough elements to get 5 results
+   ``` computation as the evaluation of mathematical functions, emphasizing:
 - **Pure Functions**: Functions that always produce the same output for the same input and have no side effects (e.g., no mutation, no I/O).
 - **Immutability**: Data cannot be changed once created (covered in the previous section).
 - **First-Class and Higher-Order Functions**: Functions are treated as values and can be passed as arguments, returned from functions, or stored in variables.
@@ -151,12 +202,3 @@ Let’s process a collection of numbers using FP principles:
 2. How does `comp` differ from `partial` in function composition?
 3. Write a function that takes a collection, doubles each number, filters out numbers greater than 10, and sums the result.
 4. Why is lazy evaluation useful in functional programming?
-
-#### **Next Steps**
-We can:
-- Dive deeper into specific FP concepts (e.g., lazy sequences, advanced recursion).
-- Explore related Clojure features like **sequences**, **macros**, or **concurrency primitives**.
-- Work through exercises or more complex examples.
-- Move to the next core concept (e.g., **Sequences** or **State Management**).
-
-What would you like to do next?

@@ -95,3 +95,26 @@ Let’s combine immutability and persistence in a small program:
 3. Write a snippet to create a vector `[1 2 3]`, add `4` to it, and verify the original is unchanged.
 4. Why is immutability beneficial in a concurrent program?
 
+#### **Answer Examples**
+1. **Original data structure remains unchanged**: When you use `conj` or `assoc`, the original data structure is never modified. These functions return a new version of the data structure with the changes applied, while the original stays exactly the same.
+   ```clojure
+   (def original-map {:a 1 :b 2})
+   (def new-map (assoc original-map :c 3))
+   ;; original-map is still {:a 1 :b 2}
+   ;; new-map is {:a 1 :b 2 :c 3}
+   ```
+
+2. **Structural sharing optimizes memory and performance**: Instead of copying the entire data structure, Clojure reuses unchanged parts between the old and new versions. This means operations are typically O(log32 n), which is nearly constant time for practical purposes, and memory usage is minimized since most of the structure is shared.
+
+3. **Vector creation and verification example**:
+   ```clojure
+   (def original-vector [1 2 3])
+   (def new-vector (conj original-vector 4))
+   
+   (println "Original:" original-vector)  ; => [1 2 3]
+   (println "New:" new-vector)           ; => [1 2 3 4]
+   (println "Unchanged?" (= original-vector [1 2 3])) ; => true
+   ```
+
+4. **Immutability benefits in concurrent programs**: Since immutable data cannot be changed, multiple threads can safely read the same data structure without any risk of race conditions, data corruption, or the need for locks. This eliminates entire classes of concurrency bugs and makes parallel programming much safer and easier to reason about.
+
