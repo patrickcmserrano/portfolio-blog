@@ -85,6 +85,8 @@
 					{@html content}
 				</article>
 			</div>
+			<!-- Espaço vazio para melhorar a funcionalidade do SummaryTracker -->
+			<div class="article-spacer"></div>
 		{/if}
 	</main>
 </div>
@@ -146,6 +148,12 @@
 	.docs-sidebar::-webkit-scrollbar-thumb {
 		background-color: rgba(156, 163, 175, 0.5);
 		border-radius: 3px;
+	}
+
+	.article-spacer {
+		height: 80vh;
+		min-height: 400px;
+		background: transparent;
 	}
 
 	:global(.dark) .docs-sidebar::-webkit-scrollbar-thumb {
