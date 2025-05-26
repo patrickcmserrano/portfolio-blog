@@ -1,5 +1,13 @@
 [
     {
+        "id": "teste-navegacao",
+        "title": "Sistema de Navegação Avançado",
+        "excerpt": "Demonstração do sistema de navegação automática com rastreamento de progresso e índice interativo.",
+        "date": "2025-05-26",
+        "readTime": "8 min",
+        "tags": ["Frontend", "Svelte", "UX", "Navegação"]
+    },
+    {
         "id": "trading-elder-ch5",
         "title": "Dominando Vendas no Trading: Estratégias de Saída e Short Selling",
         "excerpt": "Aprenda a realizar lucros e operar vendido com o Sistema Impulse e técnicas de saída de Alexander Elder.",
