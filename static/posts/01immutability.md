@@ -95,7 +95,7 @@ Let’s combine immutability and persistence in a small program:
 3. Write a snippet to create a vector `[1 2 3]`, add `4` to it, and verify the original is unchanged.
 4. Why is immutability beneficial in a concurrent program?
 
-#### **Answer Examples**
+#### **Review Question Answers**
 1. **Original data structure remains unchanged**: When you use `conj` or `assoc`, the original data structure is never modified. These functions return a new version of the data structure with the changes applied, while the original stays exactly the same.
    ```clojure
    (def original-map {:a 1 :b 2})

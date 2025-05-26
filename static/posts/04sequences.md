@@ -121,7 +121,7 @@ Let’s process a collection of maps using sequences:
 3. Write a function that takes a vector of numbers, filters out odd numbers, squares the rest, and returns a set.
 4. Why is the sequence abstraction useful when working with different collection types?
 
-#### **Answers**
+#### **Review Question Answers**
 1. **Collections vs. Sequences**: Collections are concrete, in-memory data structures (like vectors `[1 2 3]`, lists `'(1 2 3)`, maps `{:a 1}`, and sets `#{1 2 3}`) that store data. Sequences are an abstraction for iterating over collections in a uniform way - they provide a logical view of data as an ordered series of elements. Collections are the actual data containers, while sequences are the interface for processing that data consistently across different collection types.
 
 2. **Lazy Evaluation Efficiency**: Lazy evaluation improves efficiency by computing elements only when they are actually needed (consumed). This allows you to work with potentially infinite data structures without running out of memory, process large datasets without loading everything into memory at once, and chain multiple operations together where only the final required elements are computed. For example, `(take 3 (map #(* % %) (range)))` only computes the first 3 squares instead of trying to square all infinite numbers.

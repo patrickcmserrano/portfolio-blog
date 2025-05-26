@@ -27,6 +27,26 @@
 		unsubscribe();
 	}
 
+	// Usar o hook para processar seções colapsáveis após o conteúdo ser carregado
+	$: if (markdownContainer && content && !loading) {
+		// Adiciona um pequeno delay para garantir que o DOM esteja renderizado
+		setTimeout(() => {
+			import('$lib/utils/collapsibleSections').then(({ processCollapsibleSections }) => {
+				processCollapsibleSections(markdownContainer, {
+					patterns: [
+						/Review Question Answers/i,
+						/Respostas das Perguntas/i,
+						/Answers/i,
+						/Respostas/i
+					],
+					defaultButtonTitle: '👁️ See Answers',
+					eyeIconPosition: 'left',
+					startHidden: true
+				});
+			});
+		}, 200);
+	}
+
 	// Carrega o conteúdo do post ao montar o componente
 	onMount(async () => {
 		try {
@@ -225,5 +245,55 @@
 		.markdown-content :global(p) {
 			margin: 0.5rem 0;
 		}
+	}
+
+	/* Estilos para seções colapsáveis */
+	:global(.collapsible-section-wrapper) {
+		margin: 1.5rem 0;
+	}
+
+	:global(.collapsible-toggle-button) {
+		font-family: inherit;
+		transition: all 0.2s ease !important;
+	}
+
+	:global(.collapsible-toggle-button:hover) {
+		background: linear-gradient(135deg, #1d4ed8, #1e40af) !important;
+		transform: translateY(-1px);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+	}
+
+	:global(.collapsible-toggle-button:active) {
+		transform: translateY(0) !important;
+	}
+
+	:global(.collapsible-content-container) {
+		padding: 1.5rem;
+		background: rgba(59, 130, 246, 0.03);
+		border: 1px solid rgba(59, 130, 246, 0.1);
+		border-radius: 0 0 0.5rem 0.5rem;
+		margin-top: -1px;
+		transition: all 0.3s ease;
+	}
+
+	:global(.dark .collapsible-toggle-button) {
+		background: linear-gradient(135deg, #1e40af, #1e3a8a) !important;
+		color: #e5e7eb !important;
+	}
+
+	:global(.dark .collapsible-toggle-button:hover) {
+		background: linear-gradient(135deg, #1e3a8a, #1e40af) !important;
+	}
+
+	:global(.dark .collapsible-content-container) {
+		background: rgba(30, 64, 175, 0.05);
+		border-color: rgba(30, 64, 175, 0.15);
+		color: #e5e7eb;
+	}
+
+	/* Animação suave para mostrar/ocultar */
+	:global(.collapsible-content-container) {
+		overflow: hidden;
+		transition: max-height 0.3s ease, opacity 0.3s ease;
 	}
 </style>
