@@ -93,11 +93,10 @@
 	.docs-layout {
 		display: grid;
 		grid-template-columns: 320px 1fr;
-		gap: 2rem;
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 2rem;
-		margin-top: 5rem; /* Para compensar o header fixo */
+		gap: 0;
+		min-height: 100vh;
+		margin: 0;
+		padding: 0;
 	}
 
 	.markdown-content {
@@ -118,17 +117,21 @@
 
 	.docs-content {
 		min-width: 0; /* Evita overflow em grids */
+		padding: 2rem;
+		overflow-x: auto;
 	}
 
 	.docs-sidebar {
 		min-width: 0;
 		position: sticky;
-		top: 6rem; /* Alinhado com o header fixo */
-		height: fit-content;
-		max-height: calc(100vh - 8rem);
+		top: 0;
+		height: 100vh;
 		overflow-y: auto;
-		padding-right: 1rem;
-		scrollbar-width: thin; /* Firefox */
+		border-right: 1px solid rgb(229 231 235);
+	}
+
+	:global(.dark) .docs-sidebar {
+		border-right-color: rgb(55 65 81);
 	}
 
 	/* Estilo para scrollbar em webkit browsers */
@@ -158,9 +161,11 @@
 		.docs-sidebar {
 			position: relative;
 			top: 0;
+			height: auto;
 			width: 100%;
 			max-height: none;
 			margin-bottom: 2rem;
+			border-right: none;
 			border-bottom: 1px solid rgba(229, 231, 235, 0.5);
 			padding-bottom: 1.5rem;
 		}
@@ -181,7 +186,54 @@
 
 	@media (max-width: 640px) {
 		.docs-layout {
-			padding: 1rem;
+			padding: 0;
+			margin: 0;
+		}
+		.docs-sidebar {
+			padding: 0.25rem 0.25rem 0.5rem 0.25rem;
+			margin-bottom: 1rem;
+		}
+		.markdown-summary {
+			padding: 0.25rem 0.25rem 0.5rem 0.25rem;
+		}
+		.summary-header {
+			margin-bottom: 0.5rem;
+			padding-bottom: 0.25rem;
+		}
+		.summary-title {
+			font-size: 0.95rem;
+		}
+		.reading-progress {
+			margin-top: 0.25rem;
+		}
+		.summary-nav {
+			gap: 0.05rem;
+		}
+		.section-link {
+			padding: 0.15rem 0.25rem;
+			font-size: 0.8rem;
+		}
+		.section-children {
+			margin-left: 0.25rem;
+			padding-left: 0.25rem;
+		}
+		.docs-content {
+			padding: 0.5rem;
+		}
+		.markdown-content {
+			font-size: 0.95rem;
+		}
+		.markdown-content :global(h1),
+		.markdown-content :global(h2),
+		.markdown-content :global(h3),
+		.markdown-content :global(h4),
+		.markdown-content :global(h5),
+		.markdown-content :global(h6) {
+			margin-top: 1rem;
+			margin-bottom: 0.5rem;
+		}
+		.markdown-content :global(p) {
+			margin: 0.5rem 0;
 		}
 	}
 </style>

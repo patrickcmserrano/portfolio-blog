@@ -80,15 +80,28 @@
 
 <style>
   .markdown-summary {
-    position: sticky;
-    top: 2rem;
-    max-height: calc(100vh - 4rem);
+    position: static;
+    height: 100vh;
     overflow-y: auto;
     padding: 1rem;
     background: rgb(255 255 255);
-    border-radius: 0.5rem;
-    border: 1px solid rgb(229 231 235);
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    border-radius: 0;
+    border: none;
+    border-right: 1px solid rgb(229 231 235);
+    box-shadow: none;
+    margin: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .markdown-summary {
+      position: static;
+      height: auto;
+      max-height: none;
+      border-radius: 0.5rem;
+      border: 1px solid rgb(229 231 235);
+      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+      overflow-y: visible;
+    }
   }
 
   :global(.dark) .markdown-summary {
