@@ -81,18 +81,20 @@
 <style>
   .markdown-summary {
     position: static;
-    height: 100vh;
-    overflow-y: auto;
-    padding: 1rem;
+    height: 100%;
+    overflow-y: hidden; /* Remove o scroll do container principal */
+    padding: 1rem 1rem 0 1rem;
     background: rgb(255 255 255);
     border-radius: 0;
     border: none;
     border-right: 1px solid rgb(229 231 235);
     box-shadow: none;
     margin: 0;
+    display: flex;
+    flex-direction: column;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1039px) {
     .markdown-summary {
       position: static;
       height: auto;
@@ -171,6 +173,9 @@
     display: flex;
     flex-direction: column;
     gap: 0.125rem;
+    flex: 1;
+    overflow-y: visible; /* Remove o scroll daqui */
+    padding-bottom: 1rem;
   }
 
   /* Scrollbar personalizada */

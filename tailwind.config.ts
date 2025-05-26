@@ -10,7 +10,14 @@ export default {
 		join(require.resolve('@skeletonlabs/skeleton'), '../**/*.{html,js,svelte,ts}') // Escaneia os arquivos do Skeleton Labs
 	],
 	theme: {
-		extend: {}
+		extend: {},
+		screens: {
+			'sm': '640px',
+			'md': '768px', 
+			'lg': '1040px', // Mudou de 1024px para 1040px - agora 1039px é considerado mobile
+			'xl': '1280px',
+			'2xl': '1536px',
+		}
 	},
 	plugins: [
 		typography,

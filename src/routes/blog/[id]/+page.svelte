@@ -96,7 +96,7 @@
 		display: grid;
 		grid-template-columns: 320px 1fr;
 		gap: 0;
-		min-height: 100vh;
+		min-height: calc(100vh - 80px); /* Altura da viewport menos altura aproximada do header */
 		margin: 0;
 		padding: 0;
 	}
@@ -118,18 +118,21 @@
 	}
 
 	.docs-content {
-		min-width: 0; /* Evita overflow em grids */
+		min-width: 0;
 		padding: 2rem;
-		overflow-x: auto;
+		/* Remove overflow-y e height para permitir scroll natural da página */
 	}
 
 	.docs-sidebar {
 		min-width: 0;
 		position: sticky;
-		top: 0;
-		height: 100vh;
-		overflow-y: auto;
+		top: 1rem; /* Sticky com offset do topo */
+		height: 100%;
+		max-height: calc(100vh - 100px); /* Altura máxima com espaço para header */
+		overflow-y: auto; /* Scroll apenas quando necessário */
 		border-right: 1px solid rgb(229 231 235);
+		padding-top: 1rem;
+		align-self: start; /* Alinha no topo da grid */
 	}
 
 	:global(.dark) .docs-sidebar {
@@ -160,10 +163,11 @@
 		background-color: rgba(75, 85, 99, 0.5);
 	}
 
-	@media (max-width: 1024px) {
+	@media (max-width: 1039px) {
 		.docs-layout {
 			grid-template-columns: 1fr;
 			padding: 1.5rem;
+			min-height: auto; /* Remove altura fixa em mobile */
 		}
 		
 		.docs-sidebar {
@@ -176,6 +180,7 @@
 			border-right: none;
 			border-bottom: 1px solid rgba(229, 231, 235, 0.5);
 			padding-bottom: 1.5rem;
+			overflow-y: visible; /* Remove scroll em mobile */
 		}
 
 		:global(.dark) .docs-sidebar {
@@ -200,30 +205,7 @@
 		.docs-sidebar {
 			padding: 0.25rem 0.25rem 0.5rem 0.25rem;
 			margin-bottom: 1rem;
-		}
-		.markdown-summary {
-			padding: 0.25rem 0.25rem 0.5rem 0.25rem;
-		}
-		.summary-header {
-			margin-bottom: 0.5rem;
-			padding-bottom: 0.25rem;
-		}
-		.summary-title {
-			font-size: 0.95rem;
-		}
-		.reading-progress {
-			margin-top: 0.25rem;
-		}
-		.summary-nav {
-			gap: 0.05rem;
-		}
-		.section-link {
-			padding: 0.15rem 0.25rem;
-			font-size: 0.8rem;
-		}
-		.section-children {
-			margin-left: 0.25rem;
-			padding-left: 0.25rem;
+			overflow-y: visible; /* Remove scroll em mobile pequeno */
 		}
 		.docs-content {
 			padding: 0.5rem;

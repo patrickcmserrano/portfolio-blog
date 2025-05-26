@@ -78,7 +78,8 @@
     position: sticky;
     top: 1rem;
     height: fit-content;
-    max-height: calc(100vh - 2rem);
+    max-height: calc(100vh - 6rem); /* Considera header + padding */
+    overflow-y: auto;
   }
 
   .sidebar-header {
@@ -144,7 +145,7 @@
   }
 
   /* Responsivo */
-  @media (max-width: 1024px) {
+  @media (max-width: 1039px) {
     .document-layout {
       grid-template-columns: 1fr;
       padding: 1.5rem;
