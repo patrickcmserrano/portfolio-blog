@@ -16,6 +16,9 @@
 	import '../styles/markdown-enhanced.css'; // Estilos aprimorados para markdown
 	import Header from '../components/Header.svelte';
 	import MobileDrawer from '../components/MobileDrawer.svelte';
+	import MusicPlayer from '../components/MusicPlayerFixed.svelte';
+	import MusicNotification from '../components/MusicNotification.svelte';
+	import MusicKeyboardShortcuts from '../components/MusicKeyboardShortcuts.svelte';
 	import { observeThemeChanges } from '../utils/ThemeObserver';
 
 	import { onMount } from 'svelte';
@@ -62,6 +65,15 @@
 
 	<MobileDrawer />
 </AppShell>
+
+<!-- Player de música -->
+<MusicPlayer />
+
+<!-- Notificação sobre música -->
+<MusicNotification />
+
+<!-- Atalhos de teclado para música -->
+<MusicKeyboardShortcuts />
 
 <style>
 	:global(html) {
