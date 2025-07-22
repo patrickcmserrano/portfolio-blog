@@ -235,11 +235,11 @@
 					</div>
 					<button
 						on:click={() => musicPlayerStore.toggleMinimized()}
-						class="btn btn-sm variant-ghost-surface p-1 ml-2"
+						class="btn btn-sm variant-ghost-surface p-1 ml-2 hover:bg-surface-200-700-token transition-colors"
 						aria-label="Minimizar player"
 					>
-						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
 						</svg>
 					</button>
 				</div>
@@ -275,21 +275,23 @@
 					<!-- Botão Play/Pause -->
 					<button
 						on:click={togglePlay}
-						class="btn variant-filled-primary rounded-full w-10 h-10 flex items-center justify-center"
+						class="btn variant-filled-primary rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-200"
 						aria-label={state.isPlaying ? 'Pausar música' : 'Reproduzir música'}
 						disabled={!state.isLoaded}
 					>
 						{#if !state.isLoaded}
-							<svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<svg class="w-6 h-6 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
 							</svg>
 						{:else if state.isPlaying}
-							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+							<!-- Ícone de Pause melhorado -->
+							<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M8 5v14c0 .55.45 1 1 1s1-.45 1-1V5c0-.55-.45-1-1-1s-1 .45-1 1zm6 0v14c0 .55.45 1 1 1s1-.45 1-1V5c0-.55-.45-1-1-1s-1 .45-1 1z"/>
 							</svg>
 						{:else}
-							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M8 5v14l11-7z"/>
+							<!-- Ícone de Play melhorado e centralizado -->
+							<svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M8 5.14v14.72c0 .77.63 1.39 1.39 1.39.35 0 .69-.13.94-.36l8.09-6.36c.6-.47.6-1.39 0-1.86L10.33 4.31c-.25-.2-.59-.31-.94-.31C8.63 3 8 3.63 8 4.39v.75z"/>
 							</svg>
 						{/if}
 					</button>
@@ -318,17 +320,26 @@
 			<div class="p-2">
 				<button
 					on:click={() => musicPlayerStore.toggleMinimized()}
-					class="btn variant-ghost-surface rounded-full w-12 h-12 flex items-center justify-center relative"
+					class="btn variant-ghost-surface rounded-full w-12 h-12 flex items-center justify-center relative hover:scale-105 transition-transform duration-200"
 					aria-label="Expandir player"
 				>
 					<!-- Ícone de música com animação de ondas quando tocando -->
 					<div class="relative">
-						<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-							<path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-						</svg>
+						<!-- Ícone de play/pause no centro -->
+						{#if state.isPlaying}
+							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M8 5v14c0 .55.45 1 1 1s1-.45 1-1V5c0-.55-.45-1-1-1s-1 .45-1 1zm6 0v14c0 .55.45 1 1 1s1-.45 1-1V5c0-.55-.45-1-1-1s-1 .45-1 1z"/>
+							</svg>
+						{:else}
+							<svg class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M8 5.14v14.72c0 .77.63 1.39 1.39 1.39.35 0 .69-.13.94-.36l8.09-6.36c.6-.47.6-1.39 0-1.86L10.33 4.31c-.25-.2-.59-.31-.94-.31C8.63 3 8 3.63 8 4.39v.75z"/>
+							</svg>
+						{/if}
+						
+						<!-- Indicador visual de que está tocando -->
 						{#if state.isPlaying}
 							<div class="absolute -top-1 -right-1 w-3 h-3">
-								<div class="absolute inset-0 bg-primary-500 rounded-full animate-ping"></div>
+								<div class="absolute inset-0 bg-primary-500 rounded-full animate-ping opacity-75"></div>
 								<div class="absolute inset-0 bg-primary-500 rounded-full"></div>
 							</div>
 						{/if}

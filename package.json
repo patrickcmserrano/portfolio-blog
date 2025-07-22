@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
+		"build": "node scripts/verify-resources.js && vite build",
 		"preview": "vite preview",
 		"test": "vitest",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -13,7 +13,8 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
 		"test:unit": "vitest",
-		"clean": "powershell -Command \"Start-Process powershell -ArgumentList '-NoProfile -Command Remove-Item -Recurse -Force ./node_modules, ./dist, ./build' -Verb RunAs\""
+		"clean": "powershell -Command \"Start-Process powershell -ArgumentList '-NoProfile -Command Remove-Item -Recurse -Force ./node_modules, ./dist, ./build' -Verb RunAs\"",
+		"verify-resources": "node scripts/verify-resources.js"
 	},
 	"devDependencies": {
 		"@skeletonlabs/skeleton": "2.11.0",

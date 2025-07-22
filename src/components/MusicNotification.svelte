@@ -51,7 +51,7 @@
 					🎵 Música Ambiente Disponível
 				</h3>
 				<p class="text-sm text-surface-600-300-token mb-2">
-					Ative o player de música no canto inferior direito para uma experiência mais relaxante enquanto navega pelo site.
+					Ative o player de música no canto inferior direito para uma experiência mais relaxante enquanto navega pelo site. Este software foi produzido ouvindo estas músicas.
 				</p>
 				<div class="flex space-x-2">
 					<button

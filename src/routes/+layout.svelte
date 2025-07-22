@@ -16,7 +16,7 @@
 	import '../styles/markdown-enhanced.css'; // Estilos aprimorados para markdown
 	import Header from '../components/Header.svelte';
 	import MobileDrawer from '../components/MobileDrawer.svelte';
-	import MusicPlayer from '../components/MusicPlayerFixed.svelte';
+	import MusicPlayer from '../components/MusicPlayerMultitrack.svelte';
 	import MusicNotification from '../components/MusicNotification.svelte';
 	import MusicKeyboardShortcuts from '../components/MusicKeyboardShortcuts.svelte';
 	import { observeThemeChanges } from '../utils/ThemeObserver';

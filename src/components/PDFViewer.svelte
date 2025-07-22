@@ -9,18 +9,36 @@
 	let isFullscreen = false;
 	let isLoading = true;
 	let useGoogleViewer = false;
+	let hasError = false;
+	let errorMessage = '';
 
 	onMount(() => {
 		if (!browser) return;
 		
-		// Simular carregamento
-		setTimeout(() => {
-			isLoading = false;
-		}, 1000);
+		// Testar se o PDF existe antes de tentar carregar
+		fetch(pdfUrl, { method: 'HEAD' })
+			.then(response => {
+				if (!response.ok) {
+					console.error(`PDF não encontrado: ${pdfUrl} (Status: ${response.status})`);
+					hasError = true;
+					errorMessage = `Arquivo PDF não encontrado (Status: ${response.status})`;
+					useGoogleViewer = true;
+				}
+				isLoading = false;
+			})
+			.catch(error => {
+				console.error('Erro ao verificar PDF:', error);
+				hasError = true;
+				errorMessage = 'Erro de conexão ao carregar o PDF';
+				useGoogleViewer = true;
+				isLoading = false;
+			});
 
 		// Detectar se é necessário usar o Google Viewer
 		// (alguns navegadores corporativos bloqueiam PDFs)
 		setTimeout(() => {
+			if (hasError) return;
+			
 			const testObject = document.createElement('object');
 			testObject.data = 'data:application/pdf;base64,';
 			testObject.type = 'application/pdf';
@@ -179,6 +197,37 @@
 				<div class="text-center">
 					<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
 					<p class="text-gray-600 dark:text-gray-400">Carregando PDF...</p>
+				</div>
+			</div>
+		{:else if hasError}
+			<!-- Exibir erro quando o PDF não pode ser carregado -->
+			<div class="flex items-center justify-center py-20">
+				<div class="text-center">
+					<div class="text-red-500 text-6xl mb-4">⚠️</div>
+					<h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
+						Erro ao carregar PDF
+					</h3>
+					<p class="text-gray-600 dark:text-gray-400 mb-4">{errorMessage}</p>
+					<div class="space-y-2">
+						<p class="text-sm text-gray-500">Tentativas:</p>
+						<div class="space-x-2">
+							<a 
+								href={pdfUrl} 
+								target="_blank" 
+								rel="noopener noreferrer"
+								class="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+							>
+								📄 Abrir em nova aba
+							</a>
+							<a 
+								href={pdfUrl} 
+								download
+								class="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors"
+							>
+								💾 Download
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		{:else}

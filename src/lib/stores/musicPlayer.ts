@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
+import type { Track } from '$lib/music/playlist';
 
 export interface MusicPlayerState {
 	isPlaying: boolean;
@@ -8,6 +9,9 @@ export interface MusicPlayerState {
 	volume: number;
 	isMinimized: boolean;
 	isLoaded: boolean;
+	currentTrack: Track | null;
+	shuffle: boolean;
+	repeat: 'none' | 'one' | 'all';
 }
 
 const defaultState: MusicPlayerState = {
@@ -16,7 +20,10 @@ const defaultState: MusicPlayerState = {
 	duration: 0,
 	volume: 0.3,
 	isMinimized: false,
-	isLoaded: false
+	isLoaded: false,
+	currentTrack: null,
+	shuffle: false,
+	repeat: 'none'
 };
 
 function createMusicPlayerStore() {
@@ -35,8 +42,24 @@ function createMusicPlayerStore() {
 		setDuration: (duration: number) => update(state => ({ ...state, duration })),
 		setVolume: (volume: number) => update(state => ({ ...state, volume })),
 		
+		setCurrentTrack: (track: Track) => update(state => ({ 
+			...state, 
+			currentTrack: track,
+			currentTime: 0,
+			isLoaded: false 
+		})),
+		
 		toggleMinimized: () => update(state => ({ ...state, isMinimized: !state.isMinimized })),
 		setMinimized: (minimized: boolean) => update(state => ({ ...state, isMinimized: minimized })),
+		
+		toggleShuffle: () => update(state => ({ ...state, shuffle: !state.shuffle })),
+		setShuffle: (shuffle: boolean) => update(state => ({ ...state, shuffle })),
+		
+		setRepeat: (repeat: 'none' | 'one' | 'all') => update(state => ({ ...state, repeat })),
+		toggleRepeat: () => update(state => ({
+			...state,
+			repeat: state.repeat === 'none' ? 'all' : state.repeat === 'all' ? 'one' : 'none'
+		})),
 		
 		setLoaded: (loaded: boolean) => update(state => ({ ...state, isLoaded: loaded })),
 		
@@ -44,10 +67,13 @@ function createMusicPlayerStore() {
 		saveToLocalStorage: (state: MusicPlayerState) => {
 			if (browser) {
 				localStorage.setItem('musicPlayerState', JSON.stringify({
-					isPlaying: state.isPlaying,
-					currentTime: state.currentTime,
+					isPlaying: false, // Não restaurar reprodução automática
+					currentTime: 0, // Reiniciar do início
 					volume: state.volume,
-					isMinimized: state.isMinimized
+					isMinimized: state.isMinimized,
+					currentTrack: state.currentTrack,
+					shuffle: state.shuffle,
+					repeat: state.repeat
 				}));
 			}
 		},
@@ -60,7 +86,15 @@ function createMusicPlayerStore() {
 						const savedState = JSON.parse(saved);
 						update(state => ({
 							...state,
-							...savedState
+							volume: savedState.volume ?? defaultState.volume,
+							isMinimized: savedState.isMinimized ?? defaultState.isMinimized,
+							currentTrack: savedState.currentTrack ?? null,
+							shuffle: savedState.shuffle ?? defaultState.shuffle,
+							repeat: savedState.repeat ?? defaultState.repeat,
+							// Sempre começar pausado e do início
+							isPlaying: false,
+							currentTime: 0,
+							isLoaded: false
 						}));
 						return savedState;
 					}
