@@ -1,0 +1,133 @@
+/* Melhorias para modo escuro e acessibilidade */
+
+/* Estilos adicionais para elementos de documentos no modo escuro */
+.dark .prose h1 {
+  color: #f9fafb;
+  font-weight: 800;
+}
+
+.dark .prose h2,
+.dark .prose h3 {
+  color: #f3f4f6;
+  border-bottom: 1px solid rgba(75, 85, 99, 0.4);
+  padding-bottom: 0.5rem;
+}
+
+.dark .prose h4,
+.dark .prose h5,
+.dark .prose h6 {
+  color: #e5e7eb;
+}
+
+.dark .prose a:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+/* Melhorias para elementos de lista */
+.dark .prose ul li::marker,
+.dark .prose ol li::marker {
+  color: #9ca3af;
+}
+
+/* Melhorias para tabelas */
+.dark .prose table {
+  border: 1px solid #4b5563;
+}
+
+.dark .prose table th {
+  background-color: rgba(31, 41, 55, 0.8);
+  font-weight: 600;
+  color: #f3f4f6;
+}
+
+.dark .prose table td {
+  background-color: rgba(31, 41, 55, 0.4);
+}
+
+.dark .prose table tr:nth-child(even) td {
+  background-color: rgba(31, 41, 55, 0.6);
+}
+
+/* Melhorias para citações */
+.dark .prose blockquote {
+  background-color: rgba(31, 41, 55, 0.5);
+  border-left: 4px solid #60a5fa;
+  color: #e5e7eb;
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+/* Melhorias para texto inline */
+.dark .prose em {
+  color: #d1d5db;
+}
+
+.dark .prose kbd {
+  color: #f3f4f6;
+  background-color: #374151;
+  border: 1px solid #4b5563;
+  border-radius: 0.25rem;
+  padding: 0.1em 0.4em;
+}
+
+/* Rotulagem para campos de formulário */
+.dark label {
+  color: #e5e7eb;
+}
+
+/* Melhorar visibilidade para controles de interface */
+.dark button:not([disabled]),
+.dark .btn:not([disabled]) {
+  color: #f3f4f6;
+}
+
+.dark button:hover:not([disabled]),
+.dark .btn:hover:not([disabled]) {
+  background-color: rgba(96, 165, 250, 0.2);
+  color: rgb(243 244 246);
+}
+
+.dark button:focus-visible,
+.dark .btn:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+/* Melhorias para o índice de navegação */
+.dark .docs-sidebar .summary-title {
+  color: #f3f4f6;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.dark .docs-sidebar a {
+  color: #d1d5db;
+  transition: color 0.2s, background-color 0.2s;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.dark .docs-sidebar a:hover {
+  background-color: rgba(75, 85, 99, 0.3);
+  color: #f3f4f6;
+}
+
+.dark .docs-sidebar a.active {
+  color: #60a5fa;
+  background-color: rgba(96, 165, 250, 0.1);
+  font-weight: 500;
+}
+
+.dark .progress-text {
+  color: #9ca3af;
+}
+
+.dark .docs-sidebar .progress-indicator {
+  background-color: rgba(156, 163, 175, 0.2);
+}
+
+.dark .docs-sidebar .progress-bar {
+  background-color: #60a5fa;
+}

@@ -8,6 +8,14 @@
         "tags": ["Arquitetura", "Software", "Mapa Mental", "Fundamentos", "Design Patterns"]
     },
     {
+        "id": "teste-navegacao",
+        "title": "Sistema de Navegação Avançado",
+        "excerpt": "Demonstração do sistema de navegação automática com rastreamento de progresso e índice interativo.",
+        "date": "2025-05-26",
+        "readTime": "8 min",
+        "tags": ["Frontend", "Svelte", "UX", "Navegação"]
+    },
+    {
         "id": "trading-elder-ch5",
         "title": "Dominando Vendas no Trading: Estratégias de Saída e Short Selling",
         "excerpt": "Aprenda a realizar lucros e operar vendido com o Sistema Impulse e técnicas de saída de Alexander Elder.",
@@ -119,5 +127,93 @@
         "date": "2024-03-08",
         "readTime": "10 min",
         "tags": ["Software", "Requisitos", "Engenharia"]
+    },
+    {
+        "id": "01immutability",
+        "title": "1) Imutabilidade em Clojure: Fundamentos e Benefícios",
+        "excerpt": "Descubra como a imutabilidade é um pilar fundamental no Clojure e como ela simplifica o desenvolvimento de software.",
+        "date": "2024-03-20",
+        "readTime": "10 min",
+        "tags": ["Clojure", "Imutabilidade", "Programação Funcional"]
+    },
+    {
+        "id": "02functionalparadigm",
+        "title": "2) O Paradigma Funcional em Clojure: Uma Introdução",
+        "excerpt": "Explore os conceitos do paradigma funcional e como eles são aplicados no Clojure.",
+        "date": "2024-03-21",
+        "readTime": "12 min",
+        "tags": ["Clojure", "Paradigma Funcional", "Programação"]
+    },
+    {
+        "id": "03lisp",
+        "title": "3) Clojure e o Poder do Lisp: Uma Perspectiva Moderna",
+        "excerpt": "Entenda como o Clojure aproveita o poder do Lisp para oferecer uma linguagem moderna e expressiva.",
+        "date": "2024-03-22",
+        "readTime": "15 min",
+        "tags": ["Clojure", "Lisp", "Programação"]
+    },
+    {
+        "id": "04sequences",
+        "title": "4) Trabalhando com Sequências em Clojure: Um Guia Prático",
+        "excerpt": "Aprenda a manipular sequências em Clojure e aproveite ao máximo suas funções nativas.",
+        "date": "2024-03-23",
+        "readTime": "14 min",
+        "tags": ["Clojure", "Sequências", "Programação"]
+    },
+    {
+        "id": "05lazy",
+        "title": "5) Avaliação Preguiçosa em Clojure: Eficiência e Elegância",
+        "excerpt": "Descubra como a avaliação preguiçosa permite trabalhar com sequências infinitas e otimizar performance.",
+        "date": "2024-03-24",
+        "readTime": "13 min",
+        "tags": ["Clojure", "Lazy Evaluation", "Performance"]
+    },
+    {
+        "id": "06macros",
+        "title": "6) Macros em Clojure: Metaprogramação e Extensão da Linguagem",
+        "excerpt": "Aprenda a criar macros poderosos que estendem o Clojure e simplificam código repetitivo.",
+        "date": "2024-03-25",
+        "readTime": "16 min",
+        "tags": ["Clojure", "Macros", "Metaprogramação"]
+    },
+    {
+        "id": "07MultimethodsProtocols",
+        "title": "7) Multimethods e Protocols: Polimorfismo Avançado em Clojure",
+        "excerpt": "Explore as poderosas ferramentas de polimorfismo do Clojure para criar código flexível e extensível.",
+        "date": "2024-03-26",
+        "readTime": "15 min",
+        "tags": ["Clojure", "Polimorfismo", "Multimethods", "Protocols"]
+    },
+    {
+        "id": "08concurrency",
+        "title": "8) Concorrência em Clojure: Atoms, Refs e Agents",
+        "excerpt": "Domine os modelos de concorrência do Clojure para criar aplicações thread-safe e performáticas.",
+        "date": "2024-03-27",
+        "readTime": "17 min",
+        "tags": ["Clojure", "Concorrência", "Atoms", "Refs", "Agents"]
+    },
+    {
+        "id": "09java",
+        "title": "9) Interoperabilidade Java em Clojure: O Melhor de Dois Mundos",
+        "excerpt": "Aprenda a integrar código Java com Clojure e aproveitar todo o ecossistema da JVM.",
+        "date": "2024-03-28",
+        "readTime": "14 min",
+        "tags": ["Clojure", "Java", "Interoperabilidade", "JVM"]
+    },
+    {
+        "id": "10coreasync",
+        "title": "10) Core.async: Programação Assíncrona Elegante em Clojure",
+        "excerpt": "Explore channels e go blocks para criar código assíncrono limpo e expressivo.",
+        "date": "2024-03-29",
+        "readTime": "16 min",
+        "tags": ["Clojure", "Core.async", "Programação Assíncrona", "Channels"]
+    },
+    {
+        "id": "11parallelismmultithreading",
+        "title": "11) Paralelismo e Multithreading: Performance Avançada em Clojure",
+        "excerpt": "Maximize a performance com técnicas avançadas de paralelismo e programação multithread.",
+        "date": "2024-03-30",
+        "readTime": "18 min",
+        "tags": ["Clojure", "Paralelismo", "Multithreading", "Performance"]
     }
 ]

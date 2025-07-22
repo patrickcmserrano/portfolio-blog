@@ -12,6 +12,8 @@
 	import javascript from 'highlight.js/lib/languages/javascript';
 	import typescript from 'highlight.js/lib/languages/typescript';
 	import '../app.css';
+	import '../styles/dark-mode-enhanced.css'; // Estilos aprimorados para modo escuro
+	import '../styles/markdown-enhanced.css'; // Estilos aprimorados para markdown
 	import Header from '../components/Header.svelte';
 	import MobileDrawer from '../components/MobileDrawer.svelte';
 	import { observeThemeChanges } from '../utils/ThemeObserver';
@@ -45,10 +47,6 @@
 	// Usa o store modeCurrent para detectar o tema atual
 	$: isDark = $modeCurrent; // true = dark, false = light
 
-	// Classes dinâmicas para o Drawer com base no tema
-	$: drawerBg = isDark ? 'bg-gray-900' : 'bg-gray-100';
-	$: backdropBg = isDark ? 'bg-black/50' : 'bg-gray-800/30';
-
 	// Observa mudanças no tema
 	observeThemeChanges();
 </script>
@@ -62,7 +60,7 @@
 	<!-- Conteúdo da página -->
 	<slot />
 
-	<MobileDrawer {drawerBg} {backdropBg} />
+	<MobileDrawer />
 </AppShell>
 
 <style>

@@ -15,7 +15,8 @@
 }
 
 .dark .prose :where(strong):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
-	color: rgb(229 231 235); /* Cor cinza claro para tema escuro */
+	color: rgb(243 244 246); /* Cor mais clara para melhor contraste no tema escuro */
+	font-weight: 700; /* Aumentado para melhor visibilidade */
 }
 
 /* Sobrescrevendo a nova regra (code) */
@@ -27,6 +28,9 @@
 
 .dark .prose :where(code):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
 	color: white; /* Cor branca para tema escuro */
+	background-color: rgba(45, 55, 72, 0.5);
+	padding: 0.2em 0.4em;
+	border-radius: 0.25rem;
 }
 
 /* Sobrescrevendo a nova regra (pre) */
@@ -36,8 +40,14 @@
 }
 
 .dark .prose :where(pre):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
-	color: #171b20; /* Cor personalizada para tema escuro */
-	background-color: black; /* Background para tema escuro */
+	color: #e5e7eb; /* Cor mais clara para melhor contraste */
+	background-color: #1f2937; /* Background mais claro para melhor contraste */
+}
+
+.dark .prose :where(pre code):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+	background-color: transparent;
+	padding: 0;
+	color: inherit;
 }
 
 /* Sobrescrevendo a cor para ser igual a dos outros */
@@ -87,4 +97,71 @@ p,
 
 .text-xs {
 	font-size: 0.75rem; /* 12px no tamanho base */
+}
+
+/* Melhorias para acessibilidade no modo escuro */
+.dark .prose {
+  color: rgb(229 231 235); /* Texto principal mais claro */
+}
+
+.dark .prose h1, 
+.dark .prose h2, 
+.dark .prose h3, 
+.dark .prose h4, 
+.dark .prose h5, 
+.dark .prose h6 {
+  color: rgb(243 244 246); /* Títulos mais contrastantes */
+  font-weight: 700;
+}
+
+.dark .prose p,
+.dark .prose ul,
+.dark .prose ol {
+  color: rgb(209 213 219); /* Melhor contraste para textos */
+}
+
+.dark .prose a {
+  color: rgb(96 165 250); /* Links mais visíveis */
+  text-decoration: underline;
+}
+
+.dark .prose a:hover {
+  color: rgb(147 197 253); /* Hover state mais claro */
+  text-decoration: underline;
+}
+
+.dark .prose strong {
+  color: rgb(243 244 246); /* Texto em negrito mais visível */
+  font-weight: 600;
+}
+
+.dark .prose code {
+  color: rgb(255 255 255);
+  background-color: rgba(45, 55, 72, 0.5);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+}
+
+.dark .prose pre code {
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.dark .prose blockquote {
+  color: rgb(209 213 219);
+  border-left-color: rgb(75 85 99);
+}
+
+.dark .prose tr {
+  border-bottom-color: rgb(75 85 99);
+}
+
+.dark .prose thead {
+  color: rgb(243 244 246);
+  border-bottom-color: rgb(75 85 99);
+}
+
+.dark .prose tbody tr {
+  border-bottom-color: rgb(55 65 81);
 }
