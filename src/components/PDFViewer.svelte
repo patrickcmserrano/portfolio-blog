@@ -5,409 +5,346 @@
 	export let pdfUrl: string;
 	export let title: string = 'Visualizador PDF';
 
-	let container: HTMLDivElement;
-	let isFullscreen = false;
-	let isLoading = true;
-	let useGoogleViewer = false;
-	let hasError = false;
-	let errorMessage = '';
+	let viewerMode: 'loading' | 'iframe' | 'object' | 'fallback' = 'loading';
+	let showDebug = false;
 
 	onMount(() => {
 		if (!browser) return;
 		
-		// Testar se o PDF existe antes de tentar carregar
+		// Testar suporte a PDF e decidir o melhor método
+		testPdfSupport();
+	});
+
+	function testPdfSupport() {
+		// Primeiro, verificar se o PDF existe
 		fetch(pdfUrl, { method: 'HEAD' })
 			.then(response => {
 				if (!response.ok) {
-					console.error(`PDF não encontrado: ${pdfUrl} (Status: ${response.status})`);
-					hasError = true;
-					errorMessage = `Arquivo PDF não encontrado (Status: ${response.status})`;
-					useGoogleViewer = true;
+					throw new Error('PDF não encontrado');
 				}
-				isLoading = false;
+				
+				// Testar suporte nativo do navegador
+				const testObj = document.createElement('object');
+				testObj.data = 'data:application/pdf;base64,JVBERi0x';
+				testObj.type = 'application/pdf';
+				testObj.style.position = 'absolute';
+				testObj.style.left = '-9999px';
+				testObj.style.width = '1px';
+				testObj.style.height = '1px';
+				
+				document.body.appendChild(testObj);
+				
+				setTimeout(() => {
+					const hasNativeSupport = testObj.clientHeight > 0;
+					document.body.removeChild(testObj);
+					
+					// Decidir o melhor método baseado no suporte
+					if (hasNativeSupport) {
+						viewerMode = 'iframe';
+					} else {
+						viewerMode = 'object';
+					}
+				}, 100);
 			})
-			.catch(error => {
-				console.error('Erro ao verificar PDF:', error);
-				hasError = true;
-				errorMessage = 'Erro de conexão ao carregar o PDF';
-				useGoogleViewer = true;
-				isLoading = false;
+			.catch(() => {
+				viewerMode = 'fallback';
 			});
-
-		// Detectar se é necessário usar o Google Viewer
-		// (alguns navegadores corporativos bloqueiam PDFs)
-		setTimeout(() => {
-			if (hasError) return;
-			
-			const testObject = document.createElement('object');
-			testObject.data = 'data:application/pdf;base64,';
-			testObject.type = 'application/pdf';
-			testObject.style.position = 'absolute';
-			testObject.style.left = '-9999px';
-			document.body.appendChild(testObject);
-			
-			setTimeout(() => {
-				// Se o object não carregou corretamente, usar Google Viewer
-				if (testObject.clientHeight === 0) {
-					useGoogleViewer = true;
-				}
-				document.body.removeChild(testObject);
-			}, 100);
-		}, 1500);
-
-		// Escutar mudanças de fullscreen
-		document.addEventListener('fullscreenchange', handleFullscreenChange);
-		document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-		document.addEventListener('mozfullscreenchange', handleFullscreenChange);
-		document.addEventListener('MSFullscreenChange', handleFullscreenChange);
-
-		// Escutar tecla ESC para sair do fullscreen
-		document.addEventListener('keydown', handleKeydown);
-
-		return () => {
-			document.removeEventListener('fullscreenchange', handleFullscreenChange);
-			document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
-			document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
-			document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
-			document.removeEventListener('keydown', handleKeydown);
-		};
-	});
-
-	function handleKeydown(event: KeyboardEvent) {
-		if (event.key === 'Escape' && isFullscreen) {
-			toggleFullscreen();
-		}
 	}
 
-	function handleGoogleViewerError() {
-		console.warn('Visualizador primário falhou, tentando alternativa...');
-		// Mostrar visualizador simples
-		const primaryViewer = container?.querySelector('.primary-viewer');
-		const simpleViewer = container?.querySelector('.simple-viewer');
-		
-		if (primaryViewer) primaryViewer.classList.add('hidden');
-		if (simpleViewer) simpleViewer.classList.remove('hidden');
+	function openInNewTab() {
+		window.open(pdfUrl, '_blank', 'noopener,noreferrer');
 	}
 
-	async function toggleFullscreen() {
-		if (!browser) return;
-		
-		try {
-			if (!isFullscreen) {
-				// Tentar entrar em fullscreen com diferentes APIs
-				if (container.requestFullscreen) {
-					await container.requestFullscreen();
-				} else if ((container as any).webkitRequestFullscreen) {
-					await (container as any).webkitRequestFullscreen();
-				} else if ((container as any).mozRequestFullScreen) {
-					await (container as any).mozRequestFullScreen();
-				} else if ((container as any).msRequestFullscreen) {
-					await (container as any).msRequestFullscreen();
-				} else {
-					// Fallback: simular fullscreen com CSS
-					isFullscreen = true;
-					return;
-				}
-			} else {
-				// Sair do fullscreen
-				if (document.exitFullscreen) {
-					await document.exitFullscreen();
-				} else if ((document as any).webkitExitFullscreen) {
-					await (document as any).webkitExitFullscreen();
-				} else if ((document as any).mozCancelFullScreen) {
-					await (document as any).mozCancelFullScreen();
-				} else if ((document as any).msExitFullscreen) {
-					await (document as any).msExitFullscreen();
-				} else {
-					// Fallback: desativar fullscreen simulado
-					isFullscreen = false;
-					return;
-				}
-			}
-		} catch (error) {
-			console.warn('Erro ao alternar fullscreen:', error);
-			// Usar fallback com CSS
-			isFullscreen = !isFullscreen;
-		}
+	function downloadPdf() {
+		const link = document.createElement('a');
+		link.href = pdfUrl;
+		link.download = title.replace(/[^a-zA-Z0-9]/g, '_') + '.pdf';
+		link.click();
 	}
 
-	function handleFullscreenChange() {
-		// Verificar se realmente está em fullscreen
-		const fullscreenElement = document.fullscreenElement || 
-								 (document as any).webkitFullscreenElement || 
-								 (document as any).mozFullScreenElement || 
-								 (document as any).msFullscreenElement;
-		
-		isFullscreen = !!fullscreenElement && fullscreenElement === container;
+	function switchToFallback() {
+		viewerMode = 'fallback';
 	}
 </script>
 
-<svelte:head>
-	<title>{title} - Portfolio</title>
-</svelte:head>
+<!-- Debug toggle (apenas em desenvolvimento) -->
+{#if browser && window.location.hostname === 'localhost'}
+	<button 
+		on:click={() => showDebug = !showDebug}
+		style="position: absolute; top: 10px; right: 10px; z-index: 1000; padding: 4px 8px; font-size: 12px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;"
+	>
+		{showDebug ? 'Ocultar' : 'Debug'}
+	</button>
+{/if}
 
-{#if browser}
-<div 
-	bind:this={container}
-	class="pdf-viewer-container bg-gray-100 dark:bg-gray-900 rounded-lg shadow-lg"
-	class:fullscreen={isFullscreen}
->
-	<!-- Header com controles -->
-	<div class="pdf-controls bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-4 flex flex-wrap items-center justify-between gap-4">
-		<h3 class="text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
-		
-		<div class="flex items-center gap-4">
-			<p class="text-sm text-gray-600 dark:text-gray-400">
-				Use os controles do visualizador para navegar, fazer zoom e explorar o mapa mental
-			</p>
-			<div class="flex gap-2">
-				<button
-					on:click={toggleFullscreen}
-					class="px-4 py-2 text-sm bg-purple-500 text-white rounded hover:bg-purple-600 transition-colors"
-					title="Alternar tela cheia"
-				>
-					{isFullscreen ? '⤴ Sair da Tela Cheia' : '⤢ Tela Cheia'}
-				</button>
-				
-				{#if !useGoogleViewer}
-					<button
-						on:click={() => useGoogleViewer = true}
-						class="px-3 py-2 text-sm bg-green-500 text-white rounded hover:bg-green-600 transition-colors"
-						title="Usar visualizador alternativo"
-					>
-						� Alternativo
-					</button>
-				{:else}
-					<button
-						on:click={() => useGoogleViewer = false}
-						class="px-3 py-2 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-						title="Usar PDF.js padrão"
-					>
-						📄 PDF.js
-					</button>
-				{/if}
-			</div>
-		</div>
-	</div>
-
-	<!-- Área de visualização -->
-	<div class="pdf-content">
-		{#if isLoading}
-			<div class="flex items-center justify-center py-20">
-				<div class="text-center">
-					<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-					<p class="text-gray-600 dark:text-gray-400">Carregando PDF...</p>
-				</div>
-			</div>
-		{:else if hasError}
-			<!-- Exibir erro quando o PDF não pode ser carregado -->
-			<div class="flex items-center justify-center py-20">
-				<div class="text-center">
-					<div class="text-red-500 text-6xl mb-4">⚠️</div>
-					<h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
-						Erro ao carregar PDF
-					</h3>
-					<p class="text-gray-600 dark:text-gray-400 mb-4">{errorMessage}</p>
-					<div class="space-y-2">
-						<p class="text-sm text-gray-500">Tentativas:</p>
-						<div class="space-x-2">
-							<a 
-								href={pdfUrl} 
-								target="_blank" 
-								rel="noopener noreferrer"
-								class="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-							>
-								📄 Abrir em nova aba
-							</a>
-							<a 
-								href={pdfUrl} 
-								download
-								class="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors"
-							>
-								💾 Download
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		{:else}
-			{#if useGoogleViewer}
-				<!-- Múltiplos visualizadores com fallbacks -->
-				<div class="pdf-viewer-wrapper">
-					<!-- Método 1: PDF.js público -->
-					<iframe
-						src="https://mozilla.github.io/pdf.js/web/viewer.html?file={encodeURIComponent(window.location.origin + pdfUrl)}"
-						class="w-full pdf-object primary-viewer"
-						frameborder="0"
-						title={title}
-						on:error={handleGoogleViewerError}
-					></iframe>
-					
-					<!-- Método 2: Visualizador simples personalizado -->
-					<div class="simple-viewer hidden">
-						<div class="viewer-controls bg-gray-800 text-white p-2 flex justify-between items-center">
-							<span class="text-sm">📄 {title}</span>
-							<div class="flex gap-2">
-								<a
-									href={pdfUrl}
-									target="_blank"
-									class="px-2 py-1 bg-blue-600 rounded text-xs hover:bg-blue-700"
-								>
-									Abrir em nova aba
-								</a>
-								<a
-									href={pdfUrl}
-									download
-									class="px-2 py-1 bg-green-600 rounded text-xs hover:bg-green-700"
-								>
-									Download
-								</a>
-							</div>
-						</div>
-						<object
-							data="{pdfUrl}#toolbar=1&navpanes=1&scrollbar=1"
-							type="application/pdf"
-							class="w-full simple-pdf-object"
-							title={title}
-						>
-							<div class="flex items-center justify-center py-20">
-								<div class="text-center space-y-4">
-									<p class="text-gray-600 dark:text-gray-400 mb-4">
-										PDF não pode ser exibido inline neste navegador.
-									</p>
-									<div class="flex gap-4 justify-center flex-wrap">
-										<button
-											on:click={() => useGoogleViewer = false}
-											class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-										>
-											📄 Tentar PDF.js
-										</button>
-										<a
-											href={pdfUrl}
-											target="_blank"
-											rel="noopener noreferrer"
-											class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors inline-block"
-										>
-											📂 Abrir PDF
-										</a>
-									</div>
-								</div>
-							</div>
-						</object>
-					</div>
-				</div>
-			{:else}
-				<!-- Usando Mozilla PDF.js via CDN -->
-				<iframe
-					src="https://mozilla.github.io/pdf.js/web/viewer.html?file={encodeURIComponent(window.location.origin + pdfUrl)}"
-					class="w-full pdf-object"
-					frameborder="0"
-					title={title}
-				></iframe>
-			{/if}
-		{/if}
-	</div>
-</div>
-{:else}
-	<div class="pdf-viewer-container bg-gray-100 dark:bg-gray-900 rounded-lg shadow-lg">
-		<div class="pdf-content">
-			<div class="flex items-center justify-center py-20">
-				<div class="text-center">
-					<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-					<p class="text-gray-600 dark:text-gray-400">Preparando visualizador PDF...</p>
-				</div>
-			</div>
-		</div>
+<!-- Debug info (apenas se ativado) -->
+{#if showDebug}
+	<div style="padding: 1rem; background: #f8f9fa; margin-bottom: 1rem; border-radius: 4px; border-left: 4px solid #007bff;">
+		<h4 style="margin: 0 0 0.5rem 0; color: #495057;">🔍 Debug Info</h4>
+		<p style="margin: 0.25rem 0; font-size: 14px;"><strong>Título:</strong> {title}</p>
+		<p style="margin: 0.25rem 0; font-size: 14px;"><strong>URL:</strong> <code>{pdfUrl}</code></p>
+		<p style="margin: 0.25rem 0; font-size: 14px;"><strong>Modo:</strong> <span style="background: #e9ecef; padding: 2px 6px; border-radius: 3px;">{viewerMode}</span></p>
 	</div>
 {/if}
 
+<div class="pdf-container">
+	<!-- Header com controles -->
+	<div class="pdf-header">
+		<h3 class="pdf-title">📄 {title}</h3>
+		<div class="pdf-controls">
+			<button on:click={openInNewTab} class="btn btn-primary">
+				🔗 Nova Aba
+			</button>
+			<button on:click={downloadPdf} class="btn btn-secondary">
+				💾 Download
+			</button>
+		</div>
+	</div>
+
+	<!-- Conteúdo principal -->
+	<div class="pdf-content">
+		{#if viewerMode === 'loading'}
+			<!-- Estado de carregamento -->
+			<div class="center-content">
+				<div class="spinner"></div>
+				<p>Carregando mapa mental...</p>
+			</div>
+			
+		{:else if viewerMode === 'iframe'}
+			<!-- Visualizador principal: iframe -->
+			<iframe 
+				src={pdfUrl}
+				title={title}
+				class="pdf-viewer"
+				on:error={switchToFallback}
+			></iframe>
+			
+		{:else if viewerMode === 'object'}
+			<!-- Visualizador alternativo: object -->
+			<object 
+				data={pdfUrl}
+				type="application/pdf"
+				title={title}
+				class="pdf-viewer"
+			>
+				<!-- Fallback automático se object falhar -->
+				<div class="center-content">
+					<div class="fallback-message">
+						<div class="icon">📄</div>
+						<h4>Visualização não suportada</h4>
+						<p>Seu navegador não consegue exibir o PDF inline.</p>
+						<div class="fallback-actions">
+							<button on:click={openInNewTab} class="btn btn-primary">
+								🔗 Abrir PDF
+							</button>
+							<button on:click={downloadPdf} class="btn btn-secondary">
+								💾 Download
+							</button>
+						</div>
+					</div>
+				</div>
+			</object>
+			
+		{:else}
+			<!-- Fallback final: apenas links -->
+			<div class="center-content">
+				<div class="fallback-message">
+					<div class="icon">⚠️</div>
+					<h4>PDF não disponível</h4>
+					<p>Não foi possível carregar o mapa mental inline.</p>
+					<div class="fallback-actions">
+						<button on:click={openInNewTab} class="btn btn-primary">
+							🔗 Abrir em Nova Aba
+						</button>
+						<button on:click={downloadPdf} class="btn btn-secondary">
+							💾 Download PDF
+						</button>
+					</div>
+				</div>
+			</div>
+		{/if}
+	</div>
+</div>
+
 <style>
-	.pdf-viewer-container {
-		max-width: 100%;
-		min-height: 600px;
+	.pdf-container {
+		border: 1px solid #e0e0e0;
+		border-radius: 8px;
+		overflow: hidden;
+		background: white;
+		box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+		margin: 1rem 0;
 	}
-	
-	.pdf-viewer-container.fullscreen {
-		position: fixed !important;
-		top: 0 !important;
-		left: 0 !important;
-		width: 100vw !important;
-		height: 100vh !important;
-		z-index: 9999 !important;
-		border-radius: 0 !important;
-		background: #1f2937 !important;
-		box-shadow: none !important;
+
+	.pdf-header {
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		color: white;
+		padding: 1rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 1rem;
 	}
-	
+
+	.pdf-title {
+		margin: 0;
+		font-size: 1.2rem;
+		font-weight: 600;
+	}
+
+	.pdf-controls {
+		display: flex;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+	}
+
 	.pdf-content {
-		height: calc(100vh - 120px);
-		min-height: 600px;
-	}
-	
-	.fullscreen .pdf-content {
-		height: calc(100vh - 80px);
-	}
-	
-	.pdf-object {
-		height: 100%;
-		border: none;
-		background: white;
-	}
-	
-	.pdf-viewer-wrapper {
-		height: 100%;
 		position: relative;
+		background: #f8f9fa;
 	}
-	
-	.hidden {
-		display: none !important;
-	}
-	
-	.primary-viewer,
-	.simple-viewer {
-		transition: opacity 0.3s ease;
-	}
-	
-	.simple-pdf-object {
-		height: calc(100% - 40px);
+
+	.pdf-viewer {
+		width: 100%;
+		height: 500px;
 		border: none;
+		display: block;
 		background: white;
 	}
-	
-	.viewer-controls {
-		height: 40px;
-		font-size: 0.875rem;
+
+	.center-content {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 500px;
+		text-align: center;
 	}
-	
+
+	.fallback-message {
+		max-width: 400px;
+		padding: 2rem;
+	}
+
+	.fallback-message .icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+
+	.fallback-message h4 {
+		margin: 0 0 1rem 0;
+		color: #495057;
+		font-size: 1.25rem;
+	}
+
+	.fallback-message p {
+		margin: 0 0 2rem 0;
+		color: #6c757d;
+		line-height: 1.5;
+	}
+
+	.fallback-actions {
+		display: flex;
+		gap: 0.75rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.btn {
+		padding: 0.5rem 1rem;
+		border: none;
+		border-radius: 6px;
+		cursor: pointer;
+		font-size: 0.9rem;
+		font-weight: 500;
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		transition: all 0.2s ease;
+	}
+
+	.btn:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+	}
+
+	.btn-primary {
+		background: #007bff;
+		color: white;
+	}
+
+	.btn-primary:hover {
+		background: #0056b3;
+	}
+
+	.btn-secondary {
+		background: #6c757d;
+		color: white;
+	}
+
+	.btn-secondary:hover {
+		background: #545b62;
+	}
+
+	.spinner {
+		width: 40px;
+		height: 40px;
+		border: 4px solid #f3f3f3;
+		border-top: 4px solid #007bff;
+		border-radius: 50%;
+		animation: spin 1s linear infinite;
+		margin: 0 auto 1rem auto;
+	}
+
+	@keyframes spin {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	}
+
+	/* Dark mode support */
+	:global(.dark) .pdf-container {
+		background: #1f2937;
+		border-color: #374151;
+	}
+
+	:global(.dark) .pdf-content {
+		background: #111827;
+	}
+
+	:global(.dark) .fallback-message h4 {
+		color: #f9fafb;
+	}
+
+	:global(.dark) .fallback-message p {
+		color: #d1d5db;
+	}
+
 	/* Responsividade */
 	@media (max-width: 768px) {
-		.pdf-controls {
+		.pdf-header {
 			flex-direction: column;
-			gap: 1rem;
-		}
-		
-		.pdf-controls > div {
 			text-align: center;
 		}
 		
-		.pdf-content {
-			height: calc(100vh - 160px);
-			min-height: 500px;
+		.pdf-viewer {
+			height: 400px;
 		}
 		
-		.fullscreen .pdf-content {
-			height: calc(100vh - 120px);
-		}
-	}
-
-	@media (max-width: 480px) {
-		.pdf-controls p {
-			font-size: 0.75rem;
+		.center-content {
+			height: 400px;
 		}
 		
-		.pdf-controls button {
-			font-size: 0.75rem;
-			padding: 0.5rem 0.75rem;
+		.fallback-message {
+			padding: 1rem;
+		}
+		
+		.fallback-actions {
+			flex-direction: column;
+		}
+		
+		.btn {
+			width: 100%;
+			justify-content: center;
 		}
 	}
 </style>
