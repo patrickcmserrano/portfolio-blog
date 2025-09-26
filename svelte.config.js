@@ -26,6 +26,9 @@ const config = {
         paths: {
             base: '/portfolio-blog'
         },
+        serviceWorker: {
+            register: false
+        },
         prerender: {
             handleHttpError: 'warn',
             entries: [
