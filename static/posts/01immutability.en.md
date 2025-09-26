@@ -1,4 +1,4 @@
-
+# 1) Immutability and Persistent Data Structures in Clojure
 
 ### **1. Immutability and Persistent Data Structures in Clojure**
 
@@ -8,7 +8,7 @@
     - Simplifies reasoning about code (no side effects from mutation).
     - Enables safe concurrent programming (no race conditions or locks needed).
     - Facilitates functional programming by encouraging pure functions.
-- **Key Point**: Immutability is enforced for Clojure’s core data structures (e.g., lists, vectors, maps, sets). Variables (bound via `def` or `let`) are also immutable unless explicitly managed with state constructs like atoms or refs.
+- **Key Point**: Immutability is enforced for Clojure's core data structures (e.g., lists, vectors, maps, sets). Variables (bound via `def` or `let`) are also immutable unless explicitly managed with state constructs like atoms or refs.
 
 **Example**:
 ```clojure
@@ -22,7 +22,7 @@
 Here, `conj` creates a new vector with `4` added, while `my-vector` stays `[1 2 3]`.
 
 #### **Persistent Data Structures**
-- **Definition**: Clojure’s data structures are *persistent*, meaning they preserve previous versions of themselves when modified, using structural sharing to do so efficiently.
+- **Definition**: Clojure's data structures are *persistent*, meaning they preserve previous versions of themselves when modified, using structural sharing to do so efficiently.
 - **Structural Sharing**: Instead of copying the entire data structure, persistent data structures share unchanged parts between versions, minimizing memory usage and improving performance.
 - **Key Data Structures**:
     - **Lists**: Singly-linked, immutable lists (e.g., `(1 2 3)`).
@@ -50,7 +50,7 @@ Here, `conj` creates a new vector with `4` added, while `my-vector` stays `[1 2 
 1. **Thread Safety**: Since data is immutable, multiple threads can access the same structure without conflicts.
 2. **Time Travel**: You can keep references to older versions of data structures without worrying about them being modified.
 3. **Performance**: Structural sharing ensures operations like `conj`, `assoc`, or `pop` are efficient (typically O(log32 n) for vectors and maps, where log32 is nearly constant for practical purposes).
-4. **Functional Purity**: Encourages writing pure functions that don’t rely on mutable state.
+4. **Functional Purity**: Encourages writing pure functions that don't rely on mutable state.
 
 #### **Common Operations**
 Here are some key functions for working with persistent data structures:
@@ -70,7 +70,7 @@ Here are some key functions for working with persistent data structures:
     - `disj`: Removes an element (`(disj #{1 2 3} 2)` → `#{1 3}`).
 
 #### **Practical Example**
-Let’s combine immutability and persistence in a small program:
+Let's combine immutability and persistence in a small program:
 ```clojure
 (def user {:name "Alice" :age 30 :skills #{:clojure :java}})
 (def updated-user
@@ -87,7 +87,7 @@ Let’s combine immutability and persistence in a small program:
 #### **Gotchas and Tips**
 1. **Immutability vs. State**: While data structures are immutable, Clojure provides tools like `atom`, `ref`, and `agent` for managed mutable state when needed (we can explore these in later concepts).
 2. **Performance**: Persistent data structures are highly optimized, but operations like deep updates in large nested structures can be slower than mutable alternatives in some cases.
-3. **Equality**: Immutable structures support structural equality (`=`), so `(= [1 2 3] [1 2 3])` is `true`, regardless of whether they’re the same object.
+3. **Equality**: Immutable structures support structural equality (`=`), so `(= [1 2 3] [1 2 3])` is `true`, regardless of whether they're the same object.
 
 #### **Review Questions**
 1. What happens to the original data structure when you use `conj` or `assoc`?
@@ -118,3 +118,14 @@ Let’s combine immutability and persistence in a small program:
 
 4. **Immutability benefits in concurrent programs**: Since immutable data cannot be changed, multiple threads can safely read the same data structure without any risk of race conditions, data corruption, or the need for locks. This eliminates entire classes of concurrency bugs and makes parallel programming much safer and easier to reason about.
 
+## Contribution / Contribuição
+
+If you'd like to help translate this content to English, please feel free to contribute!
+
+Se você gostaria de ajudar a traduzir este conteúdo para o inglês, sinta-se à vontade para contribuir!
+
+---
+
+*This is a placeholder template. The complete English translation will be available soon.*
+
+*Este é um template temporário. A tradução completa em inglês estará disponível em breve.*

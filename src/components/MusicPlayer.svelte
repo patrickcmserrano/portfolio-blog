@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { _ } from 'svelte-i18n';
 	import { onMount, onDestroy } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { base } from '$app/paths';
@@ -11,6 +12,13 @@
 	let isMinimized = false;
 	let audio: HTMLAudioElement;
 	let progressBar: HTMLElement;
+
+	// Reactive variables with fallbacks
+	$: playText = $_('music.play') || 'Play';
+	$: pauseText = $_('music.pause') || 'Pause';
+	$: nextText = $_('music.next') || 'Next';
+	$: previousText = $_('music.previous') || 'Previous';
+	$: volumeText = $_('music.volume') || 'Volume';
 
 	// Store para persistir o estado do player entre navegações
 	export const musicPlayerStore = writable({

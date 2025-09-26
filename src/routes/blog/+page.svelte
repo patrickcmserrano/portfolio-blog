@@ -1,35 +1,29 @@
 <script lang="ts">
+    import { _ } from 'svelte-i18n';
     import { base } from '$app/paths';
     import BlogPost from './BlogPost.svelte';
     import { onMount } from 'svelte';
+    import { loadPostsMetadata, type PostMetadata } from '$lib/i18n/postLoader';
 
-    interface Post {
-        id: string;
-        title: string;
-        excerpt: string;
-        date: string;
-        readTime: string;
-        tags: string[];
-        videoId?: string | null;
-    }
-
-    let posts: Post[] = [];
-    let postsByTag: { [key: string]: Post[] } = {};
+    let posts: PostMetadata[] = [];
+    let postsByTag: { [key: string]: PostMetadata[] } = {};
     let sortedTags: string[] = [];
     let error: string | null = null;
 
+    // Reactive variables with fallbacks
+    $: title = $_('blog.title') || 'Blog';
+    $: description = $_('blog.description') || 'Um espaço para aprender e trocar ideias sobre tecnologia, mercados financeiros e práticas de desenvolvimento.';
+    $: loading = $_('general.loading') || 'Carregando...';
+    $: errorMessage = error ? `${$_('general.error') || 'Erro'}: ${error}` : null;
+
     async function loadPosts() {
         try {
-            console.log('Tentando carregar posts de:', `${base}/posts.json`);
-            const response = await fetch(`${base}/posts.json`);
-            if (!response.ok) {
-                throw new Error(`Falha ao carregar posts: ${response.status} ${response.statusText}`);
-            }
-            posts = await response.json();
+            console.log('Carregando posts com sistema de i18n...');
+            posts = await loadPostsMetadata();
             organizePosts();
         } catch (err) {
             console.error('Erro ao carregar posts:', err);
-            error = `Não foi possível carregar os posts. Verifique se o arquivo posts.json está no diretório static e acessível em ${base}/posts.json.`;
+            error = `Não foi possível carregar os posts. Erro: ${err instanceof Error ? err.message : 'Erro desconhecido'}`;
         }
     }
 
@@ -55,19 +49,19 @@
     });
 </script>
 
-<div class="container mx-auto space-y-16 px-4 min-h-screen text-gray-100">
+<div class="blog-page container mx-auto space-y-16 px-4 min-h-screen text-gray-100">
     <!-- Blog Hero Section -->
     <section class="pt-20 text-center">
-        <h1 class="h1 mb-6 text-white">Blog</h1>
+        <h1 class="h1 mb-6 text-white">{title}</h1>
         <p class="mx-auto max-w-2xl text-xl text-gray-300">
-            Um espaço para aprender e trocar ideias sobre tecnologia, mercados financeiros e práticas de desenvolvimento.
+            {description}
         </p>
     </section>
 
     <!-- Blog Posts -->
     <section class="mx-auto max-w-5xl">
-        {#if error}
-            <p class="text-center text-red-400">{error}</p>
+        {#if errorMessage}
+            <p class="text-center text-red-400">{errorMessage}</p>
         {:else if sortedTags.length > 0}
             {#each sortedTags as tag}
                 <h2 class="h2 mt-12 mb-6 text-white">{tag} ({postsByTag[tag].length})</h2>
@@ -78,34 +72,28 @@
                 </div>
             {/each}
         {:else}
-            <p class="text-center text-gray-300">Carregando posts...</p>
+            <p class="text-center text-gray-300">{loading}</p>
         {/if}
     </section>
 </div>
 
 <style>
-    :global(.card) {
-        background-color: #1e3a8a;
+    /* Estilos específicos para cards do blog - aplicados globalmente apenas nesta página */
+    :global(.blog-page .blog-card) {
         border-radius: 0.5rem;
         overflow: hidden;
         height: 100%;
         display: flex;
         flex-direction: column;
     }
-    :global(.card > section) {
+    
+    :global(.blog-page .blog-card > section) {
         flex-grow: 1;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
-    :global(.card h2) {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #ffffff;
-    }
-    :global(.card p) {
-        color: #d1d5db;
-    }
+    
     :global(.chip) {
         display: inline-block;
         padding: 0.2rem 0.6rem;
@@ -118,11 +106,13 @@
         margin-bottom: 0.5rem;
         line-height: 1.2;
     }
+    
     :global(.anchor) {
         color: #a78bfa;
         text-decoration: none;
         transition: color 0.2s ease-in-out;
     }
+    
     :global(.anchor:hover) {
         color: #c4b5fd;
     }

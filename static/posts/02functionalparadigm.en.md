@@ -1,3 +1,5 @@
+# 02functionalparadigm (English)
+
 ### **2. Functional Programming Paradigm in Clojure**
 
 #### **What is Functional Programming?**
@@ -244,3 +246,4 @@ Lazy evaluation is useful for several reasons:
 ; Without lazy evaluation, all elements would be processed even though
 ; only the first result is needed
 ```
+

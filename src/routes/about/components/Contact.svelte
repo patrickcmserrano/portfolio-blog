@@ -1,9 +1,17 @@
+<script lang="ts">
+	import { _ } from 'svelte-i18n';
+
+	$: title = $_('about.contact.title') || 'Contato';
+	$: description = $_('about.contact.description') || 'Estou sempre aberto a discutir novos projetos, oportunidades de colaboração ou apenas trocar ideias sobre tecnologia. Sinta-se à vontade para entrar em contato através de qualquer um dos canais abaixo:';
+	$: githubLabel = $_('about.contact.github') || 'GitHub';
+	$: linkedinLabel = $_('about.contact.linkedin') || 'LinkedIn';
+	$: emailLabel = $_('about.contact.email') || 'Email';
+</script>
+
 <section class="card variant-glass-surface py-16">
-	<h2 class="h2 mb-8 text-center">Contato</h2>
+	<h2 class="h2 mb-8 text-center">{title}</h2>
 	<p class="mx-auto mb-8 max-w-2xl text-center">
-		Estou sempre aberto a discutir novos projetos, oportunidades de colaboração ou apenas trocar
-		ideias sobre tecnologia. Sinta-se à vontade para entrar em contato através de qualquer um dos
-		canais abaixo:
+		{description}
 	</p>
 	<div class="flex justify-center space-x-10">
 		<a
@@ -22,7 +30,7 @@
 					/>
 				</svg>
 			</div>
-			<span class="mt-2 font-medium">GitHub</span>
+			<span class="mt-2 font-medium">{githubLabel}</span>
 		</a>
 		<a
 			href="https://www.linkedin.com/in/patrickcmserrano/"
@@ -38,7 +46,7 @@
 					/>
 				</svg>
 			</div>
-			<span class="mt-2 font-medium">LinkedIn</span>
+			<span class="mt-2 font-medium">{linkedinLabel}</span>
 		</a>
 		<a
 			href="mailto:patrickcmserrano@protonmail.com"
@@ -55,7 +63,7 @@
 					/>
 				</svg>
 			</div>
-			<span class="mt-2 font-medium">Email</span>
+			<span class="mt-2 font-medium">{emailLabel}</span>
 		</a>
 	</div>
 </section>

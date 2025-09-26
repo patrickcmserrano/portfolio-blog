@@ -20,6 +20,8 @@
 	import MusicNotification from '../components/MusicNotification.svelte';
 	import MusicKeyboardShortcuts from '../components/MusicKeyboardShortcuts.svelte';
 	import { observeThemeChanges } from '../utils/ThemeObserver';
+	import '../lib/i18n';
+	import I18nLoader from '../components/I18nLoader.svelte';
 
 	import { onMount } from 'svelte';
 	import '../app.postcss'; // Seu arquivo de estilos Tailwind
@@ -55,25 +57,27 @@
 </script>
 
 <!-- App Shell -->
-<AppShell>
-	<svelte:fragment slot="header">
-		<Header />
-	</svelte:fragment>
+<I18nLoader>
+	<AppShell>
+		<svelte:fragment slot="header">
+			<Header />
+		</svelte:fragment>
 
-	<!-- Conteúdo da página -->
-	<slot />
+		<!-- Conteúdo da página -->
+		<slot />
 
-	<MobileDrawer />
-</AppShell>
+		<MobileDrawer />
+	</AppShell>
 
-<!-- Player de música -->
-<MusicPlayer />
+	<!-- Player de música -->
+	<MusicPlayer />
 
-<!-- Notificação sobre música -->
-<MusicNotification />
+	<!-- Notificação sobre música -->
+	<MusicNotification />
 
-<!-- Atalhos de teclado para música -->
-<MusicKeyboardShortcuts />
+	<!-- Atalhos de teclado para música -->
+	<MusicKeyboardShortcuts />
+</I18nLoader>
 
 <style>
 	:global(html) {

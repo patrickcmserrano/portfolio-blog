@@ -5,12 +5,20 @@
 	import { getDrawerStore } from '@skeletonlabs/skeleton';
 	import { LightSwitch } from '@skeletonlabs/skeleton';
 	import FontSizeControls from './FontSizeControls.svelte';
+	import LanguageSwitch from './LanguageSwitch.svelte';
+	import { _ } from 'svelte-i18n';
 
 	const drawerStore = getDrawerStore();
 
 	function openDrawer() {
 		drawerStore.open();
 	}
+	
+	// Fallbacks para navegação
+	$: homeLabel = $_('nav.home') || 'Home';
+	$: aboutLabel = $_('nav.about') || 'Sobre';
+	$: blogLabel = $_('nav.blog') || 'Blog';
+	$: aboutSiteLabel = $_('nav.aboutSite') || 'Sobre este Site';
 </script>
 
 <div class="fixed bottom-0 left-0 right-0 z-10 sm:hidden">
@@ -22,15 +30,16 @@
 		regionBackdrop="bg-surface-900/50"
 	>
 		<nav class="flex flex-row justify-end space-x-4 p-4">
+			<LanguageSwitch />
 			<FontSizeControls />
 		</nav>
 		<nav class="flex flex-row justify-end space-x-4 p-4">
-			<NavLink href="{base}/" label="Home" on:click={() => drawerStore.close()} />
-			<NavLink href="{base}/about" label="Sobre" on:click={() => drawerStore.close()} />
-			<NavLink href="{base}/blog" label="Blog" on:click={() => drawerStore.close()} />
+			<NavLink href="{base}/" label={homeLabel} on:click={() => drawerStore.close()} />
+			<NavLink href="{base}/about" label={aboutLabel} on:click={() => drawerStore.close()} />
+			<NavLink href="{base}/blog" label={blogLabel} on:click={() => drawerStore.close()} />
 			<NavLink
 				href="{base}/about-site"
-				label="Sobre este Site"
+				label={aboutSiteLabel}
 				on:click={() => drawerStore.close()}
 			/>
 		</nav>

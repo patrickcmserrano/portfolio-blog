@@ -1,0 +1,403 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "blog": "Blog",
+    "aboutSite": "About this Site",
+    "language": "Language"
+  },
+  "home": {
+    "title": "Hello, I'm Patrick",
+    "description": "Software Engineer focused on distributed architectures and payment systems. Specialized in Clojure and microservices, transforming complex challenges into elegant and scalable solutions.",
+    "aboutLinkText": "Learn about my journey",
+    "blogLinkText": "Technical articles"
+  },
+  "competencies": {
+    "title": "Key Competencies",
+    "architecture": {
+      "title": "Software Architecture",
+      "description": "Experience with modular architectures like Polylith and microservices, focusing on maintainability, testability, and scalability."
+    },
+    "integration": {
+      "title": "Systems Integration",
+      "description": "Development of robust pipelines for integration with multiple payment services, e-commerce, and fraud analysis."
+    },
+    "fullstack": {
+      "title": "Full Stack Development",
+      "description": "Experience in frontend and backend development with focus on quality, automated testing, and agile practices."
+    },
+    "languages": {
+      "title": "Languages",
+      "clojure": "Clojure & ClojureScript",
+      "java": "Java",
+      "javascript": "JavaScript/TypeScript",
+      "python": "Python",
+      "golang": "Go",
+      "sql": "SQL"
+    },
+    "frameworks": {
+      "title": "Frameworks & Libraries",
+      "spring": "Spring Boot",
+      "react": "React/Next.js",
+      "svelte": "Svelte/SvelteKit",
+      "node": "Node.js",
+      "express": "Express",
+      "kafka": "Apache Kafka"
+    },
+    "tools": {
+      "title": "Tools & Platforms",
+      "docker": "Docker & Kubernetes",
+      "aws": "AWS",
+      "git": "Git & GitHub",
+      "databases": "PostgreSQL, MongoDB",
+      "monitoring": "Monitoring & Observability"
+    }
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "viewProject": "View Project",
+    "viewCode": "View Code",
+    "liveDemo": "Live Demo",
+    "technologies": "Technologies",
+    "impact": "Impact",
+    "noProjects": "No projects found",
+    "intelligenceModule": {
+      "title": "Intelligence Module",
+      "year": "2024",
+      "description": "Development of automated pipelines for integration with multiple services (Getnet, VTEX, Mercado Pago, Clearsale), including frontend implementation with Superset for data visualization.",
+      "impact": [
+        "Automation of manual processes",
+        "Reliable data foundation for decisions",
+        "Interactive dashboards for clients"
+      ]
+    },
+    "paymentEnginePolylith": {
+      "title": "Payment Engine - Polylith Architecture",
+      "year": "2023",
+      "description": "Refactored the Payment Engine using Polylith architecture, creating a modular, scalable and testable system, divided into independent components.",
+      "impact": [
+        "40% reduction in development time",
+        "Better modularity and component reusability",
+        "Foundation for future payment and e-commerce projects"
+      ]
+    },
+    "paymentEngineOnyx": {
+      "title": "Payment Engine - Distributed Processing with Onyx",
+      "year": "2023",
+      "description": "Enhanced the Payment Engine using Onyx, a distributed computing platform, to process asynchronous tasks such as report generation. User-triggered commands (e.g., 'generate report') were processed by Onyx in a daily scheduled task that generated and sent reports via email.",
+      "impact": [
+        "Reduced system load, enabling efficient daily report generation",
+        "Reliable and scalable processing",
+        "System performance optimization with scheduled jobs"
+      ]
+    },
+    "paymentEngineIntegrations": {
+      "title": "Payment Engine - Integrations and Pipelines",
+      "year": "2022",
+      "description": "Implemented integrations with service APIs such as Pix, Adyen, Cielo, Getnet, Pagar.me, Rede, MercadoPago and VTEX, using automated pipelines for transactional data processing.",
+      "impact": [
+        "Seamless integration with multiple payment providers",
+        "30% reduction in time to implement new services",
+        "Efficient real-time data collection and processing"
+      ]
+    },
+    "authenticationSystem": {
+      "title": "Authentication System",
+      "year": "2022",
+      "description": "Development of a robust authentication and authorization system for APIs, using interceptors and AWS Cognito integration.",
+      "impact": [
+        "25% reduction in security incidents",
+        "Centralized authentication",
+        "Granular permission control"
+      ]
+    },
+    "zougueMpmsFullstack": {
+      "title": "Zougue MPMS - Fullstack",
+      "year": "2021",
+      "description": "Assumed fullstack responsibilities, integrating backend and frontend with Clojure, Pathom and Datomic, optimizing AWS infrastructure with auto-scaling and ensuring scalability for multiple VTEX channels and accounts.",
+      "impact": [
+        "Consolidated expertise in distributed and scalable systems",
+        "Delivered seller center agnostic solution for large e-commerce operations",
+        "Implemented pipelines for item absorption and advanced deduplication"
+      ]
+    },
+    "zougueMpmsFrontend": {
+      "title": "Zougue MPMS - Frontend",
+      "year": "2020",
+      "description": "Contributed to the development of reactive and intuitive interfaces, focusing on catalog structure and content management, such as category trees, attributes and product sheets.",
+      "impact": [
+        "Enhanced skills in functional programming and UX",
+        "Improved usability for marketplace operators",
+        "Item deduplication and massive operations"
+      ]
+    },
+    "realEstatePlatform": {
+      "title": "Real Estate Platform (fexô)",
+      "year": "2018-2019",
+      "description": "Development of a mobile and web application for property advertising, negotiation, buying and selling, using ClojureScript, Fulcro and React Native.",
+      "impact": [
+        "Efficient connection between clients and brokers",
+        "Enhanced user experience",
+        "Powerful tool for the real estate market"
+      ]
+    },
+    "paymentGateway": {
+      "title": "Payment Gateway",
+      "year": "2018",
+      "description": "Collaborated on the development of a web application for a payment gateway, focused on secure and efficient transactions, using ClojureScript and Fulcro.",
+      "impact": [
+        "Contributed to delivering a functional solution",
+        "First contact with commercial software development",
+        "Initial experience in systems integration"
+      ]
+    }
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "languages": "Languages & Core",
+    "frameworks": "Frameworks & Libraries",
+    "databases": "Databases",
+    "cloud": "Infrastructure & Tools"
+  },
+  "about": {
+    "hero": {
+      "title": "About Me",
+      "subtitle": "Learn about my professional journey",
+      "description1": "Software engineer passionate about solving complex challenges through elegant and creative solutions. My journey is marked by challenging projects that required critical thinking and innovation, especially in developing distributed systems and payment solutions.",
+      "description2": "At Moleque de Ideias, I transformed challenges into innovation opportunities: from refactoring the Payment Engine with Polylith architecture, to developing robust authentication systems and integration pipelines that connect multiple services. Each project was a chance to combine technical creativity with practical results."
+    },
+    "experience": {
+      "title": "Professional Experience",
+      "senior": {
+        "title": "Senior Software Developer (Fullstack)",
+        "company": "Moleque de Ideias",
+        "period": "2021 - 2024",
+        "description": "Development of innovative solutions for payment systems and e-commerce, with emphasis on code refactoring, API integration, software architecture, and process automation.",
+        "achievements": "Key Achievements:",
+        "achievement1": "**Intelligence Module (2024):** Development of automated pipelines for integration with services like Getnet, Pagar.me, Rede, ClearSale, MercadoPago, VTEX, and Unico, optimizing data collection, processing, and storage in Datomic database.",
+        "achievement2": "**Payment Engine Refactoring (2023):** Led refactoring of the \"Payment Engine\" and \"Formiguinhas Service\" with Polylith architecture, promoting modularity, reusability, scalability, and testability.",
+        "achievement3": "**API Security (2022):** Implementation of authentication interceptors for public and private APIs, reducing security incidents by 25%.",
+        "achievement4": "**Distributed Processing with Onyx in Payment Engine (2023):** Implemented Onyx to manage asynchronous tasks in the Payment Engine, such as report generation. Configured workflows to process commands (e.g., \"generate report\") in a daily scheduled task that generated and sent reports via email, ensuring scalability and responsiveness.",
+        "achievement5": "**Payment Integration (2021-2023):** Development and certification of adapters for Pix and credit cards, integrating with Adyen, Cielo, Clearsale, VTEX, Rede services, among others, including QR Code generation for Pix.",
+        "achievement6": "**Frontend and UX (2021-2024):** Creation of UI components with Fulcro-RAD and React, improving usability and interface aesthetics."
+      },
+      "junior": {
+        "title": "Junior Software Developer (Frontend)",
+        "company": "Moleque de Ideias",
+        "period": "2019 - 2021",
+        "description": "Development of web and mobile applications with ClojureScript, Fulcro, and React Native, contributing to solutions in real estate, e-commerce, and product catalog management sectors.",
+        "achievements": "Key Achievements:",
+        "achievement1": "**Mobile and Web Application for Real Estate (fexô):** Participated in the development of a mobile application with ClojureScript, Fulcro, and React Native.",
+        "achievement2": "**Retail/E-commerce Startup:** Contributed to frontend development (ClojureScript, Fulcro, React), delivering continuous updates.",
+        "achievement3": "**Zougue MPMS - Initial Phase (2021-2022):** Interface development with Clojure and React, implementing catalog management and item deduplication."
+      },
+      "intern": {
+        "title": "Software Development Internship (Frontend)",
+        "company": "Moleque de Ideias",
+        "period": "2018 - 2019",
+        "description": "Software development internship, focusing on web application integration and support for startup incubation projects.",
+        "achievements": "Key Achievements:",
+        "achievement1": "**Payment Gateway Integration:** Collaborated on building and integrating a web application for a payment gateway, using ClojureScript and Fulcro. The project involved developing initial interfaces and API integration, providing a functional solution for secure transactions. My participation included supporting route configuration and basic testing, ensuring efficient communication between frontend and backend.",
+        "achievement2": "**Real Estate Platform (fexô) - Initial Phase:** Participated in the initial planning and development stages of a web and mobile platform for property advertising, negotiation, buying, and selling. The focus was on creating an initial user experience, connecting clients to brokers. I contributed to implementing basic UI functionalities, using ClojureScript, React Native, and tools like Pathom and Datomic, under team guidance."
+      }
+    },
+    "education": {
+      "title": "Academic Background",
+      "academicFormation": "Academic Background",
+      "softwareEngineering": "Software Engineering",
+      "computerScience": "Bachelor's Degree in Computer Science",
+      "physics": "Bachelor's Degree in Physics",
+      "incomplete": "Incomplete",
+      "physicsNote": "Incomplete, focused on software development for the quantum information laboratory."
+    },
+    "contact": {
+      "title": "Get In Touch",
+      "description": "Let's talk about opportunities, interesting projects, or exchange ideas about technology.",
+      "email": "Email",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    }
+  },
+  "aboutSite": {
+    "title": "About this Website",
+    "subtitle": "Technologies and inspiration behind this portfolio",
+    "description": "Learn more about the technologies and tools used in this portfolio",
+    "viewOnGithub": "View on GitHub",
+    "repositoryLink": "GitHub Repository",
+    "techStack": {
+      "title": "Tech Stack",
+      "frontend": "Frontend",
+      "styling": "Styling",
+      "deployment": "Deployment",
+      "features": "Features"
+    },
+    "inspiration": {
+      "title": "Inspiration",
+      "description": "This site was created with a focus on performance, accessibility and user experience, using modern web development best practices."
+    },
+    "sourceCode": {
+      "title": "Source Code",
+      "description": "This project is open source and available on GitHub. Feel free to explore the code, suggest improvements, or use it as inspiration for your own projects."
+    }
+  },
+  "blog": {
+    "title": "Technical Blog",
+    "description": "Articles about software engineering, technology, and development",
+    "noArticles": "No articles available yet.",
+    "categories": "Categories",
+    "tags": "Tags",
+    "readingTime": "min read",
+    "publishedOn": "Published on",
+    "backToBlog": "← Back to Blog",
+    "relatedPosts": "Related Articles"
+  },
+  "music": {
+    "title": "Music Collection",
+    "description": "A curated selection of music that inspires my coding sessions",
+    "nowPlaying": "Now Playing",
+    "play": "Play",
+    "pause": "Pause",
+    "next": "Next",
+    "previous": "Previous",
+    "volume": "Volume",
+    "duration": "Duration",
+    "currentTime": "Current Time",
+    "playlist": "Playlist",
+    "trackInfo": "Track Information",
+    "artist": "Artist",
+    "album": "Album",
+    "year": "Year",
+    "genre": "Genre",
+    "loading": "Loading music...",
+    "error": "Error loading music",
+    "noTracks": "No tracks available",
+    "shuffle": "Shuffle",
+    "repeat": "Repeat",
+    "muted": "Muted",
+    "unmuted": "Unmuted",
+    "fullscreen": "Fullscreen",
+    "exitFullscreen": "Exit Fullscreen",
+    "addToPlaylist": "Add to Playlist",
+    "removeFromPlaylist": "Remove from Playlist",
+    "share": "Share",
+    "download": "Download",
+    "lyrics": "Lyrics",
+    "noLyrics": "No lyrics available",
+    "visualizer": "Visualizer",
+    "equalizer": "Equalizer",
+    "playbackSpeed": "Playback Speed",
+    "crossfade": "Crossfade",
+    "autoplay": "Autoplay",
+    "quality": "Quality",
+    "settings": "Settings",
+    "about": "About",
+    "help": "Help",
+    "feedback": "Feedback",
+    "shortcuts": {
+      "title": "Music Shortcuts",
+      "playPause": "Space - Play/Pause",
+      "next": "→ - Next",
+      "previous": "← - Previous",
+      "volumeUp": "↑ - Volume Up",
+      "volumeDown": "↓ - Volume Down"
+    }
+  },
+  "general": {
+    "readMore": "Read more",
+    "readLess": "Read less",
+    "loading": "Loading...",
+    "error": "Error",
+    "tryAgain": "Try again",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "open": "Open",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "clear": "Clear",
+    "reset": "Reset",
+    "apply": "Apply",
+    "submit": "Submit",
+    "send": "Send",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "continue": "Continue",
+    "finish": "Finish",
+    "start": "Start",
+    "stop": "Stop",
+    "pause": "Pause",
+    "play": "Play",
+    "retry": "Retry",
+    "refresh": "Refresh",
+    "update": "Update",
+    "upload": "Upload",
+    "download": "Download",
+    "share": "Share",
+    "copy": "Copy",
+    "cut": "Cut",
+    "paste": "Paste",
+    "undo": "Undo",
+    "redo": "Redo",
+    "select": "Select",
+    "selectAll": "Select All",
+    "deselect": "Deselect",
+    "present": "present",
+    "availableLanguages": "Available in:"
+  },
+  "pdf": {
+    "loading": "Loading PDF...",
+    "error": "Error loading PDF",
+    "retry": "Retry",
+    "download": "Download PDF",
+    "fullscreen": "Fullscreen",
+    "zoom": "Zoom",
+    "page": "Page",
+    "of": "of",
+    "previousPage": "Previous Page",
+    "nextPage": "Next Page",
+    "firstPage": "First Page",
+    "lastPage": "Last Page",
+    "zoomIn": "Zoom In",
+    "zoomOut": "Zoom Out",
+    "fitWidth": "Fit Width",
+    "fitHeight": "Fit Height",
+    "actualSize": "Actual Size",
+    "rotateLeft": "Rotate Left",
+    "rotateRight": "Rotate Right",
+    "print": "Print",
+    "search": "Search in PDF",
+    "searchPlaceholder": "Search text...",
+    "noResults": "No results found",
+    "searchResults": "Search Results",
+    "close": "Close PDF"
+  },
+  "errors": {
+    "generic": "An unexpected error occurred",
+    "networkError": "Network connection error",
+    "notFound": "Page not found",
+    "serverError": "Internal server error",
+    "unauthorized": "Access denied",
+    "forbidden": "Action not allowed",
+    "timeout": "Request timed out",
+    "fileNotFound": "File not found",
+    "invalidFormat": "Invalid file format",
+    "fileTooLarge": "File too large",
+    "uploadFailed": "Upload failed",
+    "downloadFailed": "Download failed",
+    "saveFailed": "Save failed",
+    "loadFailed": "Load failed",
+    "connectionLost": "Connection lost",
+    "sessionExpired": "Session expired",
+    "invalidInput": "Invalid input",
+    "validationFailed": "Validation failed",
+    "permissionDenied": "Permission denied",
+    "resourceUnavailable": "Resource unavailable",
+    "maintenanceMode": "Site under maintenance",
+    "browserNotSupported": "Browser not supported"
+  }
+}

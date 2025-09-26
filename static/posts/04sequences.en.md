@@ -1,3 +1,5 @@
+# 04sequences (English)
+
 ### **4. Sequences and Collections in Clojure**
 
 #### **Overview**
@@ -138,3 +140,4 @@ Let’s process a collection of maps using sequences:
    ```
 
 4. **Sequence Abstraction Benefits**: The sequence abstraction is useful because it provides a uniform API that works across all collection types and other sequential data sources. You can use the same functions (`map`, `filter`, `reduce`, etc.) whether you're working with vectors, lists, maps, sets, strings, or even custom data sources. This uniformity makes code more consistent, reusable, and easier to reason about, while also enabling powerful composition of operations through function chaining.
+

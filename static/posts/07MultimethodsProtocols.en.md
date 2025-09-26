@@ -1,3 +1,5 @@
+# 07MultimethodsProtocols (English)
+
 ### **7. Multimethods and Protocols in Clojure**
 
 #### **Overview**
@@ -185,3 +187,4 @@ Solution to question 3 (multimethod for shapes):
 (shape-area {:type :square :side 4})      ; => 16
 (shape-area {:type :triangle :base 3 :height 4}) ; => 6
 ```
+

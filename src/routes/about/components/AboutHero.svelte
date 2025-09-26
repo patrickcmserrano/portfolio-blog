@@ -1,5 +1,13 @@
+<script lang="ts">
+	import { _ } from 'svelte-i18n';
+
+	$: title = $_('about.hero.title') || 'Sobre Mim';
+	$: description1 = $_('about.hero.description1') || 'Engenheiro de software apaixonado por resolver desafios complexos através de soluções elegantes e criativas. Minha jornada é marcada por projetos desafiadores que exigiram pensamento crítico e inovação, especialmente no desenvolvimento de sistemas distribuídos e soluções de pagamento.';
+	$: description2 = $_('about.hero.description2') || 'Na Moleque de Ideias, transformei desafios em oportunidades de inovação: desde a refatoração do Motor de Pagamentos com arquitetura Polylith, até o desenvolvimento de sistemas de autenticação robustos e pipelines de integração que conectam múltiplos serviços. Cada projeto foi uma chance de combinar criatividade técnica com resultados práticos.';
+</script>
+
 <section class="py-20 text-center">
-	<h1 class="h1 mb-6">Sobre Mim</h1>
+	<h1 class="h1 mb-6">{title}</h1>
 	<div class="mb-8 flex justify-center">
 		<div class="h-96 w-96 overflow-hidden rounded-full">
 			<img src="/portfolio-blog/profile.jpg" alt="Profile" class="h-full w-full object-cover" />
@@ -7,16 +15,10 @@
 	</div>
 	<div class="mx-auto max-w-3xl space-y-6">
 		<p class="text-xl">
-			Engenheiro de software apaixonado por resolver desafios complexos através de soluções
-			elegantes e criativas. Minha jornada é marcada por projetos desafiadores que exigiram
-			pensamento crítico e inovação, especialmente no desenvolvimento de sistemas distribuídos e
-			soluções de pagamento.
+			{description1}
 		</p>
 		<p class="text-xl">
-			Na Moleque de Ideias, transformei desafios em oportunidades de inovação: desde a refatoração
-			do Motor de Pagamentos com arquitetura Polylith, até o desenvolvimento de sistemas de
-			autenticação robustos e pipelines de integração que conectam múltiplos serviços. Cada projeto
-			foi uma chance de combinar criatividade técnica com resultados práticos.
+			{description2}
 		</p>
 	</div>
 </section>

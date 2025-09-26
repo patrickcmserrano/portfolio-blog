@@ -3,15 +3,15 @@
 	export let competencies: { title: string; description: string }[];
 </script>
 
-<section class="card variant-glass-surface p-4 py-12">
+<section class="bg-surface-50 dark:bg-surface-800 py-12">
 	<div class="mx-auto max-w-6xl px-6">
-		<h2 class="h2 mb-8 text-center">{title}</h2>
+		<h2 class="h2 mb-8 text-center text-surface-900 dark:text-surface-100">{title}</h2>
 		<div class="grid grid-cols-1 justify-around gap-8 md:grid-cols-3">
 			{#each competencies as competency}
-				<div class="card variant-filled-surface flex h-full flex-col p-4">
+				<div class="card bg-surface-100 dark:bg-surface-700 border border-surface-300 dark:border-surface-600 flex h-full flex-col p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
 					<div class="flex h-full items-center gap-4">
 						<svg
-							class="h-8 w-8 flex-shrink-0 text-primary-500"
+							class="h-8 w-8 flex-shrink-0 text-primary-600 dark:text-primary-400"
 							fill="none"
 							stroke="currentColor"
 							viewBox="0 0 24 24"
@@ -24,8 +24,8 @@
 							/>
 						</svg>
 						<div class="flex flex-grow flex-col">
-							<h3 class="h3 mb-2">{competency.title}</h3>
-							<p class="text-justify text-base">
+							<h3 class="h3 mb-2 text-surface-900 dark:text-surface-100">{competency.title}</h3>
+							<p class="text-justify text-base text-surface-700 dark:text-surface-200">
 								{competency.description}
 							</p>
 						</div>

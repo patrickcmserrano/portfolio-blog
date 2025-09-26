@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { _ } from 'svelte-i18n';
 	import { marked } from 'marked';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
@@ -7,6 +8,9 @@
 	import PDFViewer from '../../../components/PDFViewer.svelte';
 	import MarkdownSummary from '../../../components/MarkdownSummary.svelte';
 	import MarkdownSummaryTracker from '../../../components/MarkdownSummaryTracker.svelte';
+	import PostLanguageSelector from '../../../components/PostLanguageSelector.svelte';
+	import { loadPostContent, getAvailableLanguages, type PostContent } from '$lib/i18n/postLoader';
+	import { currentLocale } from '$lib/i18n';
 
 	let content: any = '';
 	let loading = true;
@@ -14,6 +18,13 @@
 	let postId = '';
 	let markdownContainer: HTMLElement;
 	let showSummary = true;
+	let postData: PostContent | null = null;
+	let availableLanguages: string[] = [];
+
+	// Reactive variables with fallbacks
+	$: errorTitle = $_('errors.loadFailed') || 'Erro ao carregar o post';
+	$: notFoundError = $_('errors.notFound') || 'Post não encontrado';
+	$: loadingText = $_('general.loading') || 'Carregando...';
 
 	// Função para sanitizar o HTML de forma segura
 	function sanitizeHtml(html: string): string {
@@ -23,9 +34,17 @@
 	// Obtém o ID do post a partir dos parâmetros da página
 	$: {
 		const unsubscribe = page.subscribe((p) => {
-			postId = p.params.id;
+			if (p.params.id !== postId) {
+				postId = p.params.id;
+				loadPost();
+			}
 		});
 		unsubscribe();
+	}
+
+	// Recarrega o post quando o idioma muda
+	$: if ($currentLocale && postId) {
+		loadPost();
 	}
 
 	// Usar o hook para processar seções colapsáveis após o conteúdo ser carregado
@@ -48,20 +67,29 @@
 		}, 200);
 	}
 
-	// Carrega o conteúdo do post ao montar o componente
-	onMount(async () => {
+	// Carrega o conteúdo do post
+	async function loadPost() {
+		if (!postId) return;
+		
+		loading = true;
+		error = '';
+		
 		try {
-			const response = await fetch(`${base}/posts/${postId}.md`);
-			if (!response.ok) {
-				throw new Error('Post não encontrado');
+			// Carrega idiomas disponíveis para o post
+			availableLanguages = await getAvailableLanguages(postId);
+			
+			// Carrega o conteúdo do post
+			postData = await loadPostContent(postId);
+			
+			if (!postData) {
+				throw new Error(notFoundError);
 			}
-			const rawContent = await response.text();
 			
 			// Processar conteúdo especial para posts com PDFViewer
 			if (postId === 'fundamentos-arquitetura-software') {
-				content = await processSpecialContent(rawContent);
+				content = await processSpecialContent(postData.content);
 			} else {
-				content = sanitizeHtml(await marked(rawContent));
+				content = sanitizeHtml(await marked(postData.content));
 			}
 		} catch (err) {
 			if (err instanceof Error) {
@@ -72,7 +100,7 @@
 		} finally {
 			loading = false;
 		}
-	});
+	}
 
 	async function processSpecialContent(rawContent: string): Promise<{ beforeHtml: string; afterHtml: string }> {
 		// Dividir o conteúdo em partes antes e depois do PDFViewer
@@ -118,14 +146,20 @@
 				<div
 					class="h-12 w-12 animate-spin rounded-full border-b-2 border-t-2 border-primary-500"
 				></div>
+				<p class="ml-4 text-lg">{loadingText}</p>
 			</div>
 		{:else if error}
 			<div class="card bg-error-100 p-6 text-center shadow-lg dark:bg-error-900 dark:text-error-100">
-				<h2 class="mb-2 text-2xl font-bold text-error-500 dark:text-error-300">Erro ao carregar o post</h2>
+				<h2 class="mb-2 text-2xl font-bold text-error-500 dark:text-error-300">{errorTitle}</h2>
 				<p class="text-error-700 dark:text-error-200">{error}</p>
 			</div>
 		{:else}
 			<div class="card bg-surface-50 p-6 shadow-lg dark:bg-surface-800">
+				<!-- Seletor de idiomas -->
+				{#if availableLanguages.length > 1}
+					<PostLanguageSelector {availableLanguages} />
+				{/if}
+				
 				{#if postId === 'fundamentos-arquitetura-software'}
 					<article class="prose prose-lg max-w-none text-gray-800 dark:text-gray-200 mb-8" bind:this={markdownContainer}>
 						{@html content.beforeHtml}
