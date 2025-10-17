@@ -147,12 +147,12 @@
         "period": "2021 - 2024",
         "description": "Desenvolvimento de soluções inovadoras para sistemas de pagamento e e-commerce, com ênfase em refatoração de código, integração de APIs, arquitetura de software e automação de processos.",
         "achievements": "Principais Realizações:",
-        "achievement1": "**Módulo de Inteligência (2024):** Desenvolvimento de auto-pipelines para integração com serviços como Getnet, Pagar.me, Rede, ClearSale, MercadoPago, VTEX e Unico, otimizando a coleta, processamento e armazenamento de dados no banco Datomic.",
-        "achievement2": "**Refatoração do Motor de Pagamentos (2023):** Liderança na refatoração do \"Motor de Pagamentos\" e \"Formiguinhas Service\" com a arquitetura Polylith, promovendo modularidade, reutilização, escalabilidade e testabilidade.",
-        "achievement3": "**Segurança em APIs (2022):** Implementação de interceptadores de autenticação para APIs públicas e privadas, reduzindo incidentes de segurança em 25%.",
-        "achievement4": "**Processamento Distribuído com Onyx no Motor de Pagamentos (2023):** Implementei Onyx para gerenciar tarefas assíncronas no Motor de Pagamentos, como a geração de relatórios. Configurei workflows para processar comandos (ex.: \"gerar relatório\") em uma tarefa agendada diária, que gerava e enviava relatórios por e-mail, garantindo escalabilidade e responsividade.",
-        "achievement5": "**Integração de Pagamentos (2021-2023):** Desenvolvimento e homologação de adaptadores para Pix e cartão de crédito, integrando com os serviços Adyen, Cielo, Clearsale, VTEX, Rede, dentre outros, incluindo geração de QR Code para Pix.",
-        "achievement6": "**Frontend e UX (2021-2024):** Criação de componentes de UI com Fulcro-RAD e React, aprimorando a usabilidade e a estética das interfaces."
+        "achievement1": "Módulo de Inteligência (2024): Desenvolvimento de auto-pipelines para integração com serviços como Getnet, Pagar.me, Rede, ClearSale, MercadoPago, VTEX e Unico, otimizando a coleta, processamento e armazenamento de dados no banco Datomic.",
+        "achievement2": "Refatoração do Motor de Pagamentos (2023): Liderança na refatoração do \"Motor de Pagamentos\" e \"Formiguinhas Service\" com a arquitetura Polylith, promovendo modularidade, reutilização, escalabilidade e testabilidade.",
+        "achievement3": "Segurança em APIs (2022): Implementação de interceptadores de autenticação para APIs públicas e privadas, reduzindo incidentes de segurança em 25%.",
+        "achievement4": "Processamento Distribuído com Onyx no Motor de Pagamentos (2023): Implementei Onyx para gerenciar tarefas assíncronas no Motor de Pagamentos, como a geração de relatórios. Configurei workflows para processar comandos (ex.: \"gerar relatório\") em uma tarefa agendada diária, que gerava e enviava relatórios por e-mail, garantindo escalabilidade e responsividade.",
+        "achievement5": "Integração de Pagamentos (2021-2023): Desenvolvimento e homologação de adaptadores para Pix e cartão de crédito, integrando com os serviços Adyen, Cielo, Clearsale, VTEX, Rede, dentre outros, incluindo geração de QR Code para Pix.",
+        "achievement6": "Frontend e UX (2021-2024): Criação de componentes de UI com Fulcro-RAD e React, aprimorando a usabilidade e a estética das interfaces."
       },
       "junior": {
         "title": "Desenvolvedor de Software Junior (Frontend)",
@@ -160,9 +160,9 @@
         "period": "2019 - 2021",
         "description": "Desenvolvimento de aplicações web e mobile com ClojureScript, Fulcro e React Native, contribuindo para soluções nos setores imobiliário, e-commerce e gestão de catálogos de produtos.",
         "achievements": "Principais Realizações:",
-        "achievement1": "**Aplicação Mobile e Web para Imobiliárias (fexô):** Participação no desenvolvimento de uma aplicação mobile com ClojureScript, Fulcro e React Native.",
-        "achievement2": "**Startup de Varejo/E-commerce:** Contribuição no desenvolvimento frontend (ClojureScript, Fulcro, React), entregando atualizações contínuas.",
-        "achievement3": "**Zougue MPMS - Fase Inicial (2021-2022):** Desenvolvimento de interfaces com Clojure e React, implementando gestão de catálogos e deduplicação de itens."
+        "achievement1": "Aplicação Mobile e Web para Imobiliárias (fexô): Participação no desenvolvimento de uma aplicação mobile com ClojureScript, Fulcro e React Native.",
+        "achievement2": "Startup de Varejo/E-commerce: Contribuição no desenvolvimento frontend (ClojureScript, Fulcro, React), entregando atualizações contínuas.",
+        "achievement3": "Zougue MPMS - Fase Inicial (2021-2022): Desenvolvimento de interfaces com Clojure e React, implementando gestão de catálogos e deduplicação de itens."
       },
       "intern": {
         "title": "Estágio em Desenvolvimento de Software (Frontend)",
@@ -170,8 +170,8 @@
         "period": "2018 - 2019",
         "description": "Estágio em desenvolvimento de software, com foco em integração de aplicações web e suporte a projetos de incubação de startups.",
         "achievements": "Principais Realizações:",
-        "achievement1": "**Integração de Gateway de Pagamentos:** Colaborei na construção e integração de uma aplicação web para um gateway de pagamentos, utilizando ClojureScript e Fulcro. O projeto envolveu o desenvolvimento de interfaces iniciais e a integração com APIs, proporcionando uma solução funcional para transações seguras. Minha participação incluiu suporte na configuração de rotas e testes básicos, garantindo a comunicação eficiente entre frontend e backend.",
-        "achievement2": "**Plataforma Imobiliária (fexô) - Fase Inicial:** Participei das etapas iniciais de planejamento e desenvolvimento de uma plataforma web e mobile para anúncio, negociação, compra e venda de imóveis. O foco estava em criar uma experiência inicial de usuário, conectando clientes a corretores. Contribuí com a implementação de funcionalidades básicas de UI, utilizando ClojureScript, React Native e ferramentas como Pathom e Datomic, sob orientação da equipe."
+        "achievement1": "Integração de Gateway de Pagamentos: Colaborei na construção e integração de uma aplicação web para um gateway de pagamentos, utilizando ClojureScript e Fulcro. O projeto envolveu o desenvolvimento de interfaces iniciais e a integração com APIs, proporcionando uma solução funcional para transações seguras. Minha participação incluiu suporte na configuração de rotas e testes básicos, garantindo a comunicação eficiente entre frontend e backend.",
+        "achievement2": "Plataforma Imobiliária (fexô) - Fase Inicial: Participei das etapas iniciais de planejamento e desenvolvimento de uma plataforma web e mobile para anúncio, negociação, compra e venda de imóveis. O foco estava em criar uma experiência inicial de usuário, conectando clientes a corretores. Contribuí com a implementação de funcionalidades básicas de UI, utilizando ClojureScript, React Native e ferramentas como Pathom e Datomic, sob orientação da equipe."
       }
     },
     "education": {
@@ -279,6 +279,10 @@
     "finish": "Finalizar",
     "present": "presente",
     "availableLanguages": "Disponível em:"
+  },
+  "theme": {
+    "switchToLight": "Mudar para modo claro",
+    "switchToDark": "Mudar para modo escuro"
   },
   "pdf": {
     "loading": "Carregando mapa mental...",

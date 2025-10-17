@@ -23,20 +23,28 @@
 	import { onMount } from 'svelte';
 	import '../app.postcss'; // Seu arquivo de estilos Tailwind
 
-	onMount(async () => {
-		// Initialize theme mode - check localStorage first, then system preference
+	// Initialize modeCurrent IMMEDIATELY before any components render
+	// This must run synchronously to prevent LightSwitch from showing wrong state
+	if (typeof window !== 'undefined') {
 		const storedTheme = localStorage.getItem('modeCurrent');
 		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 		
-		// Determine initial theme: use stored preference, otherwise check system, default to dark
-		const shouldBeDark = storedTheme !== null ? storedTheme === 'true' : (prefersDark || true);
-		
-		// Apply theme to document
-		if (shouldBeDark) {
-			document.documentElement.classList.add('dark');
+		let shouldBeDark;
+		if (storedTheme === null || storedTheme === undefined) {
+			shouldBeDark = prefersDark !== false;
+			localStorage.setItem('modeCurrent', String(shouldBeDark));
 		} else {
-			document.documentElement.classList.remove('dark');
+			shouldBeDark = storedTheme === 'true' || storedTheme === true;
 		}
+		
+		// Set the store immediately so LightSwitch reads the correct value
+		modeCurrent.set(shouldBeDark);
+	}
+
+	onMount(async () => {
+		// Theme is already initialized above, just ensure DOM classes are in sync
+		const currentTheme = modeCurrent.subscribe(() => {}); // Trigger initial subscription
+		currentTheme(); // Unsubscribe immediately
 		
 		// Set data-theme attribute for Skeleton UI
 		if (!document.documentElement.getAttribute('data-theme')) {
@@ -93,8 +101,14 @@
 	// Fecha o drawer automaticamente quando a página muda
 	$: $page.url.pathname, drawerStore.close();
 
-	// Usa o store modeCurrent para detectar o tema atual
-	$: isDark = $modeCurrent; // true = dark, false = light
+	// Subscribe to modeCurrent changes to keep DOM in sync with LightSwitch
+	$: if (typeof window !== 'undefined') {
+		if ($modeCurrent) {
+			document.documentElement.classList.add('dark');
+		} else {
+			document.documentElement.classList.remove('dark');
+		}
+	}
 
 	// Observa mudanças no tema
 	observeThemeChanges();

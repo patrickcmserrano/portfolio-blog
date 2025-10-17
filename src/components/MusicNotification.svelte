@@ -1,11 +1,18 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
+	import { _ } from 'svelte-i18n';
 
 	// Store para controlar se a notificação deve ser exibida
 	const showNotification = writable(false);
 	
 	let dismissed = false;
+
+	// Reactive translations with fallbacks
+	$: notificationTitle = $_('music.notification.title') || '🎵 Música Ambiente Disponível';
+	$: notificationMessage = $_('music.notification.message') || 'Ative o player de música no canto inferior direito para uma experiência mais relaxante enquanto navega pelo site. Este software foi produzido ouvindo estas músicas.';
+	$: dismissLabel = $_('music.notification.dismiss') || 'Entendi';
+	$: closeLabel = $_('general.close') || 'Fechar';
 
 	onMount(() => {
 		// Verifica se o usuário já foi notificado sobre a música
@@ -49,17 +56,17 @@
 			
 			<div class="flex-1">
 				<h3 class="text-sm font-semibold text-token mb-1">
-					🎵 Música Ambiente Disponível
+					{notificationTitle}
 				</h3>
 				<p class="text-sm text-surface-600-300-token mb-2">
-					Ative o player de música no canto inferior direito para uma experiência mais relaxante enquanto navega pelo site. Este software foi produzido ouvindo estas músicas.
+					{notificationMessage}
 				</p>
 				<div class="flex space-x-2">
 					<button
 						on:click={dismissNotification}
 						class="btn btn-sm variant-ghost-primary"
 					>
-						Entendi
+						{dismissLabel}
 					</button>
 				</div>
 			</div>
@@ -68,7 +75,7 @@
 			<button
 				on:click={dismissNotification}
 				class="flex-shrink-0 text-surface-500 hover:text-surface-700"
-				aria-label="Fechar notificação"
+				aria-label={closeLabel}
 			>
 				<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>

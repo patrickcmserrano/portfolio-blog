@@ -16,15 +16,16 @@
 </script>
 
 <div class="font-controls">
-	<button on:click={decreaseFont} class="round-btn variant-filled btn">Aa-</button>
-	<button on:click={resetFont} class="variant-ghost btn">Reset</button>
-	<button on:click={increaseFont} class="round-btn variant-filled btn">Aa+</button>
+	<button on:click={decreaseFont} class="round-btn btn btn-sm variant-ghost-surface">Aa-</button>
+	<button on:click={resetFont} class="btn btn-sm variant-ghost-surface">Reset</button>
+	<button on:click={increaseFont} class="round-btn btn btn-sm variant-ghost-surface">Aa+</button>
 </div>
 
 <style>
 	.font-controls {
 		display: flex;
 		gap: 0.5rem;
+		align-items: center;
 	}
 
 	.round-btn {
@@ -34,5 +35,21 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		padding: 0;
+	}
+
+	/* Ensure text is visible in both light and dark modes */
+	.round-btn,
+	button {
+		color: inherit;
+	}
+
+	:global(.dark) .font-controls button {
+		color: rgb(229 231 235); /* text-gray-200 */
+	}
+
+	:global(.dark) .font-controls button:hover {
+		background-color: rgb(55 65 81); /* bg-gray-700 */
+		color: rgb(255 255 255);
 	}
 </style>

@@ -8,7 +8,8 @@
 	// PDFViewer is dynamically imported only when needed for specific posts
 	import MarkdownSummary from '../../../components/MarkdownSummary.svelte';
 	import MarkdownSummaryTracker from '../../../components/MarkdownSummaryTracker.svelte';
-	import PostLanguageSelector from '../../../components/PostLanguageSelector.svelte';
+	// Runtime translations disabled - PostLanguageSelector not needed
+	// import PostLanguageSelector from '../../../components/PostLanguageSelector.svelte';
 	import { loadPostContent, getAvailableLanguages, type PostContent } from '$lib/i18n/postLoader';
 	import { currentLocale } from '$lib/i18n';
 
@@ -44,10 +45,10 @@
 		unsubscribe();
 	}
 
-	// Recarrega o post quando o idioma muda
-	$: if ($currentLocale && postId) {
-		loadPost();
-	}
+	// Runtime translations disabled - posts load only once
+	// $: if ($currentLocale && postId) {
+	// 	loadPost();
+	// }
 
 	// Usar o hook para processar seções colapsáveis após o conteúdo ser carregado
 	$: if (markdownContainer && content && !loading) {
@@ -77,8 +78,9 @@
 		error = '';
 		
 		try {
-			// Carrega idiomas disponíveis para o post
-			availableLanguages = await getAvailableLanguages(postId);
+			// Runtime translations disabled - no language detection needed
+			// availableLanguages = await getAvailableLanguages(postId);
+			availableLanguages = []; // Disable language selector
 			
 			// Carrega o conteúdo do post
 			postData = await loadPostContent(postId);
@@ -163,10 +165,10 @@
 			</div>
 		{:else}
 			<div class="card bg-surface-50 p-6 shadow-lg dark:bg-surface-800">
-				<!-- Seletor de idiomas -->
-				{#if availableLanguages.length > 1}
+				<!-- Runtime translations disabled - Language selector hidden -->
+				<!-- {#if availableLanguages.length > 1}
 					<PostLanguageSelector {availableLanguages} />
-				{/if}
+				{/if} -->
 				
 				{#if postId === 'fundamentos-arquitetura-software'}
 					<article class="prose prose-lg max-w-none text-gray-800 dark:text-gray-200 mb-8" bind:this={markdownContainer}>

@@ -3,7 +3,7 @@
 	import { base } from '$app/paths';
 	import NavLink from './NavLink.svelte';
 	import { getDrawerStore } from '@skeletonlabs/skeleton';
-	import { LightSwitch } from '@skeletonlabs/skeleton';
+	import ThemeToggle from './ThemeToggle.svelte';
 	import FontSizeControls from './FontSizeControls.svelte';
 	import LanguageSwitch from './LanguageSwitch.svelte';
 	import { _ } from 'svelte-i18n';
@@ -44,7 +44,7 @@
 			<div class="flex items-center space-x-4">
 				<LanguageSwitch />
 				<FontSizeControls />
-				<LightSwitch />
+				<ThemeToggle />
 			</div>
 		</svelte:fragment>
 	</AppBar>

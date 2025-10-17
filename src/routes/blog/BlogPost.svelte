@@ -2,20 +2,23 @@
 	import { _ } from 'svelte-i18n';
 	import { base } from '$app/paths';
 	import { onMount } from 'svelte';
-	import { getLanguageIndicator } from '$lib/i18n/postLoader';
+	// Runtime translations disabled - no language indicators
+	// import { getLanguageIndicator } from '$lib/i18n/postLoader';
 	
 	export let post;
-	let languageIndicator = '';
+	// Runtime translations disabled
+	// let languageIndicator = '';
 
 	// Reactive variables with fallbacks
 	$: readingTime = $_('blog.readingTime') || 'de leitura';
 	$: readMore = $_('general.readMore') || 'Ler mais';
 
-	onMount(async () => {
-		if (post.availableLanguages && post.availableLanguages.length > 1) {
-			languageIndicator = getLanguageIndicator(post.availableLanguages);
-		}
-	});
+	// Runtime translations disabled
+	// onMount(async () => {
+	// 	if (post.availableLanguages && post.availableLanguages.length > 1) {
+	// 		languageIndicator = getLanguageIndicator(post.availableLanguages);
+	// 	}
+	// });
 </script>
 
 <div class="blog-card variant-filled-surface">
@@ -31,9 +34,10 @@
 				class="anchor transition-colors duration-200 hover:text-tertiary-500"
 			>
 				{post.title}
-				{#if languageIndicator}
+				<!-- Runtime translations disabled - no language flags -->
+				<!-- {#if languageIndicator}
 					<span class="language-flags ml-2" title="Available languages">{languageIndicator}</span>
-				{/if}
+				{/if} -->
 			</a>
 		</h2>
 		<div class="mb-4 flex items-center text-sm opacity-70">

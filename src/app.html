@@ -20,9 +20,21 @@
 		<!-- Theme initialization script - MUST run before any content renders -->
 		<script>
 			(function() {
+				// Skeleton UI stores modeCurrent as boolean true/false (not string)
 				const storedTheme = localStorage.getItem('modeCurrent');
 				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-				const shouldBeDark = storedTheme !== null ? storedTheme === 'true' : (prefersDark || true);
+				
+				// Parse stored value: could be 'true', 'false', true, false, or null
+				let shouldBeDark;
+				if (storedTheme === null || storedTheme === undefined) {
+					// No preference stored, use system preference or default to true (dark)
+					shouldBeDark = prefersDark !== false; // Default to dark if no system preference
+					// Store the initial preference
+					localStorage.setItem('modeCurrent', String(shouldBeDark));
+				} else {
+					// Parse the stored value (handles both string and boolean)
+					shouldBeDark = storedTheme === 'true' || storedTheme === true;
+				}
 				
 				console.log('[Theme Init] storedTheme:', storedTheme);
 				console.log('[Theme Init] prefersDark:', prefersDark);

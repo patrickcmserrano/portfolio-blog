@@ -174,12 +174,12 @@
         "period": "2021 - 2024",
         "description": "Development of innovative solutions for payment systems and e-commerce, with emphasis on code refactoring, API integration, software architecture, and process automation.",
         "achievements": "Key Achievements:",
-        "achievement1": "**Intelligence Module (2024):** Development of automated pipelines for integration with services like Getnet, Pagar.me, Rede, ClearSale, MercadoPago, VTEX, and Unico, optimizing data collection, processing, and storage in Datomic database.",
-        "achievement2": "**Payment Engine Refactoring (2023):** Led refactoring of the \"Payment Engine\" and \"Formiguinhas Service\" with Polylith architecture, promoting modularity, reusability, scalability, and testability.",
-        "achievement3": "**API Security (2022):** Implementation of authentication interceptors for public and private APIs, reducing security incidents by 25%.",
-        "achievement4": "**Distributed Processing with Onyx in Payment Engine (2023):** Implemented Onyx to manage asynchronous tasks in the Payment Engine, such as report generation. Configured workflows to process commands (e.g., \"generate report\") in a daily scheduled task that generated and sent reports via email, ensuring scalability and responsiveness.",
-        "achievement5": "**Payment Integration (2021-2023):** Development and certification of adapters for Pix and credit cards, integrating with Adyen, Cielo, Clearsale, VTEX, Rede services, among others, including QR Code generation for Pix.",
-        "achievement6": "**Frontend and UX (2021-2024):** Creation of UI components with Fulcro-RAD and React, improving usability and interface aesthetics."
+        "achievement1": "Intelligence Module (2024): Development of automated pipelines for integration with services like Getnet, Pagar.me, Rede, ClearSale, MercadoPago, VTEX, and Unico, optimizing data collection, processing, and storage in Datomic database.",
+        "achievement2": "Payment Engine Refactoring (2023): Led refactoring of the \"Payment Engine\" and \"Formiguinhas Service\" with Polylith architecture, promoting modularity, reusability, scalability, and testability.",
+        "achievement3": "API Security (2022): Implementation of authentication interceptors for public and private APIs, reducing security incidents by 25%.",
+        "achievement4": "Distributed Processing with Onyx in Payment Engine (2023): Implemented Onyx to manage asynchronous tasks in the Payment Engine, such as report generation. Configured workflows to process commands (e.g., \"generate report\") in a daily scheduled task that generated and sent reports via email, ensuring scalability and responsiveness.",
+        "achievement5": "Payment Integration (2021-2023): Development and certification of adapters for Pix and credit cards, integrating with Adyen, Cielo, Clearsale, VTEX, Rede services, among others, including QR Code generation for Pix.",
+        "achievement6": "Frontend and UX (2021-2024): Creation of UI components with Fulcro-RAD and React, improving usability and interface aesthetics."
       },
       "junior": {
         "title": "Junior Software Developer (Frontend)",
@@ -187,9 +187,9 @@
         "period": "2019 - 2021",
         "description": "Development of web and mobile applications with ClojureScript, Fulcro, and React Native, contributing to solutions in real estate, e-commerce, and product catalog management sectors.",
         "achievements": "Key Achievements:",
-        "achievement1": "**Mobile and Web Application for Real Estate (fexô):** Participated in the development of a mobile application with ClojureScript, Fulcro, and React Native.",
-        "achievement2": "**Retail/E-commerce Startup:** Contributed to frontend development (ClojureScript, Fulcro, React), delivering continuous updates.",
-        "achievement3": "**Zougue MPMS - Initial Phase (2021-2022):** Interface development with Clojure and React, implementing catalog management and item deduplication."
+        "achievement1": "Mobile and Web Application for Real Estate (fexô): Participated in the development of a mobile application with ClojureScript, Fulcro, and React Native.",
+        "achievement2": "Retail/E-commerce Startup: Contributed to frontend development (ClojureScript, Fulcro, React), delivering continuous updates.",
+        "achievement3": "Zougue MPMS - Initial Phase (2021-2022): Interface development with Clojure and React, implementing catalog management and item deduplication."
       },
       "intern": {
         "title": "Software Development Internship (Frontend)",
@@ -197,8 +197,8 @@
         "period": "2018 - 2019",
         "description": "Software development internship, focusing on web application integration and support for startup incubation projects.",
         "achievements": "Key Achievements:",
-        "achievement1": "**Payment Gateway Integration:** Collaborated on building and integrating a web application for a payment gateway, using ClojureScript and Fulcro. The project involved developing initial interfaces and API integration, providing a functional solution for secure transactions. My participation included supporting route configuration and basic testing, ensuring efficient communication between frontend and backend.",
-        "achievement2": "**Real Estate Platform (fexô) - Initial Phase:** Participated in the initial planning and development stages of a web and mobile platform for property advertising, negotiation, buying, and selling. The focus was on creating an initial user experience, connecting clients to brokers. I contributed to implementing basic UI functionalities, using ClojureScript, React Native, and tools like Pathom and Datomic, under team guidance."
+        "achievement1": "Payment Gateway Integration: Collaborated on building and integrating a web application for a payment gateway, using ClojureScript and Fulcro. The project involved developing initial interfaces and API integration, providing a functional solution for secure transactions. My participation included supporting route configuration and basic testing, ensuring efficient communication between frontend and backend.",
+        "achievement2": "Real Estate Platform (fexô) - Initial Phase: Participated in the initial planning and development stages of a web and mobile platform for property advertising, negotiation, buying, and selling. The focus was on creating an initial user experience, connecting clients to brokers. I contributed to implementing basic UI functionalities, using ClojureScript, React Native, and tools like Pathom and Datomic, under team guidance."
       }
     },
     "education": {
@@ -293,6 +293,23 @@
     "about": "About",
     "help": "Help",
     "feedback": "Feedback",
+    "notification": {
+      "title": "🎵 Ambient Music Available",
+      "message": "Activate the music player in the lower right corner for a more relaxing experience while browsing the site. This software was produced while listening to these songs.",
+      "enable": "Enable",
+      "dismiss": "Dismiss"
+    },
+    "player": {
+      "play": "Play",
+      "pause": "Pause",
+      "previous": "Previous",
+      "next": "Next",
+      "shuffle": "Shuffle",
+      "repeat": "Repeat",
+      "volume": "Volume",
+      "minimize": "Minimize",
+      "maximize": "Maximize"
+    },
     "shortcuts": {
       "title": "Music Shortcuts",
       "playPause": "Space - Play/Pause",
@@ -348,6 +365,10 @@
     "deselect": "Deselect",
     "present": "present",
     "availableLanguages": "Available in:"
+  },
+  "theme": {
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode"
   },
   "pdf": {
     "loading": "Loading PDF...",
