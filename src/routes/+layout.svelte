@@ -4,21 +4,18 @@
 	import { LightSwitch, modeCurrent } from '@skeletonlabs/skeleton';
 	import { base } from '$app/paths';
 	import { page } from '$app/stores';
-	import hljs from 'highlight.js/lib/core';
+	// Highlight.js and language registration moved to onMount for client-only initialization
 	import 'highlight.js/styles/github-dark.css';
-	import { storeHighlightJs } from '@skeletonlabs/skeleton';
-	import xml from 'highlight.js/lib/languages/xml';
-	import css from 'highlight.js/lib/languages/css';
-	import javascript from 'highlight.js/lib/languages/javascript';
-	import typescript from 'highlight.js/lib/languages/typescript';
 	import '../app.css';
 	import '../styles/dark-mode-enhanced.css'; // Estilos aprimorados para modo escuro
 	import '../styles/markdown-enhanced.css'; // Estilos aprimorados para markdown
 	import Header from '../components/Header.svelte';
 	import MobileDrawer from '../components/MobileDrawer.svelte';
-	import MusicPlayer from '../components/MusicPlayerMultitrack.svelte';
-	import MusicNotification from '../components/MusicNotification.svelte';
-	import MusicKeyboardShortcuts from '../components/MusicKeyboardShortcuts.svelte';
+	// Music components are heavy and attach listeners; lazy-load them on the client
+	let MusicPlayer: any = null;
+	let MusicNotification: any = null;
+	let MusicKeyboardShortcuts: any = null;
+	let musicComponentsLoaded = false;
 	import { observeThemeChanges } from '../utils/ThemeObserver';
 	import '../lib/i18n';
 	import I18nLoader from '../components/I18nLoader.svelte';
@@ -26,11 +23,49 @@
 	import { onMount } from 'svelte';
 	import '../app.postcss'; // Seu arquivo de estilos Tailwind
 
-	onMount(() => {
+	onMount(async () => {
 		// Define o tema padrão como 'dark' se não estiver definido
 		if (!document.documentElement.getAttribute('data-theme')) {
 			document.documentElement.setAttribute('data-theme', 'dark');
 		}
+
+		// Initialize highlight.js on client only (avoid SSR cost)
+		const [
+			{ default: hljs },
+			{ storeHighlightJs },
+			{ default: xml },
+			{ default: css },
+			{ default: javascript },
+			{ default: typescript }
+		] = await Promise.all([
+			import('highlight.js/lib/core'),
+			import('@skeletonlabs/skeleton'),
+			import('highlight.js/lib/languages/xml'),
+			import('highlight.js/lib/languages/css'),
+			import('highlight.js/lib/languages/javascript'),
+			import('highlight.js/lib/languages/typescript')
+		]);
+		hljs.registerLanguage('xml', xml);
+		hljs.registerLanguage('css', css);
+		hljs.registerLanguage('javascript', javascript);
+		hljs.registerLanguage('typescript', typescript);
+		storeHighlightJs.set(hljs);
+	});
+
+	// Lazy-load music components only on the client after initial render
+	onMount(async () => {
+		if (typeof window === 'undefined') return;
+		// Small delay to prioritize page content
+		await new Promise((r) => setTimeout(r, 150));
+		const [{ default: MP }, { default: MN }, { default: MKS }] = await Promise.all([
+			import('../components/MusicPlayerMultitrack.svelte'),
+			import('../components/MusicNotification.svelte'),
+			import('../components/MusicKeyboardShortcuts.svelte')
+		]);
+		MusicPlayer = MP;
+		MusicNotification = MN;
+		MusicKeyboardShortcuts = MKS;
+		musicComponentsLoaded = true;
 	});
 
 	// Inicializa os stores do Skeleton Labs
@@ -39,12 +74,7 @@
 	// Obtém o drawerStore no nível superior
 	const drawerStore = getDrawerStore();
 
-	// Configuração do Highlight.js
-	hljs.registerLanguage('xml', xml);
-	hljs.registerLanguage('css', css);
-	hljs.registerLanguage('javascript', javascript);
-	hljs.registerLanguage('typescript', typescript);
-	storeHighlightJs.set(hljs);
+	// Highlight.js configuration moved to onMount (client-only)
 
 	// Fecha o drawer automaticamente quando a página muda
 	$: $page.url.pathname, drawerStore.close();
@@ -69,14 +99,19 @@
 		<MobileDrawer />
 	</AppShell>
 
-	<!-- Player de música -->
-	<MusicPlayer />
-
-	<!-- Notificação sobre música -->
-	<MusicNotification />
-
-	<!-- Atalhos de teclado para música -->
-	<MusicKeyboardShortcuts />
+	{#if musicComponentsLoaded}
+		<!-- Bottom-right dock to align music UI consistently -->
+		<div class="music-dock" aria-live="polite">
+			<!-- Notification stacked above the player -->
+			<div class="dock-item notification">
+				<svelte:component this={MusicNotification} />
+			</div>
+			<div class="dock-item player">
+				<svelte:component this={MusicPlayer} />
+			</div>
+			<svelte:component this={MusicKeyboardShortcuts} />
+		</div>
+	{/if}
 </I18nLoader>
 
 <style>
@@ -86,5 +121,44 @@
 	:global(.app-bar) {
 		display: flex;
 		justify-content: space-around;
+	}
+
+	/* Bottom-right dock for music UI */
+	.music-dock {
+		position: fixed;
+		bottom: 1rem;
+		right: 1rem;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 0.75rem; /* spacing between notification and player */
+		z-index: 50; /* above most UI */
+		pointer-events: none; /* let inner components handle interaction */
+	}
+
+	.music-dock .dock-item {
+		pointer-events: auto; /* re-enable interactions for children */
+	}
+
+	/* Normalize widths so they align */
+	.music-dock :global(.music-player) {
+		position: static !important; /* disable inner fixed so stacking works */
+	}
+	.music-dock :global(.music-notification) {
+		position: static !important; /* disable inner fixed */
+		width: 20rem; /* w-80 to match player */
+	}
+
+	/* Mobile adjustments */
+	@media (max-width: 640px) {
+		.music-dock {
+			right: 0.75rem;
+			left: 0.75rem;
+			align-items: stretch;
+		}
+		.music-dock :global(.music-notification),
+		.music-dock :global(.music-player) {
+			width: 100% !important;
+		}
 	}
 </style>

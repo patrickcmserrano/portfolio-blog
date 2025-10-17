@@ -2,7 +2,7 @@ import { browser } from '$app/environment';
 import { init, register, locale, waitLocale, _ } from 'svelte-i18n';
 import { writable } from 'svelte/store';
 
-const defaultLocale = 'pt';
+const defaultLocale = 'en';
 const supportedLocales = ['pt', 'en'];
 
 // Custom locale store for better control

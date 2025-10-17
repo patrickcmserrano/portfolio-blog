@@ -5,7 +5,7 @@
 	import { page } from '$app/stores';
 	import { base } from '$app/paths';
 	import DOMPurify from 'dompurify';
-	import PDFViewer from '../../../components/PDFViewer.svelte';
+	// PDFViewer is dynamically imported only when needed for specific posts
 	import MarkdownSummary from '../../../components/MarkdownSummary.svelte';
 	import MarkdownSummaryTracker from '../../../components/MarkdownSummaryTracker.svelte';
 	import PostLanguageSelector from '../../../components/PostLanguageSelector.svelte';
@@ -20,6 +20,8 @@
 	let showSummary = true;
 	let postData: PostContent | null = null;
 	let availableLanguages: string[] = [];
+	let PDFViewer: any = null;
+	let pdfViewerLoaded = false;
 
 	// Reactive variables with fallbacks
 	$: errorTitle = $_('errors.loadFailed') || 'Erro ao carregar o post';
@@ -87,6 +89,12 @@
 			
 			// Processar conteúdo especial para posts com PDFViewer
 			if (postId === 'fundamentos-arquitetura-software') {
+				// Dynamically import PDFViewer only when this specific post needs it
+				if (!pdfViewerLoaded) {
+					const module = await import('../../../components/PDFViewer.svelte');
+					PDFViewer = module.default;
+					pdfViewerLoaded = true;
+				}
 				content = await processSpecialContent(postData.content);
 			} else {
 				content = sanitizeHtml(await marked(postData.content));
@@ -165,13 +173,16 @@
 						{@html content.beforeHtml}
 					</article>
 					
-					<!-- PDFViewer component -->
-					<div class="my-8">
-						<PDFViewer 
-							pdfUrl="{base}/mindmaps/Fundamentos da arquitetura de software.pdf" 
-							title="Fundamentos da Arquitetura de Software - Mapa Mental"
-						/>
-					</div>
+					<!-- PDFViewer component (dynamically loaded) -->
+					{#if pdfViewerLoaded && PDFViewer}
+						<div class="my-8">
+							<svelte:component 
+								this={PDFViewer}
+								pdfUrl="{base}/mindmaps/Fundamentos da arquitetura de software.pdf" 
+								title="Fundamentos da Arquitetura de Software - Mapa Mental"
+							/>
+						</div>
+					{/if}
 					
 					{#if content.afterHtml}
 						<article class="prose prose-lg max-w-none text-gray-800 dark:text-gray-200 mt-8">

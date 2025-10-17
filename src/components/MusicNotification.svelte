@@ -34,7 +34,8 @@
 
 {#if $showNotification && !dismissed}
 	<div 
-		class="fixed top-4 right-4 z-40 max-w-sm bg-surface-100-800-token border border-surface-300-600-token rounded-lg shadow-lg p-4 animate-in slide-in-from-top-2 duration-300"
+		class="music-notification fixed right-4 z-40 w-80 bg-surface-100-800-token border border-surface-300-600-token rounded-lg shadow-lg p-4 animate-in slide-in-from-bottom duration-300"
+		style="bottom: 19rem;"
 		role="alert"
 		aria-live="polite"
 	>
@@ -78,9 +79,9 @@
 {/if}
 
 <style>
-	@keyframes slide-in-from-top-2 {
+	@keyframes slide-in-from-bottom {
 		from {
-			transform: translateY(-0.5rem);
+			transform: translateY(0.5rem);
 			opacity: 0;
 		}
 		to {
@@ -93,11 +94,22 @@
 		animation-fill-mode: both;
 	}
 
-	.slide-in-from-top-2 {
-		animation-name: slide-in-from-top-2;
+	.slide-in-from-bottom {
+		animation-name: slide-in-from-bottom;
 	}
 
 	.duration-300 {
 		animation-duration: 300ms;
+	}
+
+	/* Responsividade para telas pequenas */
+	@media (max-width: 640px) {
+		.music-notification {
+			bottom: 15rem !important;
+			right: 1rem;
+			left: 1rem;
+			width: calc(100% - 2rem);
+			max-width: none;
+		}
 	}
 </style>

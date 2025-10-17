@@ -12,9 +12,13 @@
 		});
 		
 		// Força ready depois de 1 segundo para evitar loading infinito
+		// Force ready after a short timeout to avoid long blocking if translations are slow.
+		// Kept short (250ms) so most clients will render quickly and let translations load
+		// in the background. If translations arrive earlier, `isLoading` subscription will
+		// already set ready = true.
 		setTimeout(() => {
-			ready = true;
-		}, 1000);
+			if (!ready) ready = true;
+		}, 250);
 		
 		return unsubscribe;
 	});
