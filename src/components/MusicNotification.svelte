@@ -5,8 +5,6 @@
 
 	// Store para controlar se a notificação deve ser exibida
 	const showNotification = writable(false);
-	
-	let dismissed = false;
 
 	// Reactive translations with fallbacks
 	$: notificationTitle = $_('music.notification.title') || '🎵 Música Ambiente Disponível';
@@ -27,7 +25,6 @@
 	});
 
 	function dismissNotification() {
-		dismissed = true;
 		showNotification.set(false);
 		localStorage.setItem('musicNotificationShown', 'true');
 	}
@@ -39,7 +36,7 @@
 	}
 </script>
 
-{#if $showNotification && !dismissed}
+{#if $showNotification}
 	<div 
 		class="music-notification fixed right-4 z-40 w-80 bg-surface-100-800-token border border-surface-300-600-token rounded-lg shadow-lg p-4 animate-in slide-in-from-bottom duration-300"
 		style="bottom: 19rem;"
