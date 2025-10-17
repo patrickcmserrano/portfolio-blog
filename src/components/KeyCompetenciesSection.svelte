@@ -3,7 +3,7 @@
 	export let competencies: { title: string; description: string }[];
 </script>
 
-<section class="bg-surface-50 dark:bg-surface-800 py-12">
+<section class="py-12">
 	<div class="mx-auto max-w-6xl px-6">
 		<h2 class="h2 mb-8 text-center text-surface-900 dark:text-surface-100">{title}</h2>
 		<div class="grid grid-cols-1 justify-around gap-8 md:grid-cols-3">
