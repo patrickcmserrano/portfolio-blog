@@ -17,6 +17,27 @@
     	<meta property="og:type" content="website">
     	<meta name="twitter:card" content="summary_large_image">
 
+		<!-- Theme initialization script - MUST run before any content renders -->
+		<script>
+			(function() {
+				const storedTheme = localStorage.getItem('modeCurrent');
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				const shouldBeDark = storedTheme !== null ? storedTheme === 'true' : (prefersDark || true);
+				
+				console.log('[Theme Init] storedTheme:', storedTheme);
+				console.log('[Theme Init] prefersDark:', prefersDark);
+				console.log('[Theme Init] shouldBeDark:', shouldBeDark);
+				
+				if (shouldBeDark) {
+					document.documentElement.classList.add('dark');
+					console.log('[Theme Init] Applied dark class');
+				} else {
+					document.documentElement.classList.remove('dark');
+					console.log('[Theme Init] Removed dark class');
+				}
+			})();
+		</script>
+
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover" data-theme="skeleton">

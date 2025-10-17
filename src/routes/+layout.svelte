@@ -24,9 +24,23 @@
 	import '../app.postcss'; // Seu arquivo de estilos Tailwind
 
 	onMount(async () => {
-		// Define o tema padrão como 'dark' se não estiver definido
+		// Initialize theme mode - check localStorage first, then system preference
+		const storedTheme = localStorage.getItem('modeCurrent');
+		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+		
+		// Determine initial theme: use stored preference, otherwise check system, default to dark
+		const shouldBeDark = storedTheme !== null ? storedTheme === 'true' : (prefersDark || true);
+		
+		// Apply theme to document
+		if (shouldBeDark) {
+			document.documentElement.classList.add('dark');
+		} else {
+			document.documentElement.classList.remove('dark');
+		}
+		
+		// Set data-theme attribute for Skeleton UI
 		if (!document.documentElement.getAttribute('data-theme')) {
-			document.documentElement.setAttribute('data-theme', 'dark');
+			document.documentElement.setAttribute('data-theme', 'skeleton');
 		}
 
 		// Initialize highlight.js on client only (avoid SSR cost)
