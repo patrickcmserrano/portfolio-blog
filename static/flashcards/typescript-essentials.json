@@ -1,0 +1,294 @@
+{
+  "id": "typescript-essentials",
+  "i18n": {
+    "pt": {
+      "title": "Fundamentos de TypeScript",
+      "description": "Conceitos centrais de TypeScript, tipos e melhores práticas para JavaScript type-safe."
+    },
+    "en": {
+      "title": "TypeScript Essentials",
+      "description": "Core TypeScript concepts, types, and best practices for type-safe JavaScript."
+    }
+  },
+  "category": "Programming Languages",
+  "language": "en",
+  "tags": [
+    "TypeScript",
+    "Types",
+    "JavaScript",
+    "Frontend"
+  ],
+  "cardCount": 15,
+  "cards": [
+    {
+      "id": "ts-01",
+      "tags": [
+        "TypeScript",
+        "Overview"
+      ],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "O que é TypeScript?",
+          "back": "Superset de JavaScript que adiciona tipagem estática. Compila para JS, habilita detecção de erros antecipada, melhora suporte de IDE e manutenibilidade de código."
+        },
+        "en": {
+          "front": "What is TypeScript?",
+          "back": "Superset of JavaScript adding static typing. Compiles to JS, enables early error detection, improves IDE support and code maintainability."
+        }
+      }
+    },
+    {
+      "id": "ts-02",
+      "tags": [
+        "Type Inference",
+        "Types"
+      ],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "Explique inferência de tipos em TypeScript.",
+          "back": "TS deduz automaticamente tipos de variáveis. Ex: `let x = 5` infere `number`. Reduz boilerplate mantendo segurança de tipo."
+        },
+        "en": {
+          "front": "Explain type inference in TypeScript.",
+          "back": "TS automatically deduces variable types. Ex: `let x = 5` infers `number`. Reduces boilerplate while maintaining type safety."
+        }
+      }
+    },
+    {
+      "id": "ts-03",
+      "tags": [
+        "Union Types",
+        "Type System"
+      ],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "O que são tipos union?",
+          "back": "Variável pode ser um de múltiplos tipos. Ex: `type ID = string | number`. Use quando um valor tem múltiplos tipos válidos."
+        },
+        "en": {
+          "front": "What are union types?",
+          "back": "Variable can be one of multiple types. Ex: `type ID = string | number`. Use when a value has multiple valid types."
+        }
+      }
+    },
+    {
+      "id": "ts-04",
+      "tags": [
+        "Intersection Types",
+        "Type Composition"
+      ],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "Defina tipos intersection.",
+          "back": "Combina múltiplos tipos em um. Ex: `type Admin = User & { role: 'admin' }`. Objeto deve satisfazer todos os tipos combinados."
+        },
+        "en": {
+          "front": "Define intersection types.",
+          "back": "Combines multiple types into one. Ex: `type Admin = User & { role: 'admin' }`. Object must satisfy all combined types."
+        }
+      }
+    },
+    {
+      "id": "ts-05",
+      "tags": [
+        "Generics",
+        "Reusability"
+      ],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "O que são genéricos em TypeScript?",
+          "back": "Componentes reutilizáveis para múltiplos tipos. Ex: `function identity<T>(x: T): T { return x }`. Oferece segurança de tipo com flexibilidade."
+        },
+        "en": {
+          "front": "What are generics in TypeScript?",
+          "back": "Reusable components for multiple types. Ex: `function identity<T>(x: T): T { return x }`. Provides type safety with flexibility."
+        }
+      }
+    },
+    {
+      "id": "ts-06",
+      "tags": [
+        "Interfaces",
+        "Types"
+      ],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "Explique interfaces vs types.",
+          "back": "Ambos definem formas. Interfaces: extensíveis, melhor para OOP. Types: flexíveis, suportam unions e tuplas. Escolha depende do caso de uso."
+        },
+        "en": {
+          "front": "Explain interfaces vs types.",
+          "back": "Both define shapes. Interfaces: extensible, best for OOP. Types: flexible, support unions & tuples. Choice depends on use case."
+        }
+      }
+    },
+    {
+      "id": "ts-07",
+      "tags": [
+        "Enums",
+        "Constants"
+      ],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "O que são enums em TypeScript?",
+          "back": "Constantes nomeadas para código legível. Ex: `enum Color { Red, Green, Blue }`. Podem ser numéricas ou baseadas em string."
+        },
+        "en": {
+          "front": "What are enums in TypeScript?",
+          "back": "Named constants for readable code. Ex: `enum Color { Red, Green, Blue }`. Can be numeric or string-based."
+        }
+      }
+    },
+    {
+      "id": "ts-08",
+      "tags": [
+        "Conditional Types",
+        "Advanced Types"
+      ],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "Defina tipos condicionais.",
+          "back": "Tipos que dependem de condições. Ex: `T extends string ? T : never`. Recurso avançado para transformações de tipo."
+        },
+        "en": {
+          "front": "Define conditional types.",
+          "back": "Types that depend on conditions. Ex: `T extends string ? T : never`. Advanced feature for type transformations."
+        }
+      }
+    },
+    {
+      "id": "ts-09",
+      "tags": [
+        "Mapped Types",
+        "Advanced Types"
+      ],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "O que são tipos mapeados?",
+          "back": "Transformam tipos existentes em novos. Ex: `type Readonly<T> = { readonly [K in keyof T]: T[K] }`. Abstração poderosa."
+        },
+        "en": {
+          "front": "What are mapped types?",
+          "back": "Transform existing types into new ones. Ex: `type Readonly<T> = { readonly [K in keyof T]: T[K] }`. Powerful abstraction."
+        }
+      }
+    },
+    {
+      "id": "ts-10",
+      "tags": [
+        "Utility Types",
+        "Built-ins"
+      ],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "Explique tipos utilitários.",
+          "back": "Tipos built-in para transformações: `Partial`, `Required`, `Pick`, `Omit`, `Record`. Reduzem duplicação de código."
+        },
+        "en": {
+          "front": "Explain utility types.",
+          "back": "Built-in types for transformations: `Partial`, `Required`, `Pick`, `Omit`, `Record`. Reduce code duplication."
+        }
+      }
+    },
+    {
+      "id": "ts-11",
+      "tags": [
+        "any Type",
+        "Type Safety"
+      ],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "O que é o tipo `any`?",
+          "back": "Escapa da verificação de tipo; use raramente. Derrota o propósito de TS. Prefira `unknown` (mais seguro) ou tipos específicos."
+        },
+        "en": {
+          "front": "What is the `any` type?",
+          "back": "Escapes type checking; use sparingly. Defeats TS purpose. Prefer `unknown` (safer) or specific types."
+        }
+      }
+    },
+    {
+      "id": "ts-12",
+      "tags": [
+        "never Type",
+        "Advanced Types"
+      ],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "Explique o tipo `never`.",
+          "back": "Nenhum valor pode ter tipo `never`. Usado para código inalcançável ou verificações exaustivas. Ex: instruções throw."
+        },
+        "en": {
+          "front": "Explain the `never` type.",
+          "back": "No value can have type `never`. Used for unreachable code or exhaustive checks. Ex: throw statements."
+        }
+      }
+    },
+    {
+      "id": "ts-13",
+      "tags": [
+        "Function Overloads",
+        "Functions"
+      ],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "O que são sobrecargas de função?",
+          "back": "Defina múltiplas assinaturas para a mesma função. Ex: `add(x:number, y:number) → number` vs `add(x:string, y:string) → string`."
+        },
+        "en": {
+          "front": "What are function overloads?",
+          "back": "Define multiple signatures for same function. Ex: `add(x:number, y:number) → number` vs `add(x:string, y:string) → string`."
+        }
+      }
+    },
+    {
+      "id": "ts-14",
+      "tags": [
+        "Classes",
+        "Encapsulation"
+      ],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "Defina modificadores de acesso de classe.",
+          "back": "`public` (padrão), `private` (apenas classe), `protected` (classe e subclasses). Controla encapsulamento."
+        },
+        "en": {
+          "front": "Define class access modifiers.",
+          "back": "`public` (default), `private` (class only), `protected` (class & subclasses). Control encapsulation."
+        }
+      }
+    },
+    {
+      "id": "ts-15",
+      "tags": [
+        "Decorators",
+        "Advanced Features"
+      ],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "O que são decoradores em TypeScript?",
+          "back": "Recurso experimental para anotação de classe/método. Ex: `@Component` em Angular. Habilita metaprogramação."
+        },
+        "en": {
+          "front": "What are decorators in TypeScript?",
+          "back": "Experimental feature for class/method annotation. Ex: `@Component` in Angular. Enables metaprogramming."
+        }
+      }
+    }
+  ]
+}

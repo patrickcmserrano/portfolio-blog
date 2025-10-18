@@ -22,7 +22,7 @@
 	// Function to get translated projects
 	$: getTranslatedProjects = () => {
 		// Helper to read array translations with safe fallback
-		const tArr = (key: string, fallback: string[]) => $json(key) ?? fallback;
+		const tArr = (key: string, fallback: string[]): string[] => ($json(key) as string[]) ?? fallback;
 		return [
 			{
 				title: $_('projects.intelligenceModule.title') || 'Módulo de Inteligência',

@@ -1,0 +1,484 @@
+{
+  "id": "clojure-essentials",
+  "i18n": {
+    "pt": {
+      "title": "Essenciais de Clojure",
+      "description": "Aprenda os fundamentos e conceitos avançados de Clojure, de sintaxe básica até macros e concorrência."
+    },
+    "en": {
+      "title": "Clojure Essentials",
+      "description": "Learn Clojure fundamentals and advanced concepts, from basic syntax to macros and concurrency."
+    }
+  },
+  "category": "Functional Languages",
+  "language": "en",
+  "tags": ["Clojure", "Lisp", "JVM", "Functional Programming", "Advanced"],
+  "cardCount": 31,
+  "cards": [
+    {
+      "id": "clj-01",
+      "tags": ["Basics"],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "Por que Clojure?",
+          "back": "Clojure é um Lisp moderno na JVM, enfatizando programação funcional, dados imutáveis, suporte a concorrência e interop com Java para apps robustas e escaláveis."
+        },
+        "en": {
+          "front": "Why Clojure?",
+          "back": "Clojure is a modern Lisp on the JVM, emphasizing functional programming, immutable data, concurrency support, and Java interop for robust, scalable apps."
+        }
+      }
+    },
+    {
+      "id": "clj-02",
+      "tags": ["Setup"],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "Como obter Clojure?",
+          "back": "Baixe o JAR do Clojure em clojure.org; use ferramentas como Leiningen ou Boot para configuração, dependências e lançamento do REPL em projetos."
+        },
+        "en": {
+          "front": "Obtaining Clojure",
+          "back": "Download Clojure JAR from clojure.org; use tools like Leiningen or Boot for setup, dependencies, and REPL launch in projects."
+        }
+      }
+    },
+    {
+      "id": "clj-03",
+      "tags": ["REPL"],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "O que é o Clojure REPL?",
+          "back": "Shell interativo (Read-Eval-Print Loop) para execução, teste e exploração de código em tempo real; inicie com 'java -jar clojure.jar'."
+        },
+        "en": {
+          "front": "The Clojure REPL",
+          "back": "Interactive shell (Read-Eval-Print Loop) for real-time code execution, testing, and exploration; start with 'java -jar clojure.jar'."
+        }
+      }
+    },
+    {
+      "id": "clj-04",
+      "tags": ["Syntax"],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "Parênteses no Clojure realmente causam cegueira?",
+          "back": "O uso intenso de parênteses no Clojure é para estrutura, não obstáculo; eles permitem homoiconicidade e macros, tornando-se intuitivos com o uso."
+        },
+        "en": {
+          "front": "No, Parentheses Actually Won't Make You Go Blind",
+          "back": "Clojure's heavy use of parentheses is for structure, not hindrance; they enable homoiconicity and macros, becoming intuitive with use."
+        }
+      }
+    },
+    {
+      "id": "clj-05",
+      "tags": ["Syntax"],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "Expressões, Operadores, Sintaxe e Precedência",
+          "back": "Todo código Clojure é expressões em notação prefixada (op args); sem regras de precedência—parênteses ditam a ordem para clareza e consistência."
+        },
+        "en": {
+          "front": "Expressions, Operators, Syntax, and Precedence",
+          "back": "All Clojure code is expressions in prefix notation (op args); no precedence rules—parentheses dictate order for clarity and consistency."
+        }
+      }
+    },
+    {
+      "id": "clj-06",
+      "tags": ["Metaprogramming"],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "O que é homoiconicidade?",
+          "back": "Código Clojure usa estruturas de dados (listas, vetores) diretamente como ASTs, permitindo metaprogramação fácil como macros; ao contrário da maioria das linguagens com árvores de sintaxe ocultas."
+        },
+        "en": {
+          "front": "Homoiconicity",
+          "back": "Clojure code uses data structures (lists, vectors) directly as ASTs, enabling easy metaprogramming like macros; unlike most languages with hidden syntax trees."
+        }
+      }
+    },
+    {
+      "id": "clj-07",
+      "tags": ["Reader"],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "O que é o Leitor (Reader) do Clojure?",
+          "back": "Leitor do Clojure (read/read-string) desserializa texto em estruturas de dados/valores; pr/pr-str serializa de volta; suporta formatos legíveis para código-como-dados."
+        },
+        "en": {
+          "front": "The Reader",
+          "back": "Clojure's reader (read/read-string) deserializes text into data structures/values; pr/pr-str serializes back; supports human-readable formats for code-as-data."
+        }
+      }
+    },
+    {
+      "id": "clj-08",
+      "tags": ["Data Types"],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "O que são Literais Escalares?",
+          "back": "Valores não-coleção como strings (\"hello\"), booleanos (true/false), nil, caracteres (\\c), keywords (:key), símbolos (sym), números (42/3.14/0xFF), regex (#\"pat\"); permitem representações precisas."
+        },
+        "en": {
+          "front": "Scalar Literals",
+          "back": "Non-collection values like strings (\"hello\"), booleans (true/false), nil, characters (\\c), keywords (:key), symbols (sym), numbers (42/3.14/0xFF), regex (#\"pat\"); enable precise representations."
+        }
+      }
+    },
+    {
+      "id": "clj-09",
+      "tags": ["Syntax"],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "Como fazer comentários em Clojure?",
+          "back": "Ponto e vírgula (;) para comentários de linha; #_ para pular próxima forma (ex.: #_(println \"pular\")); macro comment retorna nil mas não elide formas."
+        },
+        "en": {
+          "front": "Comments",
+          "back": "Semicolon (;) for line comments; #_ to skip next form (e.g., #_(println \"skip\")); comment macro returns nil but doesn't elide forms."
+        }
+      }
+    },
+    {
+      "id": "clj-10",
+      "tags": ["Syntax"],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "O papel do espaço em branco e vírgulas em Clojure",
+          "back": "Espaço em branco separa formas/valores; vírgulas (,) tratadas como espaço em branco, opcionais para legibilidade (ex.: {:a 1, :b 2})."
+        },
+        "en": {
+          "front": "Whitespace and Commas",
+          "back": "Whitespace separates forms/values; commas (,) treated as whitespace, optional for readability (e.g., {:a 1, :b 2})."
+        }
+      }
+    },
+    {
+      "id": "clj-11",
+      "tags": ["Data Structures"],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "O que são Literais de Coleção?",
+          "back": "Listas '(a b), vetores [1 2], mapas {:k \"v\"}, sets #{1 2}; quote (') previne avaliação de listas como chamadas."
+        },
+        "en": {
+          "front": "Collection Literals",
+          "back": "Lists '(a b), vectors [1 2], maps {:k \"v\"}, sets #{1 2}; quote (') prevents list evaluation as calls."
+        }
+      }
+    },
+    {
+      "id": "clj-12",
+      "tags": ["Syntax"],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "O que é açúcar sintático diverso do Leitor?",
+          "back": "Atalhos de sintaxe: quote ('), fn anôn #(), var #', deref @, macros (` ~ ~@), interop (. new), metadados (^); melhoram concisão."
+        },
+        "en": {
+          "front": "Miscellaneous Reader Sugar",
+          "back": "Syntax shortcuts: quote ('), anon fn #(), var #', deref @, macros (` ~ ~@), interop (. new), metadata (^); enhance concision."
+        }
+      }
+    },
+    {
+      "id": "clj-13",
+      "tags": ["Namespaces"],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "O que são Namespaces em Clojure?",
+          "back": "Organizam símbolos/vars; símbolos avaliam para valores no namespace atual; use / para nomes qualificados, :: para auto-namespacing."
+        },
+        "en": {
+          "front": "Namespaces",
+          "back": "Organize symbols/vars; symbols evaluate to values in current namespace; use / for qualified names, :: for auto-namespaced."
+        }
+      }
+    },
+    {
+      "id": "clj-14",
+      "tags": ["Evaluation"],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "Como funcionam os Símbolos?",
+          "back": "Símbolos avaliam para valores de var/local; na posição de função, resolvem para funções, vars ou formas especiais (precedência para formas especiais). Ex.: /, apply referem a vars em clojure.core em chamadas."
+        },
+        "en": {
+          "front": "Symbol Evaluation",
+          "back": "Symbols evaluate to var/local values; in function position, resolve to functions, vars, or special forms (precedence to special forms). E.g., /, apply refer to clojure.core vars in calls."
+        }
+      }
+    },
+    {
+      "id": "clj-15",
+      "tags": ["Special Forms"],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "O que são Formas Especiais?",
+          "back": "Blocos primitivos de computação do Clojure; conjunto limitado com sintaxe/semântica únicas, ex.: quote, do, def. Base para todo Clojure; suficiente para qualquer computação, ao contrário de primitivas da maioria das linguagens."
+        },
+        "en": {
+          "front": "Special Forms",
+          "back": "Clojure's primitive computation blocks; limited set with unique syntax/semantics, e.g., quote, do, def. Foundation for all Clojure; sufficient for any computation, unlike most languages' primitives."
+        }
+      }
+    },
+    {
+      "id": "clj-16",
+      "tags": ["Special Forms"],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "Como suprimir avaliação com quote?",
+          "back": "Suprime avaliação de expressões; símbolos auto-avaliam. Sintaxe do leitor: '. Ex.: (quote x) => x; '(+ x x) => (+ x x). Aplica recursivamente a estruturas de dados."
+        },
+        "en": {
+          "front": "Suppressing Evaluation: quote",
+          "back": "Suppresses expression evaluation; symbols self-evaluate. Reader syntax: '. E.g., (quote x) => x; '(+ x x) => (+ x x). Applies recursively to data structures."
+        }
+      }
+    },
+    {
+      "id": "clj-17",
+      "tags": ["Special Forms"],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "O que faz a forma especial 'do'?",
+          "back": "Avalia expressões sequencialmente, retorna último valor; descarta resultados anteriores mas retém efeitos colaterais. Implícito em fn, let, etc. Ex.: (do (println \"hi\") (* 4 5 6)) imprime e retorna 120."
+        },
+        "en": {
+          "front": "Code Blocks: do",
+          "back": "Evaluates expressions sequentially, returns last value; discards prior results but retains side effects. Implicit in fn, let, etc. E.g., (do (println \"hi\") (* 4 5 6)) prints and returns 120."
+        }
+      }
+    },
+    {
+      "id": "clj-18",
+      "tags": ["Special Forms"],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "Como definir Vars com 'def'?",
+          "back": "Define/redefine var no namespace atual, valor opcional. Usado por defn, defmacro. Ex.: (def p \"foo\") => #'user/p. Vars são referências estáveis, não reatribuíveis como variáveis."
+        },
+        "en": {
+          "front": "Defining Vars: def",
+          "back": "Defines/redefines var in current namespace, optional value. Used by defn, defmacro. E.g., (def p \"foo\") => #'user/p. Vars are stable references, not reassignable like variables."
+        }
+      }
+    },
+    {
+      "id": "clj-19",
+      "tags": ["Special Forms"],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "O que faz a forma especial 'let'?",
+          "back": "Cria locais imutáveis com escopo léxico via vetor de bindings. Ex.: (let [x 1 y 2] (+ x y)). Implícito em fn para params; habilita destructuring. Todos os locais imutáveis."
+        },
+        "en": {
+          "front": "Local Bindings: let",
+          "back": "Creates immutable, lexically scoped locals via binding vector. E.g., (let [x 1 y 2] (+ x y)). Implicit in fn for params; enables destructuring. All locals immutable."
+        }
+      }
+    },
+    {
+      "id": "clj-20",
+      "tags": ["Data Structures"],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "O que é Destructuring?",
+          "back": "Bind valores de coleções declarativamente em let; sequencial [x y] para listas/vetores, mapa {a :a} para mapas. Composível; recursos: & rest, :as todo, :or defaults, :keys atalho. Reduz verbosidade."
+        },
+        "en": {
+          "front": "Destructuring (let, Part 2)",
+          "back": "Binds collection values declaratively in let; sequential [x y] for lists/vectors, map {a :a} for maps. Composable; features: & rest, :as whole, :or defaults, :keys shorthand. Reduces verbosity."
+        }
+      }
+    },
+    {
+      "id": "clj-21",
+      "tags": ["Functions"],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "Como criar funções com 'fn'?",
+          "back": "fn cria funções de primeira classe no Clojure; sintaxe (fn name? [params*] body*). Suporta destructuring em params, multi-aridade, variádicos (&), args keyword. Ex.: (fn [x] (* x x)) para quadrado. Base para defn."
+        },
+        "en": {
+          "front": "Creating Functions: fn",
+          "back": "fn creates first-class functions in Clojure; syntax (fn name? [params*] body*). Supports destructuring params, multi-arity, variadics (&), keyword args. E.g., (fn [x] (* x x)) for square. Basis for defn."
+        }
+      }
+    },
+    {
+      "id": "clj-22",
+      "tags": ["Control Flow"],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "Como usar a forma especial 'if'?",
+          "back": "Condicional primário do Clojure; (if test then [else]). Avalia 'then' se test truthy (não nil/false), else opcional. Sintaxe simples, sem else-if implícito; use cond/when para complexo. Retorna valor do ramo."
+        },
+        "en": {
+          "front": "Conditionals: if",
+          "back": "Clojure's primary conditional; (if test then [else]). Evaluates 'then' if test truthy (not nil/false), else optional. Simple syntax, no implicit else-if; use cond/when for complex. Returns branch value."
+        }
+      }
+    },
+    {
+      "id": "clj-23",
+      "tags": ["Control Flow"],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "Como implementar loops com 'loop' e 'recur'?",
+          "back": "loop define ponto de recursão com bindings iniciais; recur rebind args e recursa para loop/fn sem consumo de stack. Permite recursão de cauda eficiente para loops. Ex.: (loop [x 0] (if (< x 10) (recur (inc x)) x))."
+        },
+        "en": {
+          "front": "Looping: loop and recur",
+          "back": "loop sets recursion point with initial bindings; recur rebinds args and recurses to loop/fn without stack consumption. Enables efficient tail recursion for loops. E.g., (loop [x 0] (if (< x 10) (recur (inc x)) x))."
+        }
+      }
+    },
+    {
+      "id": "clj-24",
+      "tags": ["Variables"],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "O que faz a forma especial 'var'?",
+          "back": "var sym ou #'sym retorna objeto var, não seu valor. Símbolos avaliam para valores de var; var útil para passar vars a fns de ordem superior ou acesso a metadados. Ex.: (var x) => #'user/x."
+        },
+        "en": {
+          "front": "Referring to Vars: var",
+          "back": "var sym or #'sym returns var object, not its value. Symbols evaluate to var values; var useful for passing vars to higher-order fns or metadata access. E.g., (var x) => #'user/x."
+        }
+      }
+    },
+    {
+      "id": "clj-25",
+      "tags": ["Interop"],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "Como usar Interop Java com '.' e 'new'?",
+          "back": "Habilita chamadas Java; (. instance method args) para métodos de instância, (. Class staticMethod args) para estáticos; (new Class args) para construtores. Base para todo interop Java; açúcares como dot expandem para esses."
+        },
+        "en": {
+          "front": "Java Interop: . and new",
+          "back": "Enables Java calls; (. instance method args) for instance methods, (. Class staticMethod args) for statics; (new Class args) for constructors. Foundation for all Java interop; sugar like dot forms expand to these."
+        }
+      }
+    },
+    {
+      "id": "clj-26",
+      "tags": ["Error Handling"],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "Como tratar exceções com 'try' e 'throw'?",
+          "back": "try envolve exprs com cláusulas catch (catch ExceptionType e body) para manipulação, finally opcional para cleanup. throw lança exceções. Integra com sistema de exceções do Java."
+        },
+        "en": {
+          "front": "Exception Handling: try and throw",
+          "back": "try wraps exprs with catch clauses (catch ExceptionType e body) for handling, optional finally for cleanup. throw throws exceptions. Integrates with Java's exception system."
+        }
+      }
+    },
+    {
+      "id": "clj-27",
+      "tags": ["Advanced"],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "O que faz a forma especial 'set!'?",
+          "back": "Muta bindings de var dynamic thread-local ou campos mutáveis em deftype. Raro no Clojure idiomático; usado para interop, performance ou necessidades de estado mutável específico. Ex.: (set! *warn-on-reflection* true)."
+        },
+        "en": {
+          "front": "Specialized Mutation: set!",
+          "back": "Mutates thread-local dynamic var bindings or mutable fields in deftype. Rare in idiomatic Clojure; used for interop, performance, or specific mutable state needs. E.g., (set! *warn-on-reflection* true)."
+        }
+      }
+    },
+    {
+      "id": "clj-28",
+      "tags": ["Concurrency"],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "O que são 'monitor-enter' e 'monitor-exit'?",
+          "back": "Sincronização de baixo nível em monitores de objetos, como synchronized do Java. Adquire/libera lock; use em try-finally. Prefira ferramentas de concorrência de alto nível como macro locking para segurança."
+        },
+        "en": {
+          "front": "Primitive Locking: monitor-enter and monitor-exit",
+          "back": "Low-level synchronization on object monitors, like Java's synchronized. Acquires/releases lock; use in try-finally. Prefer higher-level concurrency tools like locking macro for safety."
+        }
+      }
+    },
+    {
+      "id": "clj-29",
+      "tags": ["Integration"],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "Como tudo funciona junto?",
+          "back": "Integra conceitos analisando (defn average [numbers] (/ (apply + numbers) (count numbers))); defn expande para (def ... (fn ...)); ilustra avaliação completa de dados para definição de função."
+        },
+        "en": {
+          "front": "Putting It All Together",
+          "back": "Integrates concepts by analyzing (defn average [numbers] (/ (apply + numbers) (count numbers))); defn expands to (def ... (fn ...)); illustrates full evaluation from data to function definition."
+        }
+      }
+    },
+    {
+      "id": "clj-30",
+      "tags": ["Advanced"],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "O que faz a função 'eval'?",
+          "back": "Função central que avalia forma como código, incorporando semânticas do Clojure; raramente usada em apps—opte por macros; ex.: (eval '(average [60 80 100 400])) => 160; mostrado em impl REPL simples."
+        },
+        "en": {
+          "front": "eval",
+          "back": "Core function evaluating a form as code, embodying Clojure's semantics; rarely used in apps—opt for macros; e.g., (eval '(average [60 80 100 400])) => 160; shown in simple REPL impl."
+        }
+      }
+    },
+    {
+      "id": "clj-31",
+      "tags": ["Learning"],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "Isto é apenas o começo",
+          "back": "Resume bases do Clojure: formas especiais, homoiconicidade, dev REPL; previews imutáveis, concorrência, macros; recomenda recursos: docs API, lista/IRC, site do livro para aprendizado contínuo."
+        },
+        "en": {
+          "front": "This Is Just the Beginning",
+          "back": "Summarizes Clojure basics: special forms, homoiconicity, REPL dev; previews immutables, concurrency, macros; recommends resources: API docs, mailing list/IRC, book site for ongoing learning."
+        }
+      }
+    }
+  ]
+}

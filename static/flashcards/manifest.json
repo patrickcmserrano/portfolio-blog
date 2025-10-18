@@ -1,0 +1,19 @@
+{
+  "decks": [
+    {
+      "id": "functional-programming-fundamentals",
+      "title": "Functional Programming Fundamentals",
+      "category": "Programming Paradigms"
+    },
+    {
+      "id": "typescript-essentials",
+      "title": "TypeScript Essentials",
+      "category": "Programming Languages"
+    },
+    {
+      "id": "clojure-essentials",
+      "title": "Clojure Essentials",
+      "category": "Functional Languages"
+    }
+  ]
+}

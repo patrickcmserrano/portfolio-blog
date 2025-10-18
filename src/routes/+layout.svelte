@@ -33,11 +33,9 @@
 		if (storedTheme === null || storedTheme === undefined) {
 			shouldBeDark = prefersDark !== false;
 			localStorage.setItem('modeCurrent', String(shouldBeDark));
-		} else {
-			shouldBeDark = storedTheme === 'true' || storedTheme === true;
-		}
-		
-		// Set the store immediately so LightSwitch reads the correct value
+	} else {
+		shouldBeDark = storedTheme === 'true';
+	}		// Set the store immediately so LightSwitch reads the correct value
 		modeCurrent.set(shouldBeDark);
 	}
 

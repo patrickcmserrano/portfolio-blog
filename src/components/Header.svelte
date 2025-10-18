@@ -16,6 +16,7 @@
 	$: aboutLabel = $_('nav.about') || 'Sobre';
 	$: blogLabel = $_('nav.blog') || 'Blog';
 	$: aboutSiteLabel = $_('nav.aboutSite') || 'Sobre este Site';
+	$: flashcardsLabel = $_('nav.flashcards') || 'Flashcards';
 </script>
 
 <!-- Navegação para telas grandes (permanece no topo) -->
@@ -32,6 +33,7 @@
 					<NavLink href="{base}/" label={homeLabel} on:click={() => drawerStore.close()} />
 					<NavLink href="{base}/about" label={aboutLabel} on:click={() => drawerStore.close()} />
 					<NavLink href="{base}/blog" label={blogLabel} on:click={() => drawerStore.close()} />
+					<NavLink href="{base}/flashcards" label={flashcardsLabel} on:click={() => drawerStore.close()} />
 					<NavLink
 						href="{base}/about-site"
 						label={aboutSiteLabel}
