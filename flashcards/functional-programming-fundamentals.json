@@ -1,0 +1,388 @@
+{
+  "id": "functional-programming-fundamentals",
+  "i18n": {
+    "pt": {
+      "title": "Fundamentos de Programação Funcional",
+      "description": "Conceitos e princípios fundamentais de programação funcional com exemplos práticos."
+    },
+    "en": {
+      "title": "Functional Programming Fundamentals",
+      "description": "Core concepts and principles of functional programming with practical examples."
+    }
+  },
+  "category": "Programming Paradigms",
+  "language": "en",
+  "tags": [
+    "FP",
+    "Functional Programming",
+    "Programming Paradigms",
+    "Core Concepts"
+  ],
+  "cardCount": 20,
+  "cards": [
+    {
+      "id": "fp-01",
+      "tags": [
+        "Pure Functions",
+        "Core Concepts"
+      ],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "O que é uma função pura em PF?",
+          "back": "Função determinística: mesmas entradas → mesmas saídas, sem efeitos colaterais (ex: sem I/O, mutações). Ex: `add(x, y) = x + y`. Habilita previsibilidade e testes."
+        },
+        "en": {
+          "front": "What is a pure function in FP?",
+          "back": "Deterministic function: same inputs → same outputs, no side effects (e.g., no I/O, mutations). Ex: `add(x, y) = x + y`. Enables predictability & testing."
+        }
+      }
+    },
+    {
+      "id": "fp-02",
+      "tags": [
+        "Referential Transparency",
+        "Theory"
+      ],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "Defina transparência referencial.",
+          "back": "Expressão substituível pelo seu valor sem alterar o comportamento do programa. Ligada à pureza. Ex: Substitua `add(2,3)` por `5` em qualquer lugar. Auxilia refatoração e otimização."
+        },
+        "en": {
+          "front": "Define referential transparency.",
+          "back": "Expression replaceable by its value without changing program behavior. Tied to purity. Ex: Replace `add(2,3)` with `5` anywhere. Aids refactoring & optimization."
+        }
+      }
+    },
+    {
+      "id": "fp-03",
+      "tags": [
+        "Immutability",
+        "Data Structures"
+      ],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "O que é imutabilidade em PF?",
+          "back": "Dados não podem mudar após criação; novos valores são criados em vez disso. Reduz bugs e suporta concorrência. Ex: Em Clojure, `(assoc {:a 1} :b 2)` retorna novo mapa."
+        },
+        "en": {
+          "front": "What is immutability in FP?",
+          "back": "Data can't change after creation; new values created instead. Reduces bugs & supports concurrency. Ex: In Clojure, `(assoc {:a 1} :b 2)` returns new map."
+        }
+      }
+    },
+    {
+      "id": "fp-04",
+      "tags": [
+        "Composition",
+        "Modularity"
+      ],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "Explique composicionalidade em PF.",
+          "back": "Construir programas combinando funções menores algebricamente. Promove modularidade. Ex: `compose(f, g)(x) = f(g(x))`. Como piping em Clojure: `(comp inc #(* % %))`."
+        },
+        "en": {
+          "front": "Explain compositionality in FP.",
+          "back": "Building programs by combining smaller functions algebraically. Promotes modularity. Ex: `compose(f, g)(x) = f(g(x))`. Like piping in Clojure: `(comp inc #(* % %))`."
+        }
+      }
+    },
+    {
+      "id": "fp-05",
+      "tags": [
+        "Determinism",
+        "Predictability"
+      ],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "O que significa determinismo em PF?",
+          "back": "Computações previsíveis, sem fatores externos (ex: tempo, aleatoriedade em funções puras). Habilita memoização. Ex: Funções puras sempre consistentes vs geradores aleatórios."
+        },
+        "en": {
+          "front": "What does determinism mean in FP?",
+          "back": "Computations predictable, no external factors (e.g., time, randomness in pure funcs). Enables memoization. Ex: Pure funcs always consistent vs. random generators."
+        }
+      }
+    },
+    {
+      "id": "fp-06",
+      "tags": [
+        "Side Effects",
+        "Monads"
+      ],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "Como PF lida com efeitos colaterais?",
+          "back": "Minimizar/isolá-los (ex: via mônadas) para manter núcleo puro. Reduz complexidade. Ex: Mônada IO do Haskell encapsula ações impuras como impressão."
+        },
+        "en": {
+          "front": "How does FP handle side effects?",
+          "back": "Minimize/isolate them (e.g., via monads) to keep core pure. Reduces complexity. Ex: Haskell's IO monad encapsulates impure actions like printing."
+        }
+      }
+    },
+    {
+      "id": "fp-07",
+      "tags": [
+        "First-Class Functions",
+        "Higher-Order"
+      ],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "O que são funções de primeira classe?",
+          "back": "Funções como valores: atribuíveis, passáveis, retornáveis. Base para abstrações. Ex: JS: `const add = (x,y) => x+y; funcArg(add)`."
+        },
+        "en": {
+          "front": "What are first-class functions?",
+          "back": "Functions as values: assignable, passable, returnable. Basis for abstractions. Ex: JS: `const add = (x,y) => x+y; funcArg(add)`."
+        }
+      }
+    },
+    {
+      "id": "fp-08",
+      "tags": [
+        "Higher-Order Functions",
+        "Abstractions"
+      ],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "Defina funções de ordem superior (HOFs).",
+          "back": "Funções que recebem/retornam outras funções. Ex: `map`, `filter`, `reduce`. JS: `[1,2,3].map(x => x*2)`. Habilita código declarativo."
+        },
+        "en": {
+          "front": "Define higher-order functions (HOFs).",
+          "back": "Funcs that take/return other funcs. Ex: `map`, `filter`, `reduce`. JS: `[1,2,3].map(x => x*2)`. Enables declarative code."
+        }
+      }
+    },
+    {
+      "id": "fp-09",
+      "tags": [
+        "Recursion",
+        "Control Flow"
+      ],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "O que é recursão em PF?",
+          "back": "Função chama a si mesma para fluxo de controle (vs. loops). Precisa de caso base. Recursão cauda otimiza pilha. Ex: Fatorial: `fact(n) = n==0 ? 1 : n * fact(n-1)`."
+        },
+        "en": {
+          "front": "What is recursion in FP?",
+          "back": "Func calls itself for control flow (vs. loops). Needs base case. Tail recursion optimizes stack. Ex: Factorial: `fact(n) = n==0 ? 1 : n * fact(n-1)`."
+        }
+      }
+    },
+    {
+      "id": "fp-10",
+      "tags": [
+        "Currying",
+        "Partial Application"
+      ],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "Explique currying.",
+          "back": "Converter função multi-argumento em sequência de funções de argumento único. Auxilia aplicação parcial. Ex: `add(x,y) → add(x)(y)`. Clojure: Use `partial` para reutilização."
+        },
+        "en": {
+          "front": "Explain currying.",
+          "back": "Convert multi-arg func to sequence of single-arg funcs. Aids partial application. Ex: `add(x,y) → add(x)(y)`. Clojure: Use `partial` for reuse."
+        }
+      }
+    },
+    {
+      "id": "fp-11",
+      "tags": [
+        "Partial Application",
+        "Currying"
+      ],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "O que é aplicação parcial?",
+          "back": "Fixe alguns argumentos, retorne nova função para o resto. Melhora composição. Ex: `add5 = partial(add, 5); add5(3) = 8`."
+        },
+        "en": {
+          "front": "What is partial application?",
+          "back": "Fix some args, return new func for rest. Enhances composition. Ex: `add5 = partial(add, 5); add5(3) = 8`."
+        }
+      }
+    },
+    {
+      "id": "fp-12",
+      "tags": [
+        "Composition",
+        "Higher-Order"
+      ],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "Defina composição de funções.",
+          "back": "Combine funções: `f ∘ g (x) = f(g(x))`. Constrói complexo a partir de simples. Ex: Clojure `comp`: `(comp str inc) 5 → \"6\"`."
+        },
+        "en": {
+          "front": "Define function composition.",
+          "back": "Combine funcs: `f ∘ g (x) = f(g(x))`. Builds complex from simple. Ex: Clojure `comp`: `(comp str inc) 5 → \"6\"`."
+        }
+      }
+    },
+    {
+      "id": "fp-13",
+      "tags": [
+        "Lazy Evaluation",
+        "Efficiency"
+      ],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "O que é avaliação lazy (não-estrita)?",
+          "back": "Compute valores apenas quando necessário. Suporta estruturas infinitas. Ex: Haskell: `take 5 [1..]` evita lista infinita completa. Vs. estrita: calcula antecipadamente."
+        },
+        "en": {
+          "front": "What is lazy (non-strict) evaluation?",
+          "back": "Compute values only when needed. Supports infinite structures. Ex: Haskell: `take 5 [1..]` avoids full infinite list. Vs. strict: computes upfront."
+        }
+      }
+    },
+    {
+      "id": "fp-14",
+      "tags": [
+        "Evaluation Strategy",
+        "Performance"
+      ],
+      "difficulty": "medium",
+      "i18n": {
+        "pt": {
+          "front": "Contraste avaliação estrita com lazy.",
+          "back": "Calcula todas as expressões imediatamente. Previsível mas menos eficiente para valores não utilizados. Ex: Maioria das linguagens como JS avalia args antes da chamada de função."
+        },
+        "en": {
+          "front": "Contrast strict evaluation with lazy.",
+          "back": "Computes all expressions immediately. Predictable but less efficient for unused values. Ex: Most langs like JS evaluate args before func call."
+        }
+      }
+    },
+    {
+      "id": "fp-15",
+      "tags": [
+        "Type Systems",
+        "Static Typing"
+      ],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "Descreva sistemas de tipo de PF.",
+          "back": "Forte/estático com inferência (ex: Hindley-Milner). Tipos de dados algébricos modelam domínios. Captura erros cedo. Ex: Tipos do Haskell previnem incompatibilidades em tempo de execução."
+        },
+        "en": {
+          "front": "Describe FP type systems.",
+          "back": "Strong/static with inference (e.g., Hindley-Milner). Algebraic data types model domains. Catches errors early. Ex: Haskell types prevent runtime mismatches."
+        }
+      }
+    },
+    {
+      "id": "fp-16",
+      "tags": [
+        "Monads",
+        "Side Effects",
+        "Abstractions"
+      ],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "O que são mônadas em PF?",
+          "back": "Estruturas para lidar com efeitos colaterais puramente (ex: IO, estado). Sequenciam computações. Ex: Mônada Maybe do Haskell para valores opcionais: `Just 5 >>= (\\x -> Just (x+1))`."
+        },
+        "en": {
+          "front": "What are monads in FP?",
+          "back": "Structures to handle side effects purely (e.g., IO, state). Sequence computations. Ex: Haskell Maybe monad for optional values: `Just 5 >>= (\\x -> Just (x+1))`."
+        }
+      }
+    },
+    {
+      "id": "fp-17",
+      "tags": [
+        "Data Structures",
+        "Immutability",
+        "Performance"
+      ],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "Explique estruturas de dados persistentes.",
+          "back": "Estruturas imutáveis que \"atualizam\" eficientemente compartilhando partes antigas. Ops log-time. Ex: Vetores do Clojure: Compartilhamento estrutural para cópias rápidas."
+        },
+        "en": {
+          "front": "Explain persistent data structures.",
+          "back": "Immutable structs that efficiently \"update\" by sharing old parts. Log-time ops. Ex: Clojure vectors: Structural sharing for fast copies."
+        }
+      }
+    },
+    {
+      "id": "fp-18",
+      "tags": [
+        "Lambda",
+        "Anonymous Functions"
+      ],
+      "difficulty": "easy",
+      "i18n": {
+        "pt": {
+          "front": "O que são expressões lambda?",
+          "back": "Funções anônimas para uso único. Concisas. Ex: JS: `x => x + 1`. Base para HOFs."
+        },
+        "en": {
+          "front": "What are lambda expressions?",
+          "back": "Anonymous funcs for one-off use. Concise. Ex: JS: `x => x + 1`. Basis for HOFs."
+        }
+      }
+    },
+    {
+      "id": "fp-19",
+      "tags": [
+        "Folds",
+        "Recursion",
+        "List Operations"
+      ],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "Defina folds em PF.",
+          "back": "Reduz estrutura para valor via recursão. Ex: `foldr (+) 0 [1,2,3] = 6`. Agrega listas."
+        },
+        "en": {
+          "front": "Define folds in FP.",
+          "back": "Reduce structure to value via recursion. Ex: `foldr (+) 0 [1,2,3] = 6`. Aggregates lists."
+        }
+      }
+    },
+    {
+      "id": "fp-20",
+      "tags": [
+        "Unfolds",
+        "Recursion",
+        "List Generation"
+      ],
+      "difficulty": "hard",
+      "i18n": {
+        "pt": {
+          "front": "O que são unfolds?",
+          "back": "Constrói estruturas a partir de sementes via recursão. Ex: Gera lista: `unfoldr (\\n -> if n>0 then Just (n, n-1) else Nothing) 5 = [5,4,3,2,1]`."
+        },
+        "en": {
+          "front": "What are unfolds?",
+          "back": "Build structures from seeds via recursion. Ex: Generate list: `unfoldr (\\n -> if n>0 then Just (n, n-1) else Nothing) 5 = [5,4,3,2,1]`."
+        }
+      }
+    }
+  ]
+}

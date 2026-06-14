@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<!-- Prevenção de cache problemático -->
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+
+    	<meta property="og:title" content="Patrick Serrano | Portfolio & Blog">
+    	<meta property="og:description" content="Bem-vindo ao meu portfolio e blog, um espaço para explorar tecnologia, mercados financeiros e desenvolvimento de software.">
+    	<meta property="og:image" content="https://patrickcmserrano.github.io/portfolio-blog/images/thumbnail-home.jpg">
+    	<meta property="og:url" content="https://patrickcmserrano.github.io/portfolio-blog/">
+    	<meta property="og:type" content="website">
+    	<meta name="twitter:card" content="summary_large_image">
+
+		<!-- Theme initialization script - MUST run before any content renders -->
+		<script>
+			(function() {
+				// Skeleton UI stores modeCurrent as boolean true/false (not string)
+				const storedTheme = localStorage.getItem('modeCurrent');
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				
+				// Parse stored value: could be 'true', 'false', true, false, or null
+				let shouldBeDark;
+				if (storedTheme === null || storedTheme === undefined) {
+					// No preference stored, use system preference or default to true (dark)
+					shouldBeDark = prefersDark !== false; // Default to dark if no system preference
+					// Store the initial preference
+					localStorage.setItem('modeCurrent', String(shouldBeDark));
+				} else {
+					// Parse the stored value (handles both string and boolean)
+					shouldBeDark = storedTheme === 'true' || storedTheme === true;
+				}
+				
+				console.log('[Theme Init] storedTheme:', storedTheme);
+				console.log('[Theme Init] prefersDark:', prefersDark);
+				console.log('[Theme Init] shouldBeDark:', shouldBeDark);
+				
+				if (shouldBeDark) {
+					document.documentElement.classList.add('dark');
+					console.log('[Theme Init] Applied dark class');
+				} else {
+					document.documentElement.classList.remove('dark');
+					console.log('[Theme Init] Removed dark class');
+				}
+			})();
+		</script>
+
+		
+		<link href="./_app/immutable/assets/0.BIh7rmHU.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/MusicPlayerMultitrack.DlLjvP7U.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/MusicNotification.uuKtO0ns.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/5.DzHphaGc.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.CN40VXo6.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ML5bWCK8.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CcI0uikS.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BYdP_CKr.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/D3yRCVog.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CYgJF_JY.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.CUHNpOG0.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/C1FmrZbK.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CfpzQ0sF.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.TQdwau9h.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/C--xeJtv.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/sD68_-YJ.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Bz1roD-C.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/h1dRYFZk.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/5.COHqN6vT.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/DKjyhwJX.js">
+	</head>
+	<body data-sveltekit-preload-data="hover" data-theme="skeleton">
+		<div style="display: contents" class="h-full">   <div class="loading-container svelte-1eaa9sx" data-svelte-h="svelte-1kbrp3h"><div class="loading-spinner svelte-1eaa9sx"></div> <p>Carregando traduções...</p></div> 
+			
+			<script>
+				{
+					__sveltekit_aa8930 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						assets: "/portfolio-blog"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("./_app/immutable/entry/start.CN40VXo6.js"),
+						import("./_app/immutable/entry/app.CUHNpOG0.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+		
+		<!-- Script de limpeza condicional e detecção de problemas -->
+		<script>
+			// Detectar se há problemas de service worker e limpar se necessário
+			if (window.location.search.includes('clear-cache=true')) {
+				const script = document.createElement('script');
+				script.src = './clear-cache.js';
+				document.head.appendChild(script);
+			}
+			
+			// Detecção automática de problemas comuns
+			window.addEventListener('load', function() {
+				// Detectar erros de service worker
+				let serviceWorkerErrors = 0;
+				const originalError = window.console.error;
+				window.console.error = function(...args) {
+					const message = args.join(' ').toLowerCase();
+					if (message.includes('service-worker') || 
+						message.includes('could not establish connection') ||
+						message.includes('receiving end does not exist')) {
+						serviceWorkerErrors++;
+						
+						// Se muitos erros de service worker, sugerir limpeza
+						if (serviceWorkerErrors >= 3) {
+							console.warn('🚨 Detectados múltiplos erros de service worker. Considere limpar o cache.');
+							console.info('💡 Para limpar o cache, adicione ?clear-cache=true à URL');
+						}
+					}
+					originalError.apply(console, args);
+				};
+				
+				// Verificar se PDFs estão sendo bloqueados
+				setTimeout(function() {
+					const pdfErrors = document.querySelectorAll('[data-pdf-error]');
+					if (pdfErrors.length > 0) {
+						console.warn('🚨 Detectados problemas com PDFs. Verifique as configurações do navegador.');
+					}
+				}, 2000);
+			});
+		</script>
+	</body>
+</html>

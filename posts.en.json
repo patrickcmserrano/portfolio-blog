@@ -1,0 +1,219 @@
+[
+    {
+        "id": "fundamentos-arquitetura-software",
+        "title": "Software Architecture Fundamentals - Interactive Mind Map",
+        "excerpt": "Explore the fundamental concepts of software architecture through an interactive mind map with complete PDF viewer.",
+        "date": "2025-07-22",
+        "readTime": "25 min",
+        "tags": ["Architecture", "Software", "Mind Map", "Fundamentals", "Design Patterns"]
+    },
+    {
+        "id": "teste-navegacao",
+        "title": "Advanced Navigation System",
+        "excerpt": "Demonstration of automatic navigation system with progress tracking and interactive index.",
+        "date": "2025-05-26",
+        "readTime": "8 min",
+        "tags": ["Frontend", "Svelte", "UX", "Navigation"]
+    },
+    {
+        "id": "trading-elder-ch5",
+        "title": "Mastering Trading Sales: Exit Strategies and Short Selling",
+        "excerpt": "Learn to realize profits and operate short with the Impulse System and Alexander Elder's exit techniques.",
+        "date": "2025-04-15",
+        "readTime": "18 min",
+        "tags": ["Trading", "Short Selling", "Impulse System", "Exit Strategies"]
+    },
+    {
+        "id": "trading-elder-ch4",
+        "title": "Conscious Technical Analysis: Tools and the Triple Screen System",
+        "excerpt": "Explore Elder's technical tools, like moving averages and MACD, and the power of the Triple Screen system.",
+        "date": "2025-04-01",
+        "readTime": "20 min",
+        "tags": ["Trading", "Technical Analysis", "Triple Screen", "MACD", "Moving Averages"]
+    },
+    {
+        "id": "trading-elder-ch3",
+        "title": "Trading Psychology: Controlling Emotions for Success",
+        "excerpt": "Discover how to master fear, greed, and impulses to make rational trading decisions.",
+        "date": "2025-03-15",
+        "readTime": "16 min",
+        "tags": ["Trading", "Psychology", "Discipline", "Emotions"]
+    },
+    {
+        "id": "trading-elder-ch2",
+        "title": "Risk Management: Protecting Your Capital with Elder's Rules",
+        "excerpt": "Learn the 2% and 6% Rules and the Iron Triangle for safe and sustainable trading.",
+        "date": "2025-03-01",
+        "readTime": "18 min",
+        "tags": ["Trading", "Risk Management", "Stops", "Iron Triangle"]
+    },
+    {
+        "id": "trading-elder-ch1",
+        "title": "Planning and Discipline: The Foundation of Professional Trading",
+        "excerpt": "Learn how to create robust trading plans and maintain discipline for consistent profits.",
+        "date": "2025-02-15",
+        "readTime": "17 min",
+        "tags": ["Trading", "Planning", "Discipline", "Trading Journal"]
+    },
+    {
+        "id": "java-pt3",
+        "title": "Building Robust Java Applications: Exceptions, Files and Threads",
+        "excerpt": "Discover how to handle exceptions, manipulate files and implement threads in Java.",
+        "date": "2024-03-17",
+        "readTime": "15 min",
+        "tags": ["Java", "Exceptions", "Threads"]
+    },
+    {
+        "id": "java-pt2",
+        "title": "Managing Data in Java: Strings, Collections and JDBC",
+        "excerpt": "Explore how to manipulate data in Java with Strings, Collections and database connectivity.",
+        "date": "2024-03-16",
+        "readTime": "12 min",
+        "tags": ["Java", "Data", "Collections"]
+    },
+    {
+        "id": "java-intro",
+        "title": "Getting Started with Java: Syntax, Flow and OOP to Build a Solid Foundation",
+        "excerpt": "Learn the fundamentals of Java, including syntax, control flow and object-oriented programming.",
+        "date": "2024-03-15",
+        "readTime": "10 min",
+        "tags": ["Java", "Programming", "OOP"]
+    },
+    {
+        "id": "arvores",
+        "title": "Understanding Trees and Binary Trees: A Guide for Software Engineers",
+        "excerpt": "Exploring the world of trees and binary trees, essential data structures for any software engineer.",
+        "date": "2024-03-14",
+        "readTime": "15 min",
+        "tags": ["Data Structures", "Programming", "Trees"]
+    },
+    {
+        "id": "pilhas",
+        "title": "Stacks: A Fundamental Data Structure in Programming",
+        "excerpt": "Understand what stacks are, their basic operations and how to implement them in Java.",
+        "date": "2024-03-09",
+        "readTime": "8 min",
+        "tags": ["Data Structures", "Programming", "Java"]
+    },
+    {
+        "id": "listas-ligadas",
+        "title": "Linked Lists: A Complete Guide to Dynamic Data Structures",
+        "excerpt": "Learn about linked lists, their operations and how to implement them in Java.",
+        "date": "2024-03-10",
+        "readTime": "12 min",
+        "tags": ["Data Structures", "Programming", "Java"]
+    },
+    {
+        "id": "filas",
+        "title": "Queue Data Structure: A Complete Guide with Practical Example",
+        "excerpt": "Explore the concept of queues, their operations and how to implement them in Java.",
+        "date": "2024-03-11",
+        "readTime": "10 min",
+        "tags": ["Data Structures", "Programming", "Java"]
+    },
+    {
+        "id": "estruturas-de-dados",
+        "title": "Data Structures: The Essential Guide for Students and Technical Interviews",
+        "excerpt": "A focused summary on the main data structures and their operations.",
+        "date": "2024-03-12",
+        "readTime": "15 min",
+        "videoId": "OoQTpD-DrwE",
+        "tags": ["Data Structures", "Interviews", "Programming"]
+    },
+    {
+        "id": "engenharia-de-requisitos",
+        "title": "Requirements Engineering",
+        "excerpt": "Exploring the fundamentals and essential practices of requirements engineering.",
+        "date": "2024-03-08",
+        "readTime": "10 min",
+        "tags": ["Software", "Requirements", "Engineering"]
+    },
+    {
+        "id": "01immutability",
+        "title": "1) Immutability in Clojure: Fundamentals and Benefits",
+        "excerpt": "Discover how immutability is a fundamental pillar in Clojure and how it simplifies software development.",
+        "date": "2024-03-20",
+        "readTime": "10 min",
+        "tags": ["Clojure", "Immutability", "Functional Programming"]
+    },
+    {
+        "id": "02functionalparadigm",
+        "title": "2) The Functional Paradigm in Clojure: An Introduction",
+        "excerpt": "Explore the concepts of the functional paradigm and how they are applied in Clojure.",
+        "date": "2024-03-21",
+        "readTime": "12 min",
+        "tags": ["Clojure", "Functional Paradigm", "Programming"]
+    },
+    {
+        "id": "03lisp",
+        "title": "3) Clojure and the Power of Lisp: A Modern Perspective",
+        "excerpt": "Understand how Clojure harnesses the power of Lisp to offer a modern and expressive language.",
+        "date": "2024-03-22",
+        "readTime": "15 min",
+        "tags": ["Clojure", "Lisp", "Programming"]
+    },
+    {
+        "id": "04sequences",
+        "title": "4) Working with Sequences in Clojure: A Practical Guide",
+        "excerpt": "Learn to manipulate sequences in Clojure and make the most of its native functions.",
+        "date": "2024-03-23",
+        "readTime": "14 min",
+        "tags": ["Clojure", "Sequences", "Programming"]
+    },
+    {
+        "id": "05lazy",
+        "title": "5) Lazy Evaluation in Clojure: Efficiency and Elegance",
+        "excerpt": "Discover how lazy evaluation allows working with infinite sequences and optimizing performance.",
+        "date": "2024-03-24",
+        "readTime": "13 min",
+        "tags": ["Clojure", "Lazy Evaluation", "Performance"]
+    },
+    {
+        "id": "06macros",
+        "title": "6) Macros in Clojure: Metaprogramming and Language Extension",
+        "excerpt": "Learn to create powerful macros that extend Clojure and simplify repetitive code.",
+        "date": "2024-03-25",
+        "readTime": "16 min",
+        "tags": ["Clojure", "Macros", "Metaprogramming"]
+    },
+    {
+        "id": "07MultimethodsProtocols",
+        "title": "7) Multimethods and Protocols: Advanced Polymorphism in Clojure",
+        "excerpt": "Explore Clojure's powerful polymorphism tools to create flexible and extensible code.",
+        "date": "2024-03-26",
+        "readTime": "15 min",
+        "tags": ["Clojure", "Polymorphism", "Multimethods", "Protocols"]
+    },
+    {
+        "id": "08concurrency",
+        "title": "8) Concurrency in Clojure: Atoms, Refs and Agents",
+        "excerpt": "Master Clojure's concurrency models to create thread-safe and performant applications.",
+        "date": "2024-03-27",
+        "readTime": "17 min",
+        "tags": ["Clojure", "Concurrency", "Atoms", "Refs", "Agents"]
+    },
+    {
+        "id": "09java",
+        "title": "9) Java Interoperability in Clojure: The Best of Both Worlds",
+        "excerpt": "Learn to integrate Java code with Clojure and leverage the entire JVM ecosystem.",
+        "date": "2024-03-28",
+        "readTime": "14 min",
+        "tags": ["Clojure", "Java", "Interoperability", "JVM"]
+    },
+    {
+        "id": "10coreasync",
+        "title": "10) Core.async: Elegant Asynchronous Programming in Clojure",
+        "excerpt": "Explore channels and go blocks to create clean and expressive asynchronous code.",
+        "date": "2024-03-29",
+        "readTime": "16 min",
+        "tags": ["Clojure", "Core.async", "Asynchronous Programming", "Channels"]
+    },
+    {
+        "id": "11parallelismmultithreading",
+        "title": "11) Parallelism and Multithreading: Advanced Performance in Clojure",
+        "excerpt": "Maximize performance with advanced parallelism techniques and multithread programming.",
+        "date": "2024-03-30",
+        "readTime": "18 min",
+        "tags": ["Clojure", "Parallelism", "Multithreading", "Performance"]
+    }
+]
